@@ -1,0 +1,16 @@
+Vaccine_antigen,Age_milestone,Coverage_pct
+DTP (diphtheria/tetanus/whooping cough),1 year,93.6661993112179
+DTP (diphtheria/tetanus/whooping cough),2 years,92.27973972818387
+DTP (diphtheria/tetanus/whooping cough),5 years,94.15039792106545
+Hepatitis B,1 year,94.12084995167635
+Hepatitis B,2 years,96.03459358765808
+Hib,1 year,93.58316431400841
+Hib,2 years,93.40432649420161
+IPD (invasive pneumococcal disease),1 year,95.31737064917033
+IPD (invasive pneumococcal disease),2 years,94.62107099753372
+MMR (measles/mumps/rubella),2 years,92.6473867870074
+Meningococcal C,2 years,95.07464448758986
+Polio,1 year,93.64646148401235
+Polio,2 years,95.98671091987197
+Polio,5 years,94.13253207731039
+Varicella,2 years,92.84974025292544
