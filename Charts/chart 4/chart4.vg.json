@@ -1,0 +1,61 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Some Vaccines Are Further From the Target Than Others",
+    "subtitle": "% of Australian children covered for each vaccine at each age milestone, 2023",
+    "anchor": "start",
+    "fontSize": 20,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#555555"
+  },
+  "width": 360,
+  "height": 320,
+  "data": {
+    "url": "data/antigen_coverage_by_age_2023.csv",
+    "format": {"type": "csv", "parse": {"Coverage_pct": "number"}}
+  },
+  "encoding": {
+    "x": {
+      "field": "Age_milestone",
+      "type": "ordinal",
+      "title": "Age milestone",
+      "axis": {"orient": "top", "labelAngle": 0, "labelFontSize": 12}
+    },
+    "y": {
+      "field": "Vaccine_antigen",
+      "type": "nominal",
+      "title": null,
+      "sort": {"field": "Coverage_pct", "op": "min", "order": "ascending"},
+      "axis": {"labelLimit": 280, "labelFontSize": 11}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "rect", "stroke": "white", "strokeWidth": 2},
+      "encoding": {
+        "color": {
+          "field": "Coverage_pct",
+          "type": "quantitative",
+          "title": "% covered",
+          "scale": {"domain": [92, 96.5], "scheme": "blues"},
+          "legend": {"orient": "bottom", "direction": "horizontal", "gradientLength": 200}
+        },
+        "tooltip": [
+          {"field": "Vaccine_antigen", "type": "nominal", "title": "Vaccine"},
+          {"field": "Age_milestone", "type": "ordinal", "title": "Age"},
+          {"field": "Coverage_pct", "type": "quantitative", "title": "% covered", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "fontSize": 12},
+      "encoding": {
+        "text": {"field": "Coverage_pct", "type": "quantitative", "format": ".1f"},
+        "color": {
+          "condition": {"test": "datum.Coverage_pct >= 94.5", "value": "white"},
+          "value": "black"
+        }
+      }
+    }
+  ]
+}

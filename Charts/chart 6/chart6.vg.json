@@ -1,0 +1,110 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Are Regional Gaps Closing or Widening?",
+    "subtitle": [
+      "% of children fully immunised in each of the 31 Primary Health Network regions, 2012–13 to 2016–17",
+      "Each dot is a region. The box covers the middle half of regions; the line inside is the typical (median) region."
+    ],
+    "anchor": "start",
+    "fontSize": 20,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#555555"
+  },
+  "width": 560,
+  "height": 360,
+  "params": [
+    {
+      "name": "Age_selection",
+      "value": "2 years",
+      "bind": {"input": "select", "options": ["1 year", "2 years", "5 years"], "name": "Age: "}
+    }
+  ],
+  "data": {
+    "url": "data/TAB2_state_phn_clean.csv",
+    "format": {"type": "csv", "parse": {"Percent_fully_immunised": "number"}}
+  },
+  "transform": [
+    {"filter": "datum.Age_group == Age_selection"},
+    {
+      "window": [{"op": "row_number", "as": "rank"}],
+      "groupby": ["Reporting_Year"],
+      "sort": [{"field": "Percent_fully_immunised", "order": "ascending"}]
+    },
+    {"calculate": "((datum.rank % 5) - 2) * 0.4", "as": "jitter"},
+    {
+      "calculate": "indexof(['PHN701', 'PHN109', 'PHN103'], datum.PHN_code) >= 0 ? datum.PHN_name : 'Other regions'",
+      "as": "Highlight"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Reporting_Year",
+      "type": "ordinal",
+      "title": null,
+      "axis": {"labelAngle": 0, "labelFontSize": 12}
+    }
+  },
+  "layer": [
+    {
+      "data": {"values": [{"target": 95}]},
+      "mark": {"type": "rule", "strokeDash": [4, 4], "color": "#888888"},
+      "encoding": {
+        "y": {"field": "target", "type": "quantitative", "scale": {"domain": [85, 97], "zero": false, "nice": false}},
+        "x": null
+      }
+    },
+    {
+      "data": {"values": [{"target": 95, "label": "95% national target"}]},
+      "mark": {"type": "text", "align": "left", "dx": 4, "dy": -7, "fontSize": 11, "color": "#555555"},
+      "encoding": {
+        "y": {"field": "target", "type": "quantitative", "scale": {"domain": [85, 97], "zero": false, "nice": false}},
+        "x": {"value": 0},
+        "text": {"field": "label"}
+      }
+    },
+    {
+      "mark": {
+        "type": "boxplot",
+        "extent": "min-max",
+        "size": 70,
+        "box": {"color": "#cde2fb", "stroke": "#2a78d6", "strokeWidth": 1},
+        "median": {"color": "#104281", "strokeWidth": 3},
+        "rule": {"color": "#2a78d6"},
+        "ticks": false
+      },
+      "encoding": {
+        "y": {
+          "field": "Percent_fully_immunised",
+          "type": "quantitative",
+          "title": "% fully immunised",
+          "scale": {"domain": [85, 97], "zero": false, "nice": false}
+        }
+      }
+    },
+    {
+      "mark": {"type": "circle", "size": 45, "opacity": 0.9, "stroke": "white", "strokeWidth": 0.8},
+      "encoding": {
+        "y": {"field": "Percent_fully_immunised", "type": "quantitative", "scale": {"domain": [85, 97], "zero": false, "nice": false}},
+        "xOffset": {"field": "jitter", "type": "quantitative", "scale": {"domain": [-4, 4]}},
+        "color": {
+          "field": "Highlight",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": ["Northern Territory", "North Coast", "Western Sydney", "Other regions"],
+            "range": ["#e34948", "#eb6834", "#4a3aa7", "#9a9893"]
+          },
+          "legend": {"orient": "bottom", "direction": "horizontal"}
+        },
+        "order": {"condition": {"test": "datum.Highlight != 'Other regions'", "value": 1}, "value": 0},
+        "tooltip": [
+          {"field": "PHN_name", "type": "nominal", "title": "Region (PHN)"},
+          {"field": "State", "type": "nominal"},
+          {"field": "Reporting_Year", "type": "ordinal", "title": "Year"},
+          {"field": "Percent_fully_immunised", "type": "quantitative", "title": "% fully immunised", "format": ".1f"}
+        ]
+      }
+    }
+  ]
+}

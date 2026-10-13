@@ -1,0 +1,88 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+  "text": "Not Every Region Is Slipping at the Same Rate",
+  "subtitle": "% of children fully immunised in each Primary Health Network region, 2012–13 to 2016–17",
+  "anchor": "start",
+  "fontSize": 20,
+  "subtitleFontSize": 12,
+  "subtitleColor": "#555555"
+},
+  "width": 700,
+  "height": 500,
+  "params": [
+    {
+      "name": "Year_selection",
+      "value": 2017,
+      "bind": {"input": "range", "min": 2013, "max": 2017, "step": 1, "name": " Year: "}
+    },
+    {
+      "name": "Age_selection",
+      "value": "2 years",
+      "bind": {"input": "select", "options": ["1 year", "2 years", "5 years"], "name": "Age: "}
+    }
+  ],
+  "projection": {"type": "conicEqualArea", "parallels": [-18, -36], "rotate": [-132, 0]},
+  "layer": [
+    {
+      "data": {
+        "url": "data/phn_boundaries.topojson",
+        "format": {"type": "topojson", "feature": "phn"}
+      },
+      "transform": [
+        {"calculate": "'Data is not available for ' + datum.properties.PHN_NAME", "as": "note"}
+      ],
+      "mark": {"type": "geoshape", "fill": "#ddd", "stroke": "white", "strokeWidth": 1},
+      "encoding": {"tooltip": {"field": "note"}}
+    },
+    {
+      "data": {
+        "url": "data/TAB2_state_phn_clean.csv",
+        "format": {
+          "type": "csv",
+          "parse": {"Registered_children": "number", "Fully_immunised": "number", "Not_fully_immunised": "number"}
+        }
+      },
+      "transform": [
+        {"calculate": "(Year_selection - 1) + '-' + substring(toString(Year_selection), 2)", "as": "year_label"},
+        {"filter": "datum.Age_group == Age_selection && datum.Reporting_Year == datum.year_label"},
+        {"calculate": "datum.Fully_immunised / datum.Registered_children * 100", "as": "rate"},
+        {
+          "lookup": "PHN_code",
+          "from": {
+            "data": {
+              "url": "data/phn_boundaries.topojson",
+              "format": {"type": "topojson", "feature": "phn"}
+            },
+            "key": "properties.PHN_code"
+          },
+          "as": "geo"
+        }
+      ],
+      "mark": {"type": "geoshape", "stroke": "#fff", "strokeWidth": 0.8},
+      "encoding": {
+        "shape": {"field": "geo", "type": "geojson"},
+        "color": {
+          "field": "rate",
+          "type": "quantitative",
+          "title": "% fully immunised",
+          "scale": {"domain": [86, 96], "scheme": "blues", "clamp": true},
+          "legend": {
+            "orient": "bottom-left",
+            "direction": "horizontal",
+            "gradientLength": 200,
+            "values": [86, 88, 90, 92, 94, 96]
+          }
+        },
+        "tooltip": [
+          {"field": "PHN_name", "type": "nominal", "title": "Region (PHN)"},
+          {"field": "State", "type": "nominal", "title": "State"},
+          {"field": "Reporting_Year", "type": "nominal", "title": "Year"},
+          {"field": "Registered_children", "type": "quantitative", "title": "Children registered", "format": ","},
+          {"field": "Fully_immunised", "type": "quantitative", "title": "Fully immunised", "format": ","},
+          {"field": "rate", "type": "quantitative", "title": "% fully immunised", "format": ".1f"}
+        ]
+      }
+    }
+  ]
+}

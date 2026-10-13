@@ -1,0 +1,315 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "Coverage Is Climbing, but 2-Year-Olds Are Still Falling Short",
+    "subtitle": "Share of Australian children fully immunised, by age group, 2011–12 to 2016–17",
+    "anchor": "start",
+    "fontSize": 20,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#555555"
+  },
+
+  "width": 700,
+  "height": 380,
+
+  "data": {
+    "url": "TAB1_national_clean.csv"
+  },
+
+  "layer": [
+
+    {
+      "mark": {
+        "type": "rule",
+        "strokeDash": [5, 4],
+        "strokeWidth": 1.5,
+        "color": "#777777"
+      },
+
+      "encoding": {
+        "y": {
+          "datum": 95
+        }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "bottom",
+        "dx": 5,
+        "dy": -5,
+        "fontSize": 11,
+        "color": "#666666"
+      },
+
+      "encoding": {
+        "x": {
+          "datum": "2011–12"
+        },
+
+        "y": {
+          "datum": 95
+        },
+
+        "text": {
+          "value": "95% target"
+        }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.5,
+
+        "point": {
+          "filled": true,
+          "size": 60
+        }
+      },
+
+      "encoding": {
+
+        "x": {
+          "field": "Reporting_Year",
+          "type": "ordinal",
+
+          "axis": {
+            "title": "Reporting year",
+            "labelAngle": 0
+          }
+        },
+
+        "y": {
+          "field": "All_percent",
+          "type": "quantitative",
+
+          "scale": {
+            "domain": [85, 100],
+            "zero": false
+          },
+
+          "axis": {
+            "title": "Children fully immunised (%)",
+            "values": [85, 90, 95, 100],
+            "labelExpr": "datum.value + '%'"
+          }
+        },
+
+        "color": {
+          "field": "Age_group",
+          "type": "nominal",
+
+          "scale": {
+            "domain": [
+              "1 year",
+              "2 years",
+              "5 years"
+            ],
+
+            "range": [
+              "#1f77b4",
+              "#d62728",
+              "#2ca02c"
+            ]
+          },
+
+          "legend": null
+        },
+
+        "detail": {
+          "field": "Age_group"
+        },
+
+        "tooltip": [
+          {
+            "field": "Age_group",
+            "type": "nominal",
+            "title": "Age group"
+          },
+
+          {
+            "field": "Reporting_Year",
+            "type": "ordinal",
+            "title": "Reporting year"
+          },
+
+          {
+            "field": "All_percent",
+            "type": "quantitative",
+            "title": "Fully immunised",
+            "format": ".1f"
+          },
+
+          {
+            "field": "All_registered",
+            "type": "quantitative",
+            "title": "Children registered",
+            "format": ","
+          },
+
+          {
+            "field": "All_fully_immunised",
+            "type": "quantitative",
+            "title": "Fully immunised children",
+            "format": ","
+          }
+        ]
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "filter": "datum.Reporting_Year == '2016–17' && datum.Age_group == '1 year'"
+        },
+
+        {
+          "calculate": "'1 year  ' + format(datum.All_percent, '.1f') + '%'",
+          "as": "LineLabel"
+        }
+      ],
+
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "bottom",
+        "dx": 10,
+        "dy": -8,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#1f77b4"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "Reporting_Year",
+          "type": "ordinal"
+        },
+
+        "y": {
+          "field": "All_percent",
+          "type": "quantitative",
+          "scale": {
+            "domain": [85, 100],
+            "zero": false
+          }
+        },
+
+        "text": {
+          "field": "LineLabel"
+        }
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "filter": "datum.Reporting_Year == '2016–17' && datum.Age_group == '5 years'"
+        },
+
+        {
+          "calculate": "'5 years  ' + format(datum.All_percent, '.1f') + '%'",
+          "as": "LineLabel"
+        }
+      ],
+
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "dx": 10,
+        "dy": 8,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#2ca02c"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "Reporting_Year",
+          "type": "ordinal"
+        },
+
+        "y": {
+          "field": "All_percent",
+          "type": "quantitative",
+          "scale": {
+            "domain": [85, 100],
+            "zero": false
+          }
+        },
+
+        "text": {
+          "field": "LineLabel"
+        }
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "filter": "datum.Reporting_Year == '2016–17' && datum.Age_group == '2 years'"
+        },
+
+        {
+          "calculate": "'2 years  ' + format(datum.All_percent, '.1f') + '%'",
+          "as": "LineLabel"
+        }
+      ],
+
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 10,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#d62728"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "Reporting_Year",
+          "type": "ordinal"
+        },
+
+        "y": {
+          "field": "All_percent",
+          "type": "quantitative",
+          "scale": {
+            "domain": [85, 100],
+            "zero": false
+          }
+        },
+
+        "text": {
+          "field": "LineLabel"
+        }
+      }
+    }
+
+  ],
+
+  "config": {
+    "view": {
+      "stroke": null
+    },
+
+    "axis": {
+      "gridColor": "#E5E5E5",
+      "gridOpacity": 0.6,
+      "labelFont": "Arial",
+      "titleFont": "Arial",
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+
+    "title": {
+      "font": "Arial"
+    }
+  }
+}
