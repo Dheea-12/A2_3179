@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Are We Still Protecting Australia's Children?</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Vega libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.30.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.21.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.26.0"></script>
+</head>
+
+<body>
+
+<!-- ===================== TOP NAVIGATION ===================== -->
+<nav class="topnav">
+  <div class="wrap topnav-inner">
+    <a href="#top" class="brand">Child Immunisation in Australia</a>
+    <ul>
+      <li><a href="#ch1">Nationally</a></li>
+      <li><a href="#ch2">Vaccines</a></li>
+      <li><a href="#ch3">Regions</a></li>
+      <li><a href="#ch4">Children</a></li>
+      <li><a href="#about">Sources</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="kicker">FIT3179 Data Visualisation 2 · Child immunisation in Australia</p>
+    <h1>Are We Still Protecting<br>Australia's Children?</h1>
+    <p class="lede">
+      For years, Australia was one of the best-vaccinated countries in the world.
+      Lately, the numbers have started to slip. This page follows the data to answer
+      four questions: <strong>how far coverage has fallen</strong>, <strong>which vaccines</strong>,
+      <strong>where</strong>, and <strong>how many children</strong> are missing out.
+    </p>
+    <p class="byline">By <strong>Dania'</strong> · Monash University · October 2026</p>
+
+    <!-- Key numbers -->
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-num">92%</span>
+        <span class="stat-label">of infants got all 3 DTP doses in 2025, down from 95% in 2017–2021</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">#24</span>
+        <span class="stat-label">Australia's world rank for DTP3 in 2025, after reaching #18 in 2021</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num accent">28,477</span>
+        <span class="stat-label">two-year-olds were not fully immunised in 2016–17</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">95%</span>
+        <span class="stat-label">the national target needed to stop diseases like measles from spreading</span>
+      </div>
+    </div>
+
+    <div class="explainer">
+      <h2>Two terms used on this page</h2>
+      <p><strong>Fully immunised</strong>: a child has had every vaccine due for their age on the National Immunisation Program schedule (checked at 1, 2 and 5 years old).</p>
+      <p><strong>DTP3</strong>: the third dose of the diphtheria, tetanus and whooping cough (pertussis) vaccine, given at 6 months. Countries use it as a common yardstick to compare how well children are protected.</p>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===================== CHAPTER 1 ===================== -->
+  <section class="chapter" id="ch1">
+    <div class="wrap">
+      <p class="chapter-num">Chapter 1</p>
+      <h2 class="chapter-title">The national picture</h2>
+      <p class="chapter-intro">
+        Before looking at regions or vaccines, how is Australia doing overall, and how does
+        it compare with other wealthy countries?
+      </p>
+
+      <figure class="card">
+        <div class="vis" data-spec="Charts/chart1/national_coverage.vg.json"></div>
+        <figcaption class="takeaway">
+          <strong>What this shows:</strong> coverage rose through the 2010s, then began to fall.
+          <!-- EDIT: describe what your chart 1 shows -->
+        </figcaption>
+      </figure>
+
+      <figure class="card">
+        <div class="vis" data-spec="Charts/chart2/chart2.vg.json"></div>
+        <p class="howto">How to read: each line is one country. Higher on the chart = better rank. Use the menu to highlight a country next to Australia.</p>
+        <figcaption class="takeaway">
+          <strong>What this shows:</strong> Australia climbed from #33 in 2013 to #18 in 2021,
+          then slipped back to #24 by 2025 as other countries held steady.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===================== CHAPTER 2 ===================== -->
+  <section class="chapter alt" id="ch2">
+    <div class="wrap">
+      <p class="chapter-num">Chapter 2</p>
+      <h2 class="chapter-title">Is it every vaccine, or just a few?</h2>
+      <p class="chapter-intro">
+        A drop in one vaccine could be a supply problem. A drop across all of them points
+        to something bigger, like families missing appointments altogether.
+      </p>
+
+      <figure class="card">
+        <div class="vis" data-spec="Charts/chart 4/chart4.vg.json"></div>
+        <p class="howto">How to read: each row is a vaccine and each column is a year. Darker blue = more children covered. Orange = below 88%.</p>
+        <figcaption class="takeaway">
+          <strong>What this shows:</strong> the decline is not limited to one vaccine. Most
+          vaccines are lighter in recent years than at their peak.
+        </figcaption>
+      </figure>
+
+      <figure class="card">
+        <div class="vis" data-spec="Charts/chart9/chart9.vg.json"></div>
+        <figcaption class="takeaway">
+          <strong>What this shows:</strong> <!-- EDIT -->
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===================== CHAPTER 3 ===================== -->
+  <section class="chapter" id="ch3">
+    <div class="wrap">
+      <p class="chapter-num">Chapter 3</p>
+      <h2 class="chapter-title">Where are children missing out?</h2>
+      <p class="chapter-intro">
+        Australia is split into 31 <strong>Primary Health Networks (PHNs)</strong>, the regions
+        that organise local health services. Coverage is not the same in all of them.
+      </p>
+
+      <figure class="card">
+        <div class="vis" data-spec="Charts/chart3/chart3.vg.json"></div>
+        <p class="howto">How to read: darker blue = a higher share of children fully immunised. Drag the slider to change the year and pick an age from the menu.</p>
+        <figcaption class="takeaway">
+          <strong>What this shows:</strong> at 2 years old, coverage fell in every one of the
+          31 regions. The Northern Territory had the biggest drop.
+        </figcaption>
+      </figure>
+
+      <figure class="card">
+        <div class="vis" data-spec="Charts/chart8/chart8.vg.json"></div>
+        <figcaption class="takeaway">
+          <strong>What this shows:</strong> <!-- EDIT -->
+        </figcaption>
+      </figure>
+
+      <figure class="card">
+        <div class="vis" data-spec="Charts/chart5/chart5.vg.json"></div>
+        <p class="howto">How to read: each dot is one local area. The box covers the middle half of areas, and the line inside it is the middle (median) area.</p>
+        <figcaption class="takeaway">
+          <strong>What this shows:</strong> the number of local areas reaching the 95% target
+          at age 2 fell from 52 to just 6.
+        </figcaption>
+      </figure>
+
+      <div class="transition">
+        <p>A low percentage doesn't always mean a lot of children. A small region with
+        poor coverage may have fewer unprotected children than a big city with good coverage.</p>
+      </div>
+
+      <figure class="card">
+        <div class="vis" data-spec="Charts/chart7/chart7.vg.json"></div>
+        <p class="howto">How to read: bigger circle = more children not fully immunised. The small maps zoom in on the capital cities.</p>
+        <figcaption class="takeaway">
+          <strong>What this shows:</strong> North Western Melbourne has the most children who
+          aren't fully immunised (2,354 two-year-olds), compared with 442 in the whole
+          Northern Territory.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===================== CHAPTER 4 ===================== -->
+  <section class="chapter alt" id="ch4">
+    <div class="wrap">
+      <p class="chapter-num">Chapter 4</p>
+      <h2 class="chapter-title">What does the missing 7% look like?</h2>
+      <p class="chapter-intro">
+        Percentages can hide how many real children are involved. Here are the numbers
+        behind them.
+      </p>
+
+      <figure class="card">
+        <div class="vis" data-spec="Charts/chart6/chart6.vg.json"></div>
+        <p class="howto">How to read: the width of each band shows how many children follow that path.</p>
+        <figcaption class="takeaway">
+          <strong>What this shows:</strong> of 938,484 children checked in 2016–17,
+          68,159 (7.3%) were not fully immunised. That's about two-thirds of a full MCG.
+        </figcaption>
+      </figure>
+
+      <figure class="card">
+        <div class="vis" data-spec="Charts/chart10/chart10.vg.json"></div>
+        <figcaption class="takeaway">
+          <strong>What this shows:</strong> <!-- EDIT -->
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===================== CONCLUSION ===================== -->
+  <section class="chapter conclusion">
+    <div class="wrap narrow">
+      <h2 class="chapter-title">So, are we still protecting them?</h2>
+      <ul class="summary">
+        <li><strong>Mostly, but less than before.</strong> Coverage has dropped below the 95% target and Australia has slipped down the world rankings.</li>
+        <li><strong>It's broad, not one vaccine.</strong> Several vaccines show the same decline.</li>
+        <li><strong>The 2-year check is the weak point.</strong> Every region fell at age 2.</li>
+        <li><strong>Big cities hold the most unprotected children,</strong> even where percentages look fine.</li>
+      </ul>
+      <p class="cta">If you're a parent, check your child's record on the
+        <a href="https://www.servicesaustralia.gov.au/australian-immunisation-register" target="_blank" rel="noopener">Australian Immunisation Register</a>.</p>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT / SOURCES ===================== -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div>
+          <h3>Data sources</h3>
+          <ul>
+            <!-- EDIT: put the exact page you downloaded each file from -->
+            <li><strong>AIHW</strong>, Healthy Communities: Immunisation rates for children (national, PHN and SA3 tables, 2012–13 to 2016–17). <a href="https://www.aihw.gov.au/" target="_blank" rel="noopener">aihw.gov.au</a></li>
+            <li><strong>WHO/UNICEF</strong> Estimates of National Immunization Coverage (WUENIC), 2010–2025. <a href="https://immunizationdata.who.int/" target="_blank" rel="noopener">immunizationdata.who.int</a></li>
+            <li><strong>Department of Health</strong>, Primary Health Network boundaries. <a href="https://www.health.gov.au/" target="_blank" rel="noopener">health.gov.au</a></li>
+            <li><strong>ABS</strong>, Australian Statistical Geography Standard: state boundaries. <a href="https://www.abs.gov.au/" target="_blank" rel="noopener">abs.gov.au</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Notes</h3>
+          <ul>
+            <li>The most recent regional (PHN and SA3) data in these tables is 2016–17. National and international figures go up to 2025.</li>
+            <li>WUENIC figures are reviewed estimates by WHO and UNICEF, based on Australia's official register data and rounded to whole numbers.</li>
+            <li>Maps use an equal-area projection so that regions are drawn at their true relative size.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>About</h3>
+          <p>Created by <strong>Dania'</strong> for FIT3179 Data Visualisation 2, Monash University. Last updated October 2026.</p>
+          <p>Built with <a href="https://vega.github.io/vega-lite/" target="_blank" rel="noopener">Vega-Lite</a>. Chart code is in the <code>Charts/</code> folder of this site's GitHub repository.</p>
+          <p><strong>AI acknowledgement:</strong> <!-- EDIT so it's accurate -->
+            Claude (Anthropic) was used to help write Vega-Lite code, prepare data and lay out this page. The topic, storyline, design choices and checking of results are my own.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== LOAD THE CHARTS ===================== -->
+<script>
+  // Every <div class="vis" data-spec="..."> on the page gets a chart.
+  // The spec's data paths ("../../data/...") are read relative to its own folder.
+  document.querySelectorAll(".vis").forEach(el => {
+    const spec = el.dataset.spec;
+    const folder = spec.substring(0, spec.lastIndexOf("/") + 1);
+
+    fetch(spec)
+      .then(res => {
+        if (!res.ok) throw new Error("File not found");
+        return res.json();
+      })
+      .then(json => vegaEmbed(el, json, {
+        actions: false,
+        loader: vega.loader({ baseURL: folder })
+      }))
+      .catch(err => {
+        console.error(spec, err);
+        el.classList.add("missing");
+        el.innerHTML = "<p>Chart not loaded: <code>" + spec + "</code></p>";
+      });
+  });
+</script>
+
+</body>
+</html>
