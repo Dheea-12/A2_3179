@@ -1,25 +1,13 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "description": "Node-link tree of the health and economic burden of vaccine-preventable diseases in Australia.",
-  "width": 960,
-  "height": 640,
-  "padding": {
-    "left": 10,
-    "right": 10,
-    "top": 10,
-    "bottom": 10
-  },
+  "width": 760,
+  "height": 900,
+  "padding": 10,
   "title": {
     "text": "Beyond Infection: The Health and Economic Burden of Vaccine-Preventable Diseases",
-    "subtitle": [
-      "Cases reported (2024), hospital stays (2022) and health spending (2018–19) for each disease, Australia, all ages.",
-      "Bigger red circle = more health spending. Orange = cases, dark red = hospital stays, blue = spending."
-    ],
+    "subtitle": "Each disease branches into cases, hospital stays and health spending. Bigger circle = bigger number.",
     "anchor": "start",
-    "fontSize": 18,
-    "subtitleFontSize": 12,
-    "subtitleColor": "#555555",
-    "offset": 12
+    "subtitleColor": "#555555"
   },
   "data": [
     {
@@ -48,7 +36,6 @@
               "signal": "width - 260"
             }
           ],
-          "separation": false,
           "as": [
             "y",
             "x",
@@ -75,35 +62,71 @@
   ],
   "scales": [
     {
-      "name": "spend",
+      "name": "cases",
+      "type": "sqrt",
+      "domain": [
+        0,
+        60000
+      ],
+      "range": [
+        15,
+        400
+      ]
+    },
+    {
+      "name": "hospital",
+      "type": "sqrt",
+      "domain": [
+        0,
+        2100
+      ],
+      "range": [
+        15,
+        400
+      ]
+    },
+    {
+      "name": "cost",
       "type": "sqrt",
       "domain": [
         0,
         30000000
       ],
       "range": [
-        30,
-        900
-      ],
-      "zero": true
+        15,
+        400
+      ]
     },
     {
-      "name": "kind",
+      "name": "colour",
       "type": "ordinal",
       "domain": [
-        "root",
-        "disease",
-        "cases",
-        "hospital",
-        "cost"
+        "Cases reported (2024)",
+        "Hospital stays (2022)",
+        "Health spending (2018–19)"
       ],
       "range": [
-        "#12304f",
         "#e34948",
-        "#f28e2b",
-        "#a3261e",
+        "#12304f",
         "#2a78d6"
       ]
+    }
+  ],
+  "legends": [
+    {
+      "fill": "colour",
+      "title": "What each circle shows",
+      "orient": "none",
+      "legendX": 0,
+      "legendY": {
+        "signal": "height - 90"
+      },
+      "symbolType": "circle",
+      "symbolSize": 150,
+      "symbolOpacity": 0.85,
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "rowPadding": 6
     }
   ],
   "marks": [
@@ -118,10 +141,7 @@
             "field": "path"
           },
           "stroke": {
-            "value": "#c9c6bd"
-          },
-          "strokeWidth": {
-            "value": 1.2
+            "value": "#cccccc"
           }
         }
       }
@@ -140,17 +160,13 @@
             "field": "y"
           },
           "size": {
-            "signal": "datum.kind == 'disease' ? scale('spend', datum.value) : datum.kind == 'root' ? 180 : 45"
+            "signal": "datum.kind == 'cases' || datum.kind == 'hospital' || datum.kind == 'cost' ? scale(datum.kind, datum.value || 0) : 60"
           },
           "fill": {
-            "scale": "kind",
-            "field": "kind"
+            "signal": "datum.kind == 'cases' ? '#e34948' : datum.kind == 'hospital' ? '#12304f' : datum.kind == 'cost' ? '#2a78d6' : '#888888'"
           },
           "fillOpacity": {
-            "signal": "datum.kind == 'disease' ? 0.85 : 1"
-          },
-          "stroke": {
-            "value": "white"
+            "value": 0.85
           },
           "tooltip": {
             "field": "label"
@@ -172,31 +188,25 @@
             "field": "y"
           },
           "text": {
-            "signal": "datum.kind == 'root' ? ['Vaccine-preventable', 'diseases'] : datum.label"
+            "field": "label"
           },
           "dx": {
-            "signal": "datum.kind == 'root' ? -6 : datum.kind == 'disease' ? 0 : 9"
+            "signal": "datum.kind == 'root' ? 0 : datum.kind == 'disease' ? -8 : 14"
           },
           "dy": {
-            "signal": "datum.kind == 'disease' ? -14 : datum.kind == 'root' ? -14 : 0"
+            "signal": "datum.kind == 'root' ? -14 : 0"
           },
           "align": {
-            "signal": "datum.kind == 'root' ? 'left' : datum.kind == 'disease' ? 'center' : 'left'"
+            "signal": "datum.kind == 'disease' ? 'right' : 'left'"
           },
           "baseline": {
-            "signal": "datum.kind == 'disease' || datum.kind == 'root' ? 'bottom' : 'middle'"
+            "value": "middle"
           },
           "fontSize": {
-            "signal": "datum.kind == 'disease' ? 12 : 11"
+            "signal": "datum.kind == 'disease' ? 13 : 11"
           },
           "fontWeight": {
-            "signal": "datum.kind == 'disease' || datum.kind == 'root' ? 'bold' : 'normal'"
-          },
-          "fill": {
-            "signal": "datum.kind == 'disease' ? '#1a1a19' : datum.kind == 'root' ? '#12304f' : '#444444'"
-          },
-          "lineHeight": {
-            "value": 13
+            "signal": "datum.kind == 'disease' ? 'bold' : 'normal'"
           }
         }
       }
