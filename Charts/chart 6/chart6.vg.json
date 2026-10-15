@@ -1,110 +1,332 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Are Regional Gaps Closing or Widening?",
-    "subtitle": [
-      "% of children fully immunised in each of the 31 Primary Health Network regions, 2012–13 to 2016–17",
-      "Each dot is a region. The box covers the middle half of regions; the line inside is the typical (median) region."
-    ],
+    "text": "What Does the Missing 7% Actually Look Like?",
+    "subtitle": "Every registered child aged 1, 2 and 5 in Australia, 2016–17. Band width = number of children.",
     "anchor": "start",
     "fontSize": 20,
     "subtitleFontSize": 12,
     "subtitleColor": "#555555"
   },
-  "width": 560,
-  "height": 360,
-  "params": [
-    {
-      "name": "Age_selection",
-      "value": "2 years",
-      "bind": {"input": "select", "options": ["1 year", "2 years", "5 years"], "name": "Age: "}
-    }
-  ],
-  "data": {
-    "url": "data/TAB2_state_phn_clean.csv",
-    "format": {"type": "csv", "parse": {"Percent_fully_immunised": "number"}}
-  },
-  "transform": [
-    {"filter": "datum.Age_group == Age_selection"},
-    {
-      "window": [{"op": "row_number", "as": "rank"}],
-      "groupby": ["Reporting_Year"],
-      "sort": [{"field": "Percent_fully_immunised", "order": "ascending"}]
-    },
-    {"calculate": "((datum.rank % 5) - 2) * 0.4", "as": "jitter"},
-    {
-      "calculate": "indexof(['PHN701', 'PHN109', 'PHN103'], datum.PHN_code) >= 0 ? datum.PHN_name : 'Other regions'",
-      "as": "Highlight"
-    }
-  ],
-  "encoding": {
-    "x": {
-      "field": "Reporting_Year",
-      "type": "ordinal",
-      "title": null,
-      "axis": {"labelAngle": 0, "labelFontSize": 12}
-    }
-  },
+  "width": 760,
+  "height": 420,
   "layer": [
     {
-      "data": {"values": [{"target": 95}]},
-      "mark": {"type": "rule", "strokeDash": [4, 4], "color": "#888888"},
-      "encoding": {
-        "y": {"field": "target", "type": "quantitative", "scale": {"domain": [85, 97], "zero": false, "nice": false}},
-        "x": null
-      }
-    },
-    {
-      "data": {"values": [{"target": 95, "label": "95% national target"}]},
-      "mark": {"type": "text", "align": "left", "dx": 4, "dy": -7, "fontSize": 11, "color": "#555555"},
-      "encoding": {
-        "y": {"field": "target", "type": "quantitative", "scale": {"domain": [85, 97], "zero": false, "nice": false}},
-        "x": {"value": 0},
-        "text": {"field": "label"}
-      }
-    },
-    {
+      "data": {
+        "url": "../../data/sankey_children_links.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "value": "number",
+            "x": "number",
+            "y": "number",
+            "y2": "number"
+          }
+        }
+      },
       "mark": {
-        "type": "boxplot",
-        "extent": "min-max",
-        "size": 70,
-        "box": {"color": "#cde2fb", "stroke": "#2a78d6", "strokeWidth": 1},
-        "median": {"color": "#104281", "strokeWidth": 3},
-        "rule": {"color": "#2a78d6"},
-        "ticks": false
+        "type": "area",
+        "interpolate": "linear"
       },
       "encoding": {
-        "y": {
-          "field": "Percent_fully_immunised",
+        "x": {
+          "field": "x",
           "type": "quantitative",
-          "title": "% fully immunised",
-          "scale": {"domain": [85, 97], "zero": false, "nice": false}
+          "scale": {
+            "domain": [
+              0,
+              760
+            ]
+          },
+          "axis": null
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              420
+            ],
+            "reverse": true
+          },
+          "axis": null
+        },
+        "y2": {
+          "field": "y2"
+        },
+        "detail": {
+          "field": "link",
+          "type": "nominal"
+        },
+        "color": {
+          "field": "kind",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "cohort",
+              "fully",
+              "not"
+            ],
+            "range": [
+              "#cfd8e3",
+              "#9ec5f4",
+              "#e34948"
+            ]
+          },
+          "legend": null
+        },
+        "opacity": {
+          "condition": {
+            "test": "datum.kind == 'not'",
+            "value": 0.9
+          },
+          "value": 0.6
+        },
+        "tooltip": [
+          {
+            "field": "source",
+            "type": "nominal",
+            "title": "From"
+          },
+          {
+            "field": "target",
+            "type": "nominal",
+            "title": "To"
+          },
+          {
+            "field": "value",
+            "type": "quantitative",
+            "title": "Children",
+            "format": ",.0f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "../../data/sankey_children_nodes.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "value": "number",
+            "x": "number",
+            "x2": "number",
+            "y": "number",
+            "y2": "number"
+          }
+        }
+      },
+      "mark": {
+        "type": "rect",
+        "cornerRadius": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              760
+            ]
+          }
+        },
+        "x2": {
+          "field": "x2"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              420
+            ],
+            "reverse": true
+          }
+        },
+        "y2": {
+          "field": "y2"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.kind == 'not'",
+            "value": "#a3261e"
+          },
+          "value": "#52514e"
+        },
+        "tooltip": [
+          {
+            "field": "label",
+            "type": "nominal",
+            "title": "Group"
+          },
+          {
+            "field": "value",
+            "type": "quantitative",
+            "title": "Children",
+            "format": ",.0f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "../../data/sankey_children_nodes.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "value": "number",
+            "x": "number",
+            "x2": "number",
+            "y": "number",
+            "y2": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.kind == 'total'"
+        },
+        {
+          "calculate": "(datum.y + datum.y2) / 2",
+          "as": "ym"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -10,
+        "fontSize": 12,
+        "lineHeight": 16
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "ym",
+          "type": "quantitative"
+        },
+        "text": {
+          "value": [
+            "All registered",
+            "children",
+            "938,484"
+          ]
         }
       }
     },
     {
-      "mark": {"type": "circle", "size": 45, "opacity": 0.9, "stroke": "white", "strokeWidth": 0.8},
-      "encoding": {
-        "y": {"field": "Percent_fully_immunised", "type": "quantitative", "scale": {"domain": [85, 97], "zero": false, "nice": false}},
-        "xOffset": {"field": "jitter", "type": "quantitative", "scale": {"domain": [-4, 4]}},
-        "color": {
-          "field": "Highlight",
-          "type": "nominal",
-          "title": null,
-          "scale": {
-            "domain": ["Northern Territory", "North Coast", "Western Sydney", "Other regions"],
-            "range": ["#e34948", "#eb6834", "#4a3aa7", "#9a9893"]
-          },
-          "legend": {"orient": "bottom", "direction": "horizontal"}
+      "data": {
+        "url": "../../data/sankey_children_nodes.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "value": "number",
+            "x": "number",
+            "x2": "number",
+            "y": "number",
+            "y2": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.kind == 'age'"
         },
-        "order": {"condition": {"test": "datum.Highlight != 'Other regions'", "value": 1}, "value": 0},
-        "tooltip": [
-          {"field": "PHN_name", "type": "nominal", "title": "Region (PHN)"},
-          {"field": "State", "type": "nominal"},
-          {"field": "Reporting_Year", "type": "ordinal", "title": "Year"},
-          {"field": "Percent_fully_immunised", "type": "quantitative", "title": "% fully immunised", "format": ".1f"}
-        ]
+        {
+          "calculate": "(datum.y + datum.y2) / 2",
+          "as": "ym"
+        },
+        {
+          "calculate": "[datum.label, format(datum.value, ',')]",
+          "as": "lab"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 12,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "lineHeight": 15
+      },
+      "encoding": {
+        "x": {
+          "field": "x2",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "ym",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "lab"
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "../../data/sankey_children_nodes.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "value": "number",
+            "x": "number",
+            "x2": "number",
+            "y": "number",
+            "y2": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.kind == 'fully' || datum.kind == 'not'"
+        },
+        {
+          "calculate": "(datum.y + datum.y2) / 2",
+          "as": "ym"
+        },
+        {
+          "calculate": "[datum.label, format(datum.value, ',') + ' children (' + format(datum.value / 938484, '.1%') + ')']",
+          "as": "lab"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "fontSize": 12,
+        "lineHeight": 16
+      },
+      "encoding": {
+        "x": {
+          "field": "x2",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "ym",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "lab"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.kind == 'not'",
+            "value": "#a3261e"
+          },
+          "value": "#1a1a19"
+        }
       }
     }
-  ]
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
 }

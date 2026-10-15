@@ -1,75 +1,211 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Which Vaccines Are Losing the Most Ground?",
+    "text": "Are Regional Gaps Closing or Widening?",
     "subtitle": [
-      "% of Australian children covered for each vaccine, 2015–2025 (WHO/UNICEF estimates)",
-      "Orange = below 88%, off the blue scale"
+      "% of children fully immunised in each of Australia's ~330 local areas (SA3), 2011–12 to 2016–17",
+      "Wider shape = more local areas at that level. Dark line = typical (median) area. Red dashed line = 95% target."
     ],
     "anchor": "start",
-    "fontSize": 20,
-    "subtitleFontSize": 12,
     "subtitleColor": "#555555"
   },
-  "width": 600,
-  "height": 300,
-  "data": {
-    "url": "data/wuenic_australia_antigens.csv",
-    "format": {"type": "csv", "parse": {"Year": "number", "Coverage": "number"}}
-  },
-  "transform": [
-    {"filter": "datum.Year >= 2015"},
-    {"calculate": "datum.Year == 2025 ? datum.Coverage : null", "as": "coverage_2025"},
+  "params": [
     {
-      "joinaggregate": [{"op": "max", "field": "coverage_2025", "as": "Coverage_in_2025"}],
-      "groupby": ["Vaccine"]
+      "name": "Age_selection",
+      "value": "2 years",
+      "bind": {
+        "input": "select",
+        "options": [
+          "1 year",
+          "2 years",
+          "5 years"
+        ],
+        "name": "Age: "
+      }
     }
   ],
-  "encoding": {
-    "x": {
-      "field": "Year",
-      "type": "ordinal",
-      "title": null,
-      "axis": {"orient": "top", "labelAngle": 0, "labelFontSize": 12, "domain": false, "ticks": false}
-    },
-    "y": {
-      "field": "Vaccine",
-      "type": "nominal",
-      "title": null,
-      "sort": {"field": "Coverage_in_2025", "op": "max", "order": "ascending"},
-      "axis": {"labelLimit": 300, "labelFontSize": 12, "domain": false, "ticks": false}
+  "data": {
+    "url": "../../data/TAB3_sa3_clean.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "Percent_fully_immunised": "number"
+      }
     }
   },
-  "layer": [
+  "transform": [
     {
-      "mark": {"type": "rect", "stroke": "white", "strokeWidth": 2},
-      "encoding": {
-        "color": {
-          "condition": {"test": "datum.Coverage < 88", "value": "#f4a582"},
-          "field": "Coverage",
-          "type": "quantitative",
-          "title": "% of children covered",
-          "scale": {"domain": [88, 97], "scheme": "blues", "clamp": true},
-          "legend": {
-            "orient": "bottom",
-            "direction": "horizontal",
-            "gradientLength": 220,
-            "values": [88, 90, 92, 94, 96]
-          }
-        },
-        "tooltip": [
-          {"field": "Vaccine", "type": "nominal"},
-          {"field": "Year", "type": "ordinal"},
-          {"field": "Coverage", "type": "quantitative", "title": "% covered"}
-        ]
-      }
-    },
-    {
-      "mark": {"type": "text", "fontSize": 12},
-      "encoding": {
-        "text": {"field": "Coverage", "type": "quantitative"},
-        "color": {"condition": {"test": "datum.Coverage >= 94", "value": "white"}, "value": "black"}
+      "filter": "datum.Age_group == Age_selection && isValid(datum.Percent_fully_immunised)"
+    }
+  ],
+  "facet": {
+    "column": {
+      "field": "Reporting_Year",
+      "type": "ordinal",
+      "title": null,
+      "header": {
+        "labelOrient": "bottom",
+        "labelFontSize": 12,
+        "labelPadding": 6
       }
     }
-  ]
+  },
+  "spacing": 0,
+  "spec": {
+    "width": 105,
+    "height": 380,
+    "layer": [
+      {
+        "transform": [
+          {
+            "density": "Percent_fully_immunised",
+            "groupby": [
+              "Reporting_Year"
+            ],
+            "extent": [
+              70,
+              100
+            ],
+            "bandwidth": 0.8
+          }
+        ],
+        "mark": {
+          "type": "area",
+          "orient": "horizontal",
+          "color": "#6baed6",
+          "opacity": 0.85
+        },
+        "encoding": {
+          "y": {
+            "field": "value",
+            "type": "quantitative",
+            "title": "% fully immunised",
+            "scale": {
+              "domain": [
+                70,
+                100
+              ],
+              "nice": false
+            }
+          },
+          "x": {
+            "field": "density",
+            "type": "quantitative",
+            "stack": "center",
+            "impute": null,
+            "title": null,
+            "axis": null
+          }
+        }
+      },
+      {
+        "data": {
+          "values": [
+            {
+              "y": 95
+            }
+          ]
+        },
+        "mark": {
+          "type": "rule",
+          "color": "#e34948",
+          "strokeDash": [
+            5,
+            4
+          ]
+        },
+        "encoding": {
+          "y": {
+            "field": "y",
+            "type": "quantitative"
+          }
+        }
+      },
+      {
+        "transform": [
+          {
+            "aggregate": [
+              {
+                "op": "median",
+                "field": "Percent_fully_immunised",
+                "as": "median"
+              }
+            ],
+            "groupby": [
+              "Reporting_Year"
+            ]
+          }
+        ],
+        "mark": {
+          "type": "rule",
+          "color": "#12304f",
+          "strokeWidth": 3,
+          "x": 18,
+          "x2": 87
+        },
+        "encoding": {
+          "y": {
+            "field": "median",
+            "type": "quantitative"
+          },
+          "tooltip": [
+            {
+              "field": "Reporting_Year",
+              "type": "ordinal",
+              "title": "Year"
+            },
+            {
+              "field": "median",
+              "type": "quantitative",
+              "title": "Median local area (%)",
+              "format": ".1f"
+            }
+          ]
+        }
+      },
+      {
+        "transform": [
+          {
+            "aggregate": [
+              {
+                "op": "median",
+                "field": "Percent_fully_immunised",
+                "as": "median"
+              }
+            ],
+            "groupby": [
+              "Reporting_Year"
+            ]
+          },
+          {
+            "calculate": "format(datum.median, '.1f') + '%'",
+            "as": "median_label"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "align": "center",
+          "dy": -9,
+          "x": 52,
+          "fontSize": 11,
+          "fontWeight": "bold",
+          "color": "#12304f"
+        },
+        "encoding": {
+          "y": {
+            "field": "median",
+            "type": "quantitative"
+          },
+          "text": {
+            "field": "median_label"
+          }
+        }
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
 }

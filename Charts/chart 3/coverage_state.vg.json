@@ -1,20 +1,22 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-  "text": "Not Every Region Is Slipping at the Same Rate",
-  "subtitle": "% of children fully immunised in each Primary Health Network region, 2012–13 to 2016–17",
-  "anchor": "start",
-  "fontSize": 20,
-  "subtitleFontSize": 12,
-  "subtitleColor": "#555555"
-},
+    "text": "Childhood Immunisation Coverage Varies Across Australia ",
+    "subtitle": "% of children fully immunised in each Primary Health Network region, 2012–13 to 2016–17",
+    "anchor": "start"
+   
+  },
   "width": 700,
   "height": 500,
   "params": [
     {
       "name": "Year_selection",
-      "value": 2017,
-      "bind": {"input": "range", "min": 2013, "max": 2017, "step": 1, "name": " Year: "}
+      "value": "2016-17",
+      "bind": {
+        "input": "select",
+        "options": ["2012-13", "2013-14", "2014-15", "2015-16", "2016-17"],
+        "name": "Year: "
+      }
     },
     {
       "name": "Age_selection",
@@ -26,7 +28,7 @@
   "layer": [
     {
       "data": {
-        "url": "data/phn_boundaries.topojson",
+        "url": "../../data/phn_boundaries.topojson",
         "format": {"type": "topojson", "feature": "phn"}
       },
       "transform": [
@@ -37,21 +39,24 @@
     },
     {
       "data": {
-        "url": "data/TAB2_state_phn_clean.csv",
+        "url": "../../data/TAB2_state_phn_clean.csv",
         "format": {
           "type": "csv",
           "parse": {"Registered_children": "number", "Fully_immunised": "number", "Not_fully_immunised": "number"}
         }
       },
       "transform": [
-        {"calculate": "(Year_selection - 1) + '-' + substring(toString(Year_selection), 2)", "as": "year_label"},
-        {"filter": "datum.Age_group == Age_selection && datum.Reporting_Year == datum.year_label"},
+        {"filter": "datum.Age_group == Age_selection && datum.Reporting_Year == Year_selection"},
         {"calculate": "datum.Fully_immunised / datum.Registered_children * 100", "as": "rate"},
+        {
+          "calculate": "datum.rate < 88 ? 'Below 88%' : datum.rate < 90 ? '88 to 90%' : datum.rate < 92 ? '90 to 92%' : datum.rate < 94 ? '92 to 94%' : datum.rate < 95 ? '94 to 95%' : '95% or more (target met)'",
+          "as": "rate_class"
+        },
         {
           "lookup": "PHN_code",
           "from": {
             "data": {
-              "url": "data/phn_boundaries.topojson",
+              "url": "../../data/phn_boundaries.topojson",
               "format": {"type": "topojson", "feature": "phn"}
             },
             "key": "properties.PHN_code"
@@ -63,15 +68,19 @@
       "encoding": {
         "shape": {"field": "geo", "type": "geojson"},
         "color": {
-          "field": "rate",
-          "type": "quantitative",
+          "field": "rate_class",
+          "type": "ordinal",
           "title": "% fully immunised",
-          "scale": {"domain": [86, 96], "scheme": "blues", "clamp": true},
+          "scale": {
+            "domain": ["Below 88%", "88 to 90%", "90 to 92%", "92 to 94%", "94 to 95%", "95% or more (target met)"],
+            "range": ["#fdd0a2", "#deebf7", "#9ecae1", "#4292c6", "#2171b5", "#08306b"]
+          },
           "legend": {
             "orient": "bottom-left",
-            "direction": "horizontal",
-            "gradientLength": 200,
-            "values": [86, 88, 90, 92, 94, 96]
+            "direction": "vertical",
+            "symbolType": "square",
+            "symbolSize": 180,
+            "labelLimit": 220
           }
         },
         "tooltip": [
@@ -80,7 +89,8 @@
           {"field": "Reporting_Year", "type": "nominal", "title": "Year"},
           {"field": "Registered_children", "type": "quantitative", "title": "Children registered", "format": ","},
           {"field": "Fully_immunised", "type": "quantitative", "title": "Fully immunised", "format": ","},
-          {"field": "rate", "type": "quantitative", "title": "% fully immunised", "format": ".1f"}
+          {"field": "rate", "type": "quantitative", "title": "% fully immunised", "format": ".1f"},
+          {"field": "rate_class", "type": "nominal", "title": "Group"}
         ]
       }
     }

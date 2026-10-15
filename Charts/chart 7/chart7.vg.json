@@ -6,717 +6,129 @@
       "Number of children NOT fully immunised in each Primary Health Network region. Bigger circle = more children.",
       "The small maps zoom in on the capital cities, where most unprotected children live."
     ],
-    "anchor": "start",
-    "fontSize": 20,
-    "subtitleFontSize": 12,
-    "subtitleColor": "#555555"
+    "anchor": "start", "fontSize": 20, "subtitleFontSize": 12, "subtitleColor": "#555555"
   },
   "params": [
-    {
-      "name": "Year_selection",
-      "value": 2017,
-      "bind": {"input": "range", "min": 2013, "max": 2017, "step": 1, "name": "Financial year ending: "}
-    },
-    {
-      "name": "Age_selection",
-      "value": "2 years",
-      "bind": {"input": "select", "options": ["1 year", "2 years", "5 years"], "name": "Age: "}
-    }
+    {"name": "Year_selection", "value": 2017,
+     "bind": {"input": "range", "min": 2013, "max": 2017, "step": 1, "name": "Financial year ending: "}},
+    {"name": "Age_selection", "value": "2 years",
+     "bind": {"input": "select", "options": ["1 year", "2 years", "5 years"], "name": "Age: "}}
   ],
+
+  "data": {
+    "url": "../../data/TAB2_state_phn_clean.csv",
+    "format": {"type": "csv", "parse": {"Not_fully_immunised": "number", "Registered_children": "number", "Percent_fully_immunised": "number"}}
+  },
+  "transform": [
+    {"calculate": "(Year_selection - 1) + '-' + substring(toString(Year_selection), 2)", "as": "year_label"},
+    {"filter": "datum.Age_group == Age_selection && datum.Reporting_Year == datum.year_label"},
+    {"lookup": "PHN_code",
+     "from": {"data": {"url": "../../data/phn_boundaries.topojson", "format": {"type": "topojson", "feature": "phn"}}, "key": "properties.PHN_code"},
+     "as": "geo"},
+    {"calculate": "geoCentroid(null, datum.geo)[0]", "as": "lon"},
+    {"calculate": "geoCentroid(null, datum.geo)[1]", "as": "lat"}
+  ],
+
   "hconcat": [
     {
-      "width": 520,
-      "height": 440,
+      "width": 520, "height": 440,
       "projection": {"type": "conicEqualArea", "parallels": [-18, -36], "rotate": [-132, 0]},
       "layer": [
-        {
-          "data": {"url": "data/phn_boundaries.topojson", "format": {"type": "topojson", "feature": "phn"}},
-          "mark": {"type": "geoshape", "fill": "#eeeeee", "stroke": "white", "strokeWidth": 0.8}
-        },
-        {
-          "data": {"url": "data/aus_states.topojson", "format": {"type": "topojson", "feature": "states"}},
-          "mark": {"type": "geoshape", "filled": false, "stroke": "#b5b3ac", "strokeWidth": 1}
-        },
-        {
-          "data": {
-            "url": "data/TAB2_state_phn_clean.csv",
-            "format": {
-              "type": "csv",
-              "parse": {
-                "Not_fully_immunised": "number",
-                "Registered_children": "number",
-                "Percent_fully_immunised": "number"
-              }
-            }
-          },
-          "transform": [
-            {
-              "calculate": "(Year_selection - 1) + '-' + substring(toString(Year_selection), 2)",
-              "as": "year_label"
-            },
-            {"filter": "datum.Age_group == Age_selection && datum.Reporting_Year == datum.year_label"},
-            {
-              "lookup": "PHN_code",
-              "from": {
-                "data": {"url": "data/phn_boundaries.topojson", "format": {"type": "topojson", "feature": "phn"}},
-                "key": "properties.PHN_code"
-              },
-              "as": "geo"
-            },
-            {"calculate": "geoCentroid(null, datum.geo)[0]", "as": "lon"},
-            {"calculate": "geoCentroid(null, datum.geo)[1]", "as": "lat"}
-          ],
-          "mark": {"type": "circle", "color": "#e34948", "opacity": 0.7, "stroke": "white", "strokeWidth": 1},
-          "encoding": {
-            "longitude": {"field": "lon", "type": "quantitative"},
-            "latitude": {"field": "lat", "type": "quantitative"},
-            "size": {
-              "field": "Not_fully_immunised",
-              "type": "quantitative",
-              "title": "Children not fully immunised",
-              "scale": {"domain": [0, 2500], "range": [0, 1100]},
-              "legend": {
-                "orient": "right",
-                "values": [250, 1000, 2000],
-                "symbolFillColor": "#e34948",
-                "symbolOpacity": 0.7,
-                "symbolStrokeColor": "white"
-              }
-            },
-            "order": {"field": "Not_fully_immunised", "sort": "descending"},
-            "tooltip": [
-              {"field": "PHN_name", "type": "nominal", "title": "Region (PHN)"},
-              {"field": "State", "type": "nominal"},
-              {"field": "Reporting_Year", "type": "nominal", "title": "Year"},
-              {
-                "field": "Not_fully_immunised",
-                "type": "quantitative",
-                "title": "Not fully immunised",
-                "format": ","
-              },
-              {
-                "field": "Registered_children",
-                "type": "quantitative",
-                "title": "Registered children",
-                "format": ","
-              },
-              {
-                "field": "Percent_fully_immunised",
-                "type": "quantitative",
-                "title": "% fully immunised",
-                "format": ".1f"
-              }
-            ]
-          }
-        },
-        {
-          "data": {
-            "url": "data/TAB2_state_phn_clean.csv",
-            "format": {
-              "type": "csv",
-              "parse": {
-                "Not_fully_immunised": "number",
-                "Registered_children": "number",
-                "Percent_fully_immunised": "number"
-              }
-            }
-          },
-          "transform": [
-            {
-              "calculate": "(Year_selection - 1) + '-' + substring(toString(Year_selection), 2)",
-              "as": "year_label"
-            },
-            {"filter": "datum.Age_group == Age_selection && datum.Reporting_Year == datum.year_label"},
-            {
-              "lookup": "PHN_code",
-              "from": {
-                "data": {"url": "data/phn_boundaries.topojson", "format": {"type": "topojson", "feature": "phn"}},
-                "key": "properties.PHN_code"
-              },
-              "as": "geo"
-            },
-            {"calculate": "geoCentroid(null, datum.geo)[0]", "as": "lon"},
-            {"calculate": "geoCentroid(null, datum.geo)[1]", "as": "lat"},
-            {
-              "window": [{"op": "rank", "as": "count_rank"}],
-              "sort": [{"field": "Not_fully_immunised", "order": "descending"}]
-            },
-            {"filter": "datum.PHN_code == 'PHN701'"}
-          ],
-          "mark": {
-            "type": "text",
-            "align": "left",
-            "dx": 12,
-            "fontSize": 11,
-            "fontWeight": "bold",
-            "color": "#1a1a19"
-          },
-          "encoding": {
-            "longitude": {"field": "lon", "type": "quantitative"},
-            "latitude": {"field": "lat", "type": "quantitative"},
-            "text": {"field": "PHN_name"}
-          }
-        }
+        {"data": {"url": "../../data/phn_boundaries.topojson", "format": {"type": "topojson", "feature": "phn"}},
+         "mark": {"type": "geoshape", "fill": "#eeeeee", "stroke": "white", "strokeWidth": 0.8}},
+        {"data": {"url": "../../data/aus_states.topojson", "format": {"type": "topojson", "feature": "states"}},
+         "mark": {"type": "geoshape", "filled": false, "stroke": "#b5b3ac", "strokeWidth": 1}},
+        {"mark": {"type": "circle", "color": "#e34948", "opacity": 0.7, "stroke": "white", "strokeWidth": 1},
+         "encoding": {
+           "longitude": {"field": "lon", "type": "quantitative"},
+           "latitude": {"field": "lat", "type": "quantitative"},
+           "size": {"field": "Not_fully_immunised", "type": "quantitative", "title": "Not fully immunised",
+                    "scale": {"domain": [0, 2500], "range": [0, 1100]},
+                    "legend": {"orient": "right", "values": [250, 1000, 2000], "symbolFillColor": "#e34948", "symbolOpacity": 0.7, "symbolStrokeColor": "white"}},
+           "order": {"field": "Not_fully_immunised", "sort": "descending"},
+           "tooltip": [
+             {"field": "PHN_name", "title": "Region (PHN)"},
+             {"field": "State"},
+             {"field": "Reporting_Year", "title": "Year"},
+             {"field": "Not_fully_immunised", "title": "Not fully immunised", "format": ","},
+             {"field": "Registered_children", "title": "Registered children", "format": ","},
+             {"field": "Percent_fully_immunised", "title": "% fully immunised", "format": ".1f"}
+           ]}},
+        {"transform": [{"filter": "datum.PHN_code == 'PHN701'"}],
+         "mark": {"type": "text", "align": "left", "dx": 12, "fontSize": 11, "fontWeight": "bold", "color": "#1a1a19"},
+         "encoding": {
+           "longitude": {"field": "lon", "type": "quantitative"},
+           "latitude": {"field": "lat", "type": "quantitative"},
+           "text": {"field": "PHN_name"}}}
       ]
     },
     {
       "vconcat": [
-        {
-          "hconcat": [
-            {
-              "width": 170,
-              "height": 170,
-              "title": {"text": "Sydney", "fontSize": 12, "anchor": "start"},
-              "projection": {
-                "type": "mercator",
-                "center": [150.75, -33.85],
-                "scale": 6500,
-                "translate": [85.0, 85.0],
-                "clipExtent": [[0, 0], [170, 170]]
-              },
-              "view": {"stroke": "#dddddd"},
-              "layer": [
-                {
-                  "data": {"url": "data/phn_boundaries.topojson", "format": {"type": "topojson", "feature": "phn"}},
-                  "mark": {"type": "geoshape", "fill": "#eeeeee", "stroke": "white", "strokeWidth": 1.2}
-                },
-                {
-                  "data": {
-                    "url": "data/TAB2_state_phn_clean.csv",
-                    "format": {
-                      "type": "csv",
-                      "parse": {
-                        "Not_fully_immunised": "number",
-                        "Registered_children": "number",
-                        "Percent_fully_immunised": "number"
-                      }
-                    }
-                  },
-                  "transform": [
-                    {
-                      "calculate": "(Year_selection - 1) + '-' + substring(toString(Year_selection), 2)",
-                      "as": "year_label"
-                    },
-                    {"filter": "datum.Age_group == Age_selection && datum.Reporting_Year == datum.year_label"},
-                    {
-                      "lookup": "PHN_code",
-                      "from": {
-                        "data": {
-                          "url": "data/phn_boundaries.topojson",
-                          "format": {"type": "topojson", "feature": "phn"}
-                        },
-                        "key": "properties.PHN_code"
-                      },
-                      "as": "geo"
-                    },
-                    {"calculate": "geoCentroid(null, datum.geo)[0]", "as": "lon"},
-                    {"calculate": "geoCentroid(null, datum.geo)[1]", "as": "lat"},
-                    {
-                      "filter": "indexof([\"PHN101\", \"PHN102\", \"PHN103\", \"PHN104\", \"PHN105\"], datum.PHN_code) >= 0"
-                    }
-                  ],
-                  "mark": {"type": "circle", "color": "#e34948", "opacity": 0.7, "stroke": "white", "strokeWidth": 1},
-                  "encoding": {
-                    "longitude": {"field": "lon", "type": "quantitative"},
-                    "latitude": {"field": "lat", "type": "quantitative"},
-                    "size": {
-                      "field": "Not_fully_immunised",
-                      "type": "quantitative",
-                      "title": "Children not fully immunised",
-                      "scale": {"domain": [0, 2500], "range": [0, 1100]},
-                      "legend": {
-                        "orient": "right",
-                        "values": [250, 1000, 2000],
-                        "symbolFillColor": "#e34948",
-                        "symbolOpacity": 0.7,
-                        "symbolStrokeColor": "white"
-                      }
-                    },
-                    "order": {"field": "Not_fully_immunised", "sort": "descending"},
-                    "tooltip": [
-                      {"field": "PHN_name", "type": "nominal", "title": "Region (PHN)"},
-                      {"field": "State", "type": "nominal"},
-                      {"field": "Reporting_Year", "type": "nominal", "title": "Year"},
-                      {
-                        "field": "Not_fully_immunised",
-                        "type": "quantitative",
-                        "title": "Not fully immunised",
-                        "format": ","
-                      },
-                      {
-                        "field": "Registered_children",
-                        "type": "quantitative",
-                        "title": "Registered children",
-                        "format": ","
-                      },
-                      {
-                        "field": "Percent_fully_immunised",
-                        "type": "quantitative",
-                        "title": "% fully immunised",
-                        "format": ".1f"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "data": {
-                    "url": "data/TAB2_state_phn_clean.csv",
-                    "format": {
-                      "type": "csv",
-                      "parse": {
-                        "Not_fully_immunised": "number",
-                        "Registered_children": "number",
-                        "Percent_fully_immunised": "number"
-                      }
-                    }
-                  },
-                  "transform": [
-                    {
-                      "calculate": "(Year_selection - 1) + '-' + substring(toString(Year_selection), 2)",
-                      "as": "year_label"
-                    },
-                    {"filter": "datum.Age_group == Age_selection && datum.Reporting_Year == datum.year_label"},
-                    {
-                      "lookup": "PHN_code",
-                      "from": {
-                        "data": {
-                          "url": "data/phn_boundaries.topojson",
-                          "format": {"type": "topojson", "feature": "phn"}
-                        },
-                        "key": "properties.PHN_code"
-                      },
-                      "as": "geo"
-                    },
-                    {"calculate": "geoCentroid(null, datum.geo)[0]", "as": "lon"},
-                    {"calculate": "geoCentroid(null, datum.geo)[1]", "as": "lat"},
-                    {
-                      "filter": "indexof([\"PHN101\", \"PHN102\", \"PHN103\", \"PHN104\", \"PHN105\"], datum.PHN_code) >= 0"
-                    }
-                  ],
-                  "mark": {"type": "text", "fontSize": 10, "dy": 0, "color": "#1a1a19"},
-                  "encoding": {
-                    "longitude": {"field": "lon", "type": "quantitative"},
-                    "latitude": {"field": "lat", "type": "quantitative"},
-                    "text": {"field": "Not_fully_immunised", "type": "quantitative", "format": ","}
-                  }
-                }
-              ]
-            },
-            {
-              "width": 170,
-              "height": 170,
-              "title": {"text": "Melbourne", "fontSize": 12, "anchor": "start"},
-              "projection": {
-                "type": "mercator",
-                "center": [145.05, -37.85],
-                "scale": 8000,
-                "translate": [85.0, 85.0],
-                "clipExtent": [[0, 0], [170, 170]]
-              },
-              "view": {"stroke": "#dddddd"},
-              "layer": [
-                {
-                  "data": {"url": "data/phn_boundaries.topojson", "format": {"type": "topojson", "feature": "phn"}},
-                  "mark": {"type": "geoshape", "fill": "#eeeeee", "stroke": "white", "strokeWidth": 1.2}
-                },
-                {
-                  "data": {
-                    "url": "data/TAB2_state_phn_clean.csv",
-                    "format": {
-                      "type": "csv",
-                      "parse": {
-                        "Not_fully_immunised": "number",
-                        "Registered_children": "number",
-                        "Percent_fully_immunised": "number"
-                      }
-                    }
-                  },
-                  "transform": [
-                    {
-                      "calculate": "(Year_selection - 1) + '-' + substring(toString(Year_selection), 2)",
-                      "as": "year_label"
-                    },
-                    {"filter": "datum.Age_group == Age_selection && datum.Reporting_Year == datum.year_label"},
-                    {
-                      "lookup": "PHN_code",
-                      "from": {
-                        "data": {
-                          "url": "data/phn_boundaries.topojson",
-                          "format": {"type": "topojson", "feature": "phn"}
-                        },
-                        "key": "properties.PHN_code"
-                      },
-                      "as": "geo"
-                    },
-                    {"calculate": "geoCentroid(null, datum.geo)[0]", "as": "lon"},
-                    {"calculate": "geoCentroid(null, datum.geo)[1]", "as": "lat"},
-                    {"filter": "indexof([\"PHN201\", \"PHN202\", \"PHN203\"], datum.PHN_code) >= 0"}
-                  ],
-                  "mark": {"type": "circle", "color": "#e34948", "opacity": 0.7, "stroke": "white", "strokeWidth": 1},
-                  "encoding": {
-                    "longitude": {"field": "lon", "type": "quantitative"},
-                    "latitude": {"field": "lat", "type": "quantitative"},
-                    "size": {
-                      "field": "Not_fully_immunised",
-                      "type": "quantitative",
-                      "title": "Children not fully immunised",
-                      "scale": {"domain": [0, 2500], "range": [0, 1100]},
-                      "legend": {
-                        "orient": "right",
-                        "values": [250, 1000, 2000],
-                        "symbolFillColor": "#e34948",
-                        "symbolOpacity": 0.7,
-                        "symbolStrokeColor": "white"
-                      }
-                    },
-                    "order": {"field": "Not_fully_immunised", "sort": "descending"},
-                    "tooltip": [
-                      {"field": "PHN_name", "type": "nominal", "title": "Region (PHN)"},
-                      {"field": "State", "type": "nominal"},
-                      {"field": "Reporting_Year", "type": "nominal", "title": "Year"},
-                      {
-                        "field": "Not_fully_immunised",
-                        "type": "quantitative",
-                        "title": "Not fully immunised",
-                        "format": ","
-                      },
-                      {
-                        "field": "Registered_children",
-                        "type": "quantitative",
-                        "title": "Registered children",
-                        "format": ","
-                      },
-                      {
-                        "field": "Percent_fully_immunised",
-                        "type": "quantitative",
-                        "title": "% fully immunised",
-                        "format": ".1f"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "data": {
-                    "url": "data/TAB2_state_phn_clean.csv",
-                    "format": {
-                      "type": "csv",
-                      "parse": {
-                        "Not_fully_immunised": "number",
-                        "Registered_children": "number",
-                        "Percent_fully_immunised": "number"
-                      }
-                    }
-                  },
-                  "transform": [
-                    {
-                      "calculate": "(Year_selection - 1) + '-' + substring(toString(Year_selection), 2)",
-                      "as": "year_label"
-                    },
-                    {"filter": "datum.Age_group == Age_selection && datum.Reporting_Year == datum.year_label"},
-                    {
-                      "lookup": "PHN_code",
-                      "from": {
-                        "data": {
-                          "url": "data/phn_boundaries.topojson",
-                          "format": {"type": "topojson", "feature": "phn"}
-                        },
-                        "key": "properties.PHN_code"
-                      },
-                      "as": "geo"
-                    },
-                    {"calculate": "geoCentroid(null, datum.geo)[0]", "as": "lon"},
-                    {"calculate": "geoCentroid(null, datum.geo)[1]", "as": "lat"},
-                    {"filter": "indexof([\"PHN201\", \"PHN202\", \"PHN203\"], datum.PHN_code) >= 0"}
-                  ],
-                  "mark": {"type": "text", "fontSize": 10, "dy": 0, "color": "#1a1a19"},
-                  "encoding": {
-                    "longitude": {"field": "lon", "type": "quantitative"},
-                    "latitude": {"field": "lat", "type": "quantitative"},
-                    "text": {"field": "Not_fully_immunised", "type": "quantitative", "format": ","}
-                  }
-                }
-              ]
-            }
-          ],
-          "spacing": 12
-        },
-        {
-          "hconcat": [
-            {
-              "width": 170,
-              "height": 170,
-              "title": {"text": "Brisbane & Gold Coast", "fontSize": 12, "anchor": "start"},
-              "projection": {
-                "type": "mercator",
-                "center": [152.85, -27.5],
-                "scale": 5200,
-                "translate": [85.0, 85.0],
-                "clipExtent": [[0, 0], [170, 170]]
-              },
-              "view": {"stroke": "#dddddd"},
-              "layer": [
-                {
-                  "data": {"url": "data/phn_boundaries.topojson", "format": {"type": "topojson", "feature": "phn"}},
-                  "mark": {"type": "geoshape", "fill": "#eeeeee", "stroke": "white", "strokeWidth": 1.2}
-                },
-                {
-                  "data": {
-                    "url": "data/TAB2_state_phn_clean.csv",
-                    "format": {
-                      "type": "csv",
-                      "parse": {
-                        "Not_fully_immunised": "number",
-                        "Registered_children": "number",
-                        "Percent_fully_immunised": "number"
-                      }
-                    }
-                  },
-                  "transform": [
-                    {
-                      "calculate": "(Year_selection - 1) + '-' + substring(toString(Year_selection), 2)",
-                      "as": "year_label"
-                    },
-                    {"filter": "datum.Age_group == Age_selection && datum.Reporting_Year == datum.year_label"},
-                    {
-                      "lookup": "PHN_code",
-                      "from": {
-                        "data": {
-                          "url": "data/phn_boundaries.topojson",
-                          "format": {"type": "topojson", "feature": "phn"}
-                        },
-                        "key": "properties.PHN_code"
-                      },
-                      "as": "geo"
-                    },
-                    {"calculate": "geoCentroid(null, datum.geo)[0]", "as": "lon"},
-                    {"calculate": "geoCentroid(null, datum.geo)[1]", "as": "lat"},
-                    {"filter": "indexof([\"PHN301\", \"PHN302\", \"PHN303\"], datum.PHN_code) >= 0"}
-                  ],
-                  "mark": {"type": "circle", "color": "#e34948", "opacity": 0.7, "stroke": "white", "strokeWidth": 1},
-                  "encoding": {
-                    "longitude": {"field": "lon", "type": "quantitative"},
-                    "latitude": {"field": "lat", "type": "quantitative"},
-                    "size": {
-                      "field": "Not_fully_immunised",
-                      "type": "quantitative",
-                      "title": "Children not fully immunised",
-                      "scale": {"domain": [0, 2500], "range": [0, 1100]},
-                      "legend": {
-                        "orient": "right",
-                        "values": [250, 1000, 2000],
-                        "symbolFillColor": "#e34948",
-                        "symbolOpacity": 0.7,
-                        "symbolStrokeColor": "white"
-                      }
-                    },
-                    "order": {"field": "Not_fully_immunised", "sort": "descending"},
-                    "tooltip": [
-                      {"field": "PHN_name", "type": "nominal", "title": "Region (PHN)"},
-                      {"field": "State", "type": "nominal"},
-                      {"field": "Reporting_Year", "type": "nominal", "title": "Year"},
-                      {
-                        "field": "Not_fully_immunised",
-                        "type": "quantitative",
-                        "title": "Not fully immunised",
-                        "format": ","
-                      },
-                      {
-                        "field": "Registered_children",
-                        "type": "quantitative",
-                        "title": "Registered children",
-                        "format": ","
-                      },
-                      {
-                        "field": "Percent_fully_immunised",
-                        "type": "quantitative",
-                        "title": "% fully immunised",
-                        "format": ".1f"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "data": {
-                    "url": "data/TAB2_state_phn_clean.csv",
-                    "format": {
-                      "type": "csv",
-                      "parse": {
-                        "Not_fully_immunised": "number",
-                        "Registered_children": "number",
-                        "Percent_fully_immunised": "number"
-                      }
-                    }
-                  },
-                  "transform": [
-                    {
-                      "calculate": "(Year_selection - 1) + '-' + substring(toString(Year_selection), 2)",
-                      "as": "year_label"
-                    },
-                    {"filter": "datum.Age_group == Age_selection && datum.Reporting_Year == datum.year_label"},
-                    {
-                      "lookup": "PHN_code",
-                      "from": {
-                        "data": {
-                          "url": "data/phn_boundaries.topojson",
-                          "format": {"type": "topojson", "feature": "phn"}
-                        },
-                        "key": "properties.PHN_code"
-                      },
-                      "as": "geo"
-                    },
-                    {"calculate": "geoCentroid(null, datum.geo)[0]", "as": "lon"},
-                    {"calculate": "geoCentroid(null, datum.geo)[1]", "as": "lat"},
-                    {"filter": "indexof([\"PHN301\", \"PHN302\", \"PHN303\"], datum.PHN_code) >= 0"}
-                  ],
-                  "mark": {"type": "text", "fontSize": 10, "dy": 0, "color": "#1a1a19"},
-                  "encoding": {
-                    "longitude": {"field": "lon", "type": "quantitative"},
-                    "latitude": {"field": "lat", "type": "quantitative"},
-                    "text": {"field": "Not_fully_immunised", "type": "quantitative", "format": ","}
-                  }
-                }
-              ]
-            },
-            {
-              "width": 170,
-              "height": 170,
-              "title": {"text": "Perth", "fontSize": 12, "anchor": "start"},
-              "projection": {
-                "type": "mercator",
-                "center": [115.95, -32.15],
-                "scale": 5500,
-                "translate": [85.0, 85.0],
-                "clipExtent": [[0, 0], [170, 170]]
-              },
-              "view": {"stroke": "#dddddd"},
-              "layer": [
-                {
-                  "data": {"url": "data/phn_boundaries.topojson", "format": {"type": "topojson", "feature": "phn"}},
-                  "mark": {"type": "geoshape", "fill": "#eeeeee", "stroke": "white", "strokeWidth": 1.2}
-                },
-                {
-                  "data": {
-                    "url": "data/TAB2_state_phn_clean.csv",
-                    "format": {
-                      "type": "csv",
-                      "parse": {
-                        "Not_fully_immunised": "number",
-                        "Registered_children": "number",
-                        "Percent_fully_immunised": "number"
-                      }
-                    }
-                  },
-                  "transform": [
-                    {
-                      "calculate": "(Year_selection - 1) + '-' + substring(toString(Year_selection), 2)",
-                      "as": "year_label"
-                    },
-                    {"filter": "datum.Age_group == Age_selection && datum.Reporting_Year == datum.year_label"},
-                    {
-                      "lookup": "PHN_code",
-                      "from": {
-                        "data": {
-                          "url": "data/phn_boundaries.topojson",
-                          "format": {"type": "topojson", "feature": "phn"}
-                        },
-                        "key": "properties.PHN_code"
-                      },
-                      "as": "geo"
-                    },
-                    {"calculate": "geoCentroid(null, datum.geo)[0]", "as": "lon"},
-                    {"calculate": "geoCentroid(null, datum.geo)[1]", "as": "lat"},
-                    {"filter": "indexof([\"PHN501\", \"PHN502\"], datum.PHN_code) >= 0"}
-                  ],
-                  "mark": {"type": "circle", "color": "#e34948", "opacity": 0.7, "stroke": "white", "strokeWidth": 1},
-                  "encoding": {
-                    "longitude": {"field": "lon", "type": "quantitative"},
-                    "latitude": {"field": "lat", "type": "quantitative"},
-                    "size": {
-                      "field": "Not_fully_immunised",
-                      "type": "quantitative",
-                      "title": "Children not fully immunised",
-                      "scale": {"domain": [0, 2500], "range": [0, 1100]},
-                      "legend": {
-                        "orient": "right",
-                        "values": [250, 1000, 2000],
-                        "symbolFillColor": "#e34948",
-                        "symbolOpacity": 0.7,
-                        "symbolStrokeColor": "white"
-                      }
-                    },
-                    "order": {"field": "Not_fully_immunised", "sort": "descending"},
-                    "tooltip": [
-                      {"field": "PHN_name", "type": "nominal", "title": "Region (PHN)"},
-                      {"field": "State", "type": "nominal"},
-                      {"field": "Reporting_Year", "type": "nominal", "title": "Year"},
-                      {
-                        "field": "Not_fully_immunised",
-                        "type": "quantitative",
-                        "title": "Not fully immunised",
-                        "format": ","
-                      },
-                      {
-                        "field": "Registered_children",
-                        "type": "quantitative",
-                        "title": "Registered children",
-                        "format": ","
-                      },
-                      {
-                        "field": "Percent_fully_immunised",
-                        "type": "quantitative",
-                        "title": "% fully immunised",
-                        "format": ".1f"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "data": {
-                    "url": "data/TAB2_state_phn_clean.csv",
-                    "format": {
-                      "type": "csv",
-                      "parse": {
-                        "Not_fully_immunised": "number",
-                        "Registered_children": "number",
-                        "Percent_fully_immunised": "number"
-                      }
-                    }
-                  },
-                  "transform": [
-                    {
-                      "calculate": "(Year_selection - 1) + '-' + substring(toString(Year_selection), 2)",
-                      "as": "year_label"
-                    },
-                    {"filter": "datum.Age_group == Age_selection && datum.Reporting_Year == datum.year_label"},
-                    {
-                      "lookup": "PHN_code",
-                      "from": {
-                        "data": {
-                          "url": "data/phn_boundaries.topojson",
-                          "format": {"type": "topojson", "feature": "phn"}
-                        },
-                        "key": "properties.PHN_code"
-                      },
-                      "as": "geo"
-                    },
-                    {"calculate": "geoCentroid(null, datum.geo)[0]", "as": "lon"},
-                    {"calculate": "geoCentroid(null, datum.geo)[1]", "as": "lat"},
-                    {"filter": "indexof([\"PHN501\", \"PHN502\"], datum.PHN_code) >= 0"}
-                  ],
-                  "mark": {"type": "text", "fontSize": 10, "dy": 0, "color": "#1a1a19"},
-                  "encoding": {
-                    "longitude": {"field": "lon", "type": "quantitative"},
-                    "latitude": {"field": "lat", "type": "quantitative"},
-                    "text": {"field": "Not_fully_immunised", "type": "quantitative", "format": ","}
-                  }
-                }
-              ]
-            }
-          ],
-          "spacing": 12
-        }
-      ],
-      "spacing": 12
+        {"hconcat": [
+          {"title": "Sydney",
+           "projection": {"type": "mercator", "center": [150.75, -33.85], "scale": 6500, "translate": [85, 85], "clipExtent": [[0, 0], [170, 170]]},
+           "transform": [{"filter": "indexof(['PHN101','PHN102','PHN103','PHN104','PHN105'], datum.PHN_code) >= 0"}],
+           "width": 170, "height": 170, "view": {"stroke": "#dddddd"},
+           "layer": [
+             {"data": {"url": "../../data/phn_boundaries.topojson", "format": {"type": "topojson", "feature": "phn"}},
+              "mark": {"type": "geoshape", "fill": "#eeeeee", "stroke": "white", "strokeWidth": 1.2}},
+             {"mark": {"type": "circle", "color": "#e34948", "opacity": 0.7, "stroke": "white"},
+              "encoding": {"longitude": {"field": "lon", "type": "quantitative"}, "latitude": {"field": "lat", "type": "quantitative"},
+                           "size": {"field": "Not_fully_immunised", "type": "quantitative"},
+                           "tooltip": [{"field": "PHN_name", "title": "Region"}, {"field": "Not_fully_immunised", "title": "Not fully immunised", "format": ","}]}},
+             {"mark": {"type": "text", "fontSize": 10, "color": "#1a1a19"},
+              "encoding": {"longitude": {"field": "lon", "type": "quantitative"}, "latitude": {"field": "lat", "type": "quantitative"},
+                           "text": {"field": "Not_fully_immunised", "format": ","}}}
+           ]},
+          {"title": "Melbourne",
+           "projection": {"type": "mercator", "center": [145.05, -37.85], "scale": 8000, "translate": [85, 85], "clipExtent": [[0, 0], [170, 170]]},
+           "transform": [{"filter": "indexof(['PHN201','PHN202','PHN203'], datum.PHN_code) >= 0"}],
+           "width": 170, "height": 170, "view": {"stroke": "#dddddd"},
+           "layer": [
+             {"data": {"url": "../../data/phn_boundaries.topojson", "format": {"type": "topojson", "feature": "phn"}},
+              "mark": {"type": "geoshape", "fill": "#eeeeee", "stroke": "white", "strokeWidth": 1.2}},
+             {"mark": {"type": "circle", "color": "#e34948", "opacity": 0.7, "stroke": "white"},
+              "encoding": {"longitude": {"field": "lon", "type": "quantitative"}, "latitude": {"field": "lat", "type": "quantitative"},
+                           "size": {"field": "Not_fully_immunised", "type": "quantitative"},
+                           "tooltip": [{"field": "PHN_name", "title": "Region"}, {"field": "Not_fully_immunised", "title": "Not fully immunised", "format": ","}]}},
+             {"mark": {"type": "text", "fontSize": 10, "color": "#1a1a19"},
+              "encoding": {"longitude": {"field": "lon", "type": "quantitative"}, "latitude": {"field": "lat", "type": "quantitative"},
+                           "text": {"field": "Not_fully_immunised", "format": ","}}}
+           ]}
+        ]},
+        {"hconcat": [
+          {"title": "Brisbane & Gold Coast",
+           "projection": {"type": "mercator", "center": [152.85, -27.5], "scale": 5200, "translate": [85, 85], "clipExtent": [[0, 0], [170, 170]]},
+           "transform": [{"filter": "indexof(['PHN301','PHN302','PHN303'], datum.PHN_code) >= 0"}],
+           "width": 170, "height": 170, "view": {"stroke": "#dddddd"},
+           "layer": [
+             {"data": {"url": "../../data/phn_boundaries.topojson", "format": {"type": "topojson", "feature": "phn"}},
+              "mark": {"type": "geoshape", "fill": "#eeeeee", "stroke": "white", "strokeWidth": 1.2}},
+             {"mark": {"type": "circle", "color": "#e34948", "opacity": 0.7, "stroke": "white"},
+              "encoding": {"longitude": {"field": "lon", "type": "quantitative"}, "latitude": {"field": "lat", "type": "quantitative"},
+                           "size": {"field": "Not_fully_immunised", "type": "quantitative"},
+                           "tooltip": [{"field": "PHN_name", "title": "Region"}, {"field": "Not_fully_immunised", "title": "Not fully immunised", "format": ","}]}},
+             {"mark": {"type": "text", "fontSize": 10, "color": "#1a1a19"},
+              "encoding": {"longitude": {"field": "lon", "type": "quantitative"}, "latitude": {"field": "lat", "type": "quantitative"},
+                           "text": {"field": "Not_fully_immunised", "format": ","}}}
+           ]},
+          {"title": "Perth",
+           "projection": {"type": "mercator", "center": [115.95, -32.15], "scale": 5500, "translate": [85, 85], "clipExtent": [[0, 0], [170, 170]]},
+           "transform": [{"filter": "indexof(['PHN501','PHN502'], datum.PHN_code) >= 0"}],
+           "width": 170, "height": 170, "view": {"stroke": "#dddddd"},
+           "layer": [
+             {"data": {"url": "../../data/phn_boundaries.topojson", "format": {"type": "topojson", "feature": "phn"}},
+              "mark": {"type": "geoshape", "fill": "#eeeeee", "stroke": "white", "strokeWidth": 1.2}},
+             {"mark": {"type": "circle", "color": "#e34948", "opacity": 0.7, "stroke": "white"},
+              "encoding": {"longitude": {"field": "lon", "type": "quantitative"}, "latitude": {"field": "lat", "type": "quantitative"},
+                           "size": {"field": "Not_fully_immunised", "type": "quantitative"},
+                           "tooltip": [{"field": "PHN_name", "title": "Region"}, {"field": "Not_fully_immunised", "title": "Not fully immunised", "format": ","}]}},
+             {"mark": {"type": "text", "fontSize": 10, "color": "#1a1a19"},
+              "encoding": {"longitude": {"field": "lon", "type": "quantitative"}, "latitude": {"field": "lat", "type": "quantitative"},
+                           "text": {"field": "Not_fully_immunised", "format": ","}}}
+           ]}
+        ]}
+      ]
     }
   ],
   "spacing": 20,

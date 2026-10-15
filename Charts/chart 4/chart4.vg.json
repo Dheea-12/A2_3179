@@ -1,32 +1,41 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Some Vaccines Are Further From the Target Than Others",
-    "subtitle": "% of Australian children covered for each vaccine at each age milestone, 2023",
-    "anchor": "start",
-    "fontSize": 20,
-    "subtitleFontSize": 12,
-    "subtitleColor": "#555555"
+    "text": "Most of vaccine is belows its target  ",
+    "subtitle": [
+      "% of Australian children covered for each vaccine, 2015–2025 (WHO/UNICEF estimates)"
+      
+    ],
+    "anchor": "start"
+  
   },
-  "width": 360,
-  "height": 320,
+  "width": 600,
+  "height": 300,
   "data": {
-    "url": "data/antigen_coverage_by_age_2023.csv",
-    "format": {"type": "csv", "parse": {"Coverage_pct": "number"}}
+    "url": "../../data/wuenic_australia_antigens.csv",
+    "format": {"type": "csv", "parse": {"Year": "number", "Coverage": "number"}}
   },
+  "transform": [
+    {"filter": "datum.Year >= 2015"},
+    {"calculate": "datum.Year == 2025 ? datum.Coverage : null", "as": "coverage_2025"},
+    {
+      "joinaggregate": [{"op": "max", "field": "coverage_2025", "as": "Coverage_in_2025"}],
+      "groupby": ["Vaccine"]
+    }
+  ],
   "encoding": {
     "x": {
-      "field": "Age_milestone",
+      "field": "Year",
       "type": "ordinal",
-      "title": "Age milestone",
-      "axis": {"orient": "top", "labelAngle": 0, "labelFontSize": 12}
+      "title": null,
+      "axis": {"orient": "top", "labelAngle": 0, "labelFontSize": 12, "domain": false, "ticks": false}
     },
     "y": {
-      "field": "Vaccine_antigen",
+      "field": "Vaccine",
       "type": "nominal",
       "title": null,
-      "sort": {"field": "Coverage_pct", "op": "min", "order": "ascending"},
-      "axis": {"labelLimit": 280, "labelFontSize": 11}
+      "sort": {"field": "Coverage_in_2025", "op": "max", "order": "ascending"},
+      "axis": {"labelLimit": 300, "labelFontSize": 12, "domain": false, "ticks": false}
     }
   },
   "layer": [
@@ -34,27 +43,29 @@
       "mark": {"type": "rect", "stroke": "white", "strokeWidth": 2},
       "encoding": {
         "color": {
-          "field": "Coverage_pct",
+          "field": "Coverage",
           "type": "quantitative",
-          "title": "% covered",
-          "scale": {"domain": [92, 96.5], "scheme": "blues"},
-          "legend": {"orient": "bottom", "direction": "horizontal", "gradientLength": 200}
+          "title": "% of children covered",
+          "scale": {"domain": [88, 97], "scheme": "blues", "clamp": true},
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "gradientLength": 220,
+            "values": [88, 90, 92, 94, 96]
+          }
         },
         "tooltip": [
-          {"field": "Vaccine_antigen", "type": "nominal", "title": "Vaccine"},
-          {"field": "Age_milestone", "type": "ordinal", "title": "Age"},
-          {"field": "Coverage_pct", "type": "quantitative", "title": "% covered", "format": ".1f"}
+          {"field": "Vaccine", "type": "nominal"},
+          {"field": "Year", "type": "ordinal"},
+          {"field": "Coverage", "type": "quantitative", "title": "% covered"}
         ]
       }
     },
     {
       "mark": {"type": "text", "fontSize": 12},
       "encoding": {
-        "text": {"field": "Coverage_pct", "type": "quantitative", "format": ".1f"},
-        "color": {
-          "condition": {"test": "datum.Coverage_pct >= 94.5", "value": "white"},
-          "value": "black"
-        }
+        "text": {"field": "Coverage", "type": "quantitative"}
+    
       }
     }
   ]
