@@ -20,59 +20,19 @@
 
 <body>
 
-<!-- ===================== TOP NAVIGATION ===================== -->
-<nav class="topnav">
-  <div class="wrap topnav-inner">
-    <a href="#top" class="brand">Child Immunisation in Australia</a>
-    <ul>
-      <li><a href="#ch1">Nationally</a></li>
-      <li><a href="#ch2">Vaccines</a></li>
-      <li><a href="#ch3">Regions</a></li>
-      <li><a href="#ch4">Children</a></li>
-      <li><a href="#about">Sources</a></li>
-    </ul>
-  </div>
-</nav>
 
 <!-- ===================== HERO ===================== -->
 <header class="hero" id="top">
   <div class="wrap">
     <p class="kicker">FIT3179 Data Visualisation 2 · Child immunisation in Australia</p>
-    <h1>Are We Still Protecting<br>Australia's Children?</h1>
+    <h1> The Truth About Childhood Immunisation in Australia </h1>
     <p class="lede">
       For years, Australia was one of the best-vaccinated countries in the world.
       Lately, the numbers have started to slip. This page follows the data to answer
       four questions: <strong>how far coverage has fallen</strong>, <strong>which vaccines</strong>,
       <strong>where</strong>, and <strong>how many children</strong> are missing out.
     </p>
-    <p class="byline">By <strong>Dania'</strong> · Monash University · October 2026</p>
 
-    <!-- Key numbers -->
-    <div class="stats">
-      <div class="stat">
-        <span class="stat-num">92%</span>
-        <span class="stat-label">of infants got all 3 DTP doses in 2025, down from 95% in 2017–2021</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">#24</span>
-        <span class="stat-label">Australia's world rank for DTP3 in 2025, after reaching #18 in 2021</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num accent">28,477</span>
-        <span class="stat-label">two-year-olds were not fully immunised in 2016–17</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">95%</span>
-        <span class="stat-label">the national target needed to stop diseases like measles from spreading</span>
-      </div>
-    </div>
-
-    <div class="explainer">
-      <h2>Two terms used on this page</h2>
-      <p><strong>Fully immunised</strong>: a child has had every vaccine due for their age on the National Immunisation Program schedule (checked at 1, 2 and 5 years old).</p>
-      <p><strong>DTP3</strong>: the third dose of the diphtheria, tetanus and whooping cough (pertussis) vaccine, given at 6 months. Countries use it as a common yardstick to compare how well children are protected.</p>
-    </div>
-  </div>
 </header>
 
 <main>
@@ -81,54 +41,70 @@
   <section class="chapter" id="ch1">
     <div class="wrap">
       <p class="chapter-num">Chapter 1</p>
-      <h2 class="chapter-title">The national picture</h2>
+      <h2 class="chapter-title">Vaccine has improved Australia's health story  </h2>
       <p class="chapter-intro">
-        Before looking at regions or vaccines, how is Australia doing overall, and how does
-        it compare with other wealthy countries?
+        Measles is one of the highly contagious disease that affected thousands 
+        of Australians in the early 1990s. After vaccination 
+        program expansion, the number of reported cases decreased 
+        significanly 
+        
       </p>
 
-      <figure class="card">
-        <div class="vis" data-spec="Charts/chart1/national_coverage.vg.json"></div>
-        <figcaption class="takeaway">
-          <strong>What this shows:</strong> coverage rose through the 2010s, then began to fall.
-          <!-- EDIT: describe what your chart 1 shows -->
-        </figcaption>
-      </figure>
+     <figure class="card">
+  <span class="data-year">Data: 1991–2023</span>
 
-      <figure class="card">
-        <div class="vis" data-spec="Charts/chart2/chart2.vg.json"></div>
-        <p class="howto">How to read: each line is one country. Higher on the chart = better rank. Use the menu to highlight a country next to Australia.</p>
-        <figcaption class="takeaway">
-          <strong>What this shows:</strong> Australia climbed from #33 in 2013 to #18 in 2021,
-          then slipped back to #24 by 2025 as other countries held steady.
-        </figcaption>
-      </figure>
-    </div>
-  </section>
+  <div class="vis"
+       data-spec="Charts/chart 10/chart10.vg.json">
+  </div>
+
+  <figcaption class="takeaway">
+    <span class="big-num">4,555 → 284</span>
+    <span class="big-label">measles cases, 1993 vs 2019</span>
+    <p> 
+      Measles cases decrease from 4,555 in 1993 to 284
+      in 2019. In 2014, Australia was confirmed
+      to have eliminated endemic measles.
+    </p>
+  </figcaption>
+</figure>
+
+
+   
 
   <!-- ===================== CHAPTER 2 ===================== -->
   <section class="chapter alt" id="ch2">
     <div class="wrap">
       <p class="chapter-num">Chapter 2</p>
-      <h2 class="chapter-title">Is it every vaccine, or just a few?</h2>
+      <h2 class="chapter-title">National coverage has fallen below the 95% target</h2>
       <p class="chapter-intro">
-        A drop in one vaccine could be a supply problem. A drop across all of them points
-        to something bigger, like families missing appointments altogether.
+        The line graph shows the national coverage from 
+        2010 to 2025 while international ranking shows
+        how Australia performs compared to other developed
+        countries
+
       </p>
 
       <figure class="card">
-        <div class="vis" data-spec="Charts/chart 4/chart4.vg.json"></div>
+        <div class="vis" data-spec="Charts/chart1/national_coverage.vg.json"></div>
         <p class="howto">How to read: each row is a vaccine and each column is a year. Darker blue = more children covered. Orange = below 88%.</p>
         <figcaption class="takeaway">
-          <strong>What this shows:</strong> the decline is not limited to one vaccine. Most
-          vaccines are lighter in recent years than at their peak.
+          <span class="data-year">Data: 2010–2025</span>
+          <span class="big-num">95% → 92%</span>
+          <span class="big-label">DTP3 coverage, 2021 vs 2025</span>
+          <p>The achieved 95% from 2017 to 2021 then coverage dropped 
+            every year until 92% in 2025.The rise follows with 
+            No Jab No Pay (2016) program.The fall starts <strong> after 2021
+            which is during covid-19
+          <p>
         </figcaption>
       </figure>
 
       <figure class="card">
-        <div class="vis" data-spec="Charts/chart9/chart9.vg.json"></div>
+        <div class="vis" data-spec="Charts/chart 2/ranking.vg.json"></div>
         <figcaption class="takeaway">
-          <strong>What this shows:</strong> <!-- EDIT -->
+          <p class="why"><strong>Why is Italy #1?</strong> 
+            Since 2017, Italy has made it compulsory for school entry to have 10 vaccines,
+            which increases its coverage back up to 94–95% (Signorelli et al., 2018).</p>
         </figcaption>
       </figure>
     </div>
@@ -138,18 +114,33 @@
   <section class="chapter" id="ch3">
     <div class="wrap">
       <p class="chapter-num">Chapter 3</p>
-      <h2 class="chapter-title">Where are children missing out?</h2>
+      <h2 class="chapter-title">Coverage dropped across vaccines</h2>
       <p class="chapter-intro">
-        Australia is split into 31 <strong>Primary Health Networks (PHNs)</strong>, the regions
-        that organise local health services. Coverage is not the same in all of them.
-      </p>
+        The decline in vaccination coverage is not due to just one vaccine.
+        However, multiple vaccines lead to decline in vaccination coverage.
 
       <figure class="card">
-        <div class="vis" data-spec="Charts/chart3/chart3.vg.json"></div>
-        <p class="howto">How to read: darker blue = a higher share of children fully immunised. Drag the slider to change the year and pick an age from the menu.</p>
+        <div class="vis" data-spec="Charts/chart 4/chart4.vg.json"></div>
         <figcaption class="takeaway">
-          <strong>What this shows:</strong> at 2 years old, coverage fell in every one of the
-          31 regions. The Northern Territory had the biggest drop.
+          <span class="data-year">Data: 2015–2025</span>
+          <span class="big-num">7 of 7</span>
+          <span class="big-label">vaccines are below their peak in 2025</span>
+          <p> Almost every vaccine is lower now than at its peak.
+          The decline is broad, not limited to one vaccine.
+          </p>
+          
+          <p>
+            Why is rotavirus has the lowest coverage in 2025 ? 
+          </p>
+          <p>
+            It is the only vaccine with a strict age limit 
+            which is between the age of 15 and 25 weeks.So, 
+            if baby miss this vaccination, they will not be 
+            able to get this vaccination forever.However, other
+            vaccination can get it at any age
+          </p>
+          
+        
         </figcaption>
       </figure>
 
