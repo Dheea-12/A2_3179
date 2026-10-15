@@ -1,0 +1,31 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Only the 2-Year Check Went Backwards",
+    "subtitle": "% of children fully immunised at each age check, Australia, 2012–13 vs 2016–17",
+    "anchor": "start"
+  },
+  "width": 400,
+  "height": 340,
+  "data": {
+    "url": "../../data/TAB1_national_clean.csv",
+    "format": {"type": "csv", "parse": {"All_percent": "number"}}
+  },
+  "transform": [
+    {"filter": "datum.Reporting_Year == '2012–13' || datum.Reporting_Year == '2016–17'"}
+  ],
+  "encoding": {
+    "x": {"field": "Reporting_Year", "type": "ordinal", "title": null, "axis": {"labelAngle": 0}},
+    "y": {"field": "All_percent", "type": "quantitative", "title": "% fully immunised", "scale": {"domain": [89, 95]}},
+    "color": {
+      "field": "Age_group", "type": "nominal", "title": "Age check",
+      "scale": {"domain": ["1 year", "2 years", "5 years"], "range": ["#9aa5b1", "#e34948", "#12304f"]}
+    },
+    "tooltip": [
+      {"field": "Age_group", "title": "Age"},
+      {"field": "Reporting_Year", "title": "Year"},
+      {"field": "All_percent", "type": "quantitative", "title": "% fully immunised"}
+    ]
+  },
+  "mark": {"type": "line", "strokeWidth": 3, "point": {"size": 100, "filled": true}}
+}

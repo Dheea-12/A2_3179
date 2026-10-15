@@ -1,0 +1,7 @@
+node,label,kind,value,x,x2,y,y2
+All,All registered children,total,938484,143.0,157.0,22.0,398.0
+1 year,Age 1 year,age,308730,393.0,407.0,0.0,123.69
+2 years,Age 2 years,age,311765,393.0,407.0,145.69,270.6
+5 years,Age 5 years,age,317989,393.0,407.0,292.6,420.0
+Fully,Fully immunised,fully,870325,633.0,647.0,11.0,359.69
+Not,Not fully immunised,not,68159,633.0,647.0,381.69,409.0
