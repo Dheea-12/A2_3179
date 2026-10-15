@@ -190,8 +190,8 @@ h1 {
 .takeaway {
   margin-top: 16px;
   padding: 14px 18px;
-  border-left: 4px solid var(--red);
-  background: #fdf3f2;
+  border-left: 4px solid var(--white);
+  background: #f2f2f0;
   border-radius: 0 6px 6px 0;
   font-size: 16px;
 }
@@ -228,3 +228,78 @@ h1 {
   .about-grid { grid-template-columns: 1fr; gap: 28px; }
   .topnav ul { display: none; }
 }
+
+/* ========== Key-number insight panels ========== */
+.takeaway { display: flex; flex-direction: column; gap: 4px; }
+.takeaway p { margin: 0; }
+.data-year {
+  align-self: flex-start;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 2px 10px;
+  margin-bottom: 6px;
+}
+.big-num {
+  font-family: var(--sans);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--black);
+}
+.big-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.why {
+  margin-top: 10px !important;
+  padding-top: 10px;
+  border-top: 1px dashed #e8c9c5;
+  font-size: 14px;
+  color: #3d3c39;
+}
+.why strong { color: var(--navy); }
+
+/* ========== Side-by-side cards (chart left, explanation right) ========== */
+.card.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  column-gap: 28px;
+  align-items: start;
+}
+.card.split .vis { grid-column: 1; grid-row: 1 / span 2; }
+.card.split .howto { grid-column: 2; grid-row: 2; margin-top: 14px; }
+.card.split .takeaway { grid-column: 2; grid-row: 1; margin-top: 0; }
+
+@media (max-width: 900px) {
+  .card.split { display: block; }
+}
+
+/* ========== Bolder opening banner ========== */
+.hero {
+  background: linear-gradient(150deg, #0d2238 0%, #12304f 55%, #3a1c22 100%);
+  color: #f3f1ec;
+  border-bottom: none;
+}
+.hero h1 { color: #ffffff; }
+.hero .kicker { color: #ff8f86; }
+.hero .lede { color: #dfe6ee; }
+.hero .byline { color: #b9c4d0; }
+.hero .stat {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 4px solid #8fb8e8;
+}
+.hero .stat:has(.accent) { border-top-color: var(--red); }
+.hero .stat-num { color: #ffffff; }
+.hero .stat-num.accent { color: #ff8f86; }
+.hero .stat-label { color: #c9d3de; }
+.hero .explainer { background: rgba(255, 255, 255, 0.07); color: #e7ecf2; }
+.hero .explainer h2 { color: #b9c4d0; }
