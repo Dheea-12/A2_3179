@@ -6,10 +6,7 @@
       "% fully immunised, Aboriginal and Torres Strait Islander vs non-Indigenous children.",
       "Faded dots = 2012–13, solid dots = 2016–17."
     ],
-    "anchor": "start",
-    "fontSize": 20,
-    "subtitleFontSize": 12,
-    "subtitleColor": "#555555"
+    "anchor": "start"
   },
   "width": 620,
   "height": 360,
@@ -30,7 +27,7 @@
       "filter": "indexof(['2012–13', '2016–17'], datum.Reporting_Year) >= 0"
     },
     {
-      "calculate": "datum.Indig_fully_immunised / datum.Indig_registered * 100",
+      "calculate": "datum.Indig_percent_fi",
       "as": "Indigenous"
     },
     {
@@ -96,8 +93,8 @@
           "type": "quantitative",
           "scale": {
             "domain": [
-              84,
-              98
+              80,
+              100
             ]
           },
           "title": "% fully immunised"
