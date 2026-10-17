@@ -60,13 +60,7 @@
           {"field": "Coverage", "type": "quantitative", "title": "% covered"}
         ]
       }
-    },
-    {
-      "mark": {"type": "text", "fontSize": 12},
-      "encoding": {
-        "text": {"field": "Coverage", "type": "quantitative"}
-    
-      }
     }
+
   ]
 }

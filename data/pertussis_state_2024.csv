@@ -1,0 +1,9 @@
+State,State_name,Cases,Population,Rate_per_100k,lon,lat,Period,Source
+NSW,New South Wales,13766,8545000,161.1,146.5,-32.3,1 Jan to 19 Sep 2024,NNDSS via Medical Republic (19 Sep 2024); population: ABS ERP Dec 2024
+QLD,Queensland,8969,5619000,159.6,144.5,-22.5,1 Jan to 19 Sep 2024,NNDSS via Medical Republic (19 Sep 2024); population: ABS ERP Dec 2024
+VIC,Victoria,4602,7011000,65.6,144.2,-37.0,1 Jan to 19 Sep 2024,NNDSS via Medical Republic (19 Sep 2024); population: ABS ERP Dec 2024
+SA,South Australia,620,1892000,32.8,135.5,-30,1 Jan to 19 Sep 2024,NNDSS via Medical Republic (19 Sep 2024); population: ABS ERP Dec 2024
+WA,Western Australia,453,3009000,15.1,121.5,-25.5,1 Jan to 19 Sep 2024,NNDSS via Medical Republic (19 Sep 2024); population: ABS ERP Dec 2024
+TAS,Tasmania,284,576000,49.3,146.6,-42.0,1 Jan to 19 Sep 2024,NNDSS via Medical Republic (19 Sep 2024); population: ABS ERP Dec 2024
+ACT,Australian Capital Territory,197,482000,40.9,149.1,-35.3,1 Jan to 19 Sep 2024,NNDSS via Medical Republic (19 Sep 2024); population: ABS ERP Dec 2024
+NT,Northern Territory,27,262000,10.3,133.5,-19.5,1 Jan to 19 Sep 2024,NNDSS via Medical Republic (19 Sep 2024); population: ABS ERP Dec 2024

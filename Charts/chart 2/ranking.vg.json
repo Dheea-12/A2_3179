@@ -6,8 +6,7 @@
       "DTP3 vaccine coverage ranking among 7 developed countries (1 = highest coverage), 2010–2025.",
       "Countries with the same coverage are ordered by their WHO/UNICEF world rank."
     ],
-    "anchor": "start",
-    "subtitleColor": "#555555"
+    "anchor": "start"
   },
   "width": 620,
   "height": 340,
@@ -36,7 +35,13 @@
       "field": "Name", "type": "nominal",
       "scale": {
         "domain": ["Australia", "Italy", "United States", "Spain", "Japan", "Slovenia", "Lithuania"],
-        "range": ["#e31a1c", "#1f6fff", "#ff8c00", "#8c564b", "#8e44ad", "#00b5c8", "#e6007e"]
+        "range": ["#171717",
+      "#B8B8B8",
+      "#B8B8B8",
+      "#B8B8B8",
+      "#B8B8B8",
+      "#B8B8B8",
+      "#B8B8B8"]
       },
       "legend": null
     },

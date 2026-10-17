@@ -1,0 +1,121 @@
+State,Reporting_Year,Age_group,Registered_children,Fully_immunised,Percent
+Australian Capital Territory,2012-13,1 year,5381,4989,92.7
+Australian Capital Territory,2012-13,2 years,5318,4955,93.2
+Australian Capital Territory,2012-13,5 years,5104,4710,92.3
+Australian Capital Territory,2013-14,1 year,5513,5128,93.0
+Australian Capital Territory,2013-14,2 years,5446,5070,93.1
+Australian Capital Territory,2013-14,5 years,5158,4779,92.7
+Australian Capital Territory,2014-15,1 year,5654,5250,92.9
+Australian Capital Territory,2014-15,2 years,5525,5051,91.4
+Australian Capital Territory,2014-15,5 years,5558,5180,93.2
+Australian Capital Territory,2015-16,1 year,5657,5343,94.4
+Australian Capital Territory,2015-16,2 years,5679,5215,91.8
+Australian Capital Territory,2015-16,5 years,5548,5188,93.5
+Australian Capital Territory,2016-17,1 year,5721,5437,95.0
+Australian Capital Territory,2016-17,2 years,5761,5300,92.0
+Australian Capital Territory,2016-17,5 years,5705,5358,93.9
+New South Wales,2012-13,1 year,97832,88805,90.8
+New South Wales,2012-13,2 years,97255,89798,92.3
+New South Wales,2012-13,5 years,99219,90843,91.6
+New South Wales,2013-14,1 year,99972,89628,89.7
+New South Wales,2013-14,2 years,98715,90670,91.9
+New South Wales,2013-14,5 years,99507,91741,92.2
+New South Wales,2014-15,1 year,98074,89294,91.0
+New South Wales,2014-15,2 years,100505,89228,88.8
+New South Wales,2014-15,5 years,100412,93063,92.7
+New South Wales,2015-16,1 year,97960,91024,92.9
+New South Wales,2015-16,2 years,98497,89018,90.4
+New South Wales,2015-16,5 years,100409,93744,93.4
+New South Wales,2016-17,1 year,97921,91664,93.6
+New South Wales,2016-17,2 years,99307,89580,90.2
+New South Wales,2016-17,5 years,102261,95675,93.6
+Northern Territory,2012-13,1 year,3867,3534,91.4
+Northern Territory,2012-13,2 years,3687,3451,93.6
+Northern Territory,2012-13,5 years,3613,3283,90.9
+Northern Territory,2013-14,1 year,3893,3536,90.8
+Northern Territory,2013-14,2 years,3743,3504,93.6
+Northern Territory,2013-14,5 years,3524,3221,91.4
+Northern Territory,2014-15,1 year,3795,3436,90.5
+Northern Territory,2014-15,2 years,3600,3216,89.3
+Northern Territory,2014-15,5 years,3516,3248,92.4
+Northern Territory,2015-16,1 year,3779,3516,93.0
+Northern Territory,2015-16,2 years,3549,3155,88.9
+Northern Territory,2015-16,5 years,3497,3214,91.9
+Northern Territory,2016-17,1 year,3761,3489,92.8
+Northern Territory,2016-17,2 years,3727,3285,88.1
+Northern Territory,2016-17,5 years,3558,3311,93.1
+Queensland,2012-13,1 year,62307,57279,91.9
+Queensland,2012-13,2 years,62198,57602,92.6
+Queensland,2012-13,5 years,64513,59022,91.5
+Queensland,2013-14,1 year,63400,57830,91.2
+Queensland,2013-14,2 years,62447,58188,93.2
+Queensland,2013-14,5 years,65174,60140,92.3
+Queensland,2014-15,1 year,62947,57823,91.9
+Queensland,2014-15,2 years,63189,57092,90.4
+Queensland,2014-15,5 years,65252,60234,92.3
+Queensland,2015-16,1 year,62134,57910,93.2
+Queensland,2015-16,2 years,62338,56995,91.4
+Queensland,2015-16,5 years,64951,60184,92.7
+Queensland,2016-17,1 year,61863,58301,94.2
+Queensland,2016-17,2 years,62785,57810,92.1
+Queensland,2016-17,5 years,65573,61549,93.9
+South Australia,2012-13,1 year,19911,18168,91.2
+South Australia,2012-13,2 years,19526,18079,92.6
+South Australia,2012-13,5 years,20194,18354,90.9
+South Australia,2013-14,1 year,20277,18279,90.1
+South Australia,2013-14,2 years,19881,18338,92.2
+South Australia,2013-14,5 years,20358,18533,91.0
+South Australia,2014-15,1 year,20104,18328,91.2
+South Australia,2014-15,2 years,20218,17770,87.9
+South Australia,2014-15,5 years,20290,18437,90.9
+South Australia,2015-16,1 year,19834,18444,93.0
+South Australia,2015-16,2 years,19969,18074,90.5
+South Australia,2015-16,5 years,20112,18562,92.3
+South Australia,2016-17,1 year,19849,18671,94.1
+South Australia,2016-17,2 years,19941,18131,90.9
+South Australia,2016-17,5 years,20608,19270,93.5
+Tasmania,2012-13,1 year,6105,5627,92.2
+Tasmania,2012-13,2 years,6092,5744,94.3
+Tasmania,2012-13,5 years,6545,6081,92.9
+Tasmania,2013-14,1 year,5940,5334,89.8
+Tasmania,2013-14,2 years,6108,5689,93.1
+Tasmania,2013-14,5 years,6520,6045,92.7
+Tasmania,2014-15,1 year,5971,5417,90.7
+Tasmania,2014-15,2 years,5889,5155,87.5
+Tasmania,2014-15,5 years,6385,5914,92.6
+Tasmania,2015-16,1 year,5790,5414,93.5
+Tasmania,2015-16,2 years,5953,5402,90.7
+Tasmania,2015-16,5 years,6229,5841,93.8
+Tasmania,2016-17,1 year,5739,5378,93.7
+Tasmania,2016-17,2 years,5868,5375,91.6
+Tasmania,2016-17,5 years,6222,5849,94.0
+Victoria,2012-13,1 year,74129,67923,91.6
+Victoria,2012-13,2 years,73329,68331,93.2
+Victoria,2012-13,5 years,74992,69371,92.5
+Victoria,2013-14,1 year,76879,69789,90.8
+Victoria,2013-14,2 years,74860,69463,92.8
+Victoria,2013-14,5 years,75105,69463,92.5
+Victoria,2014-15,1 year,76764,70018,91.2
+Victoria,2014-15,2 years,77562,69520,89.6
+Victoria,2014-15,5 years,76726,71073,92.6
+Victoria,2015-16,1 year,77790,72330,93.0
+Victoria,2015-16,2 years,77567,70623,91.0
+Victoria,2015-16,5 years,76890,71766,93.3
+Victoria,2016-17,1 year,79209,74352,93.9
+Victoria,2016-17,2 years,79622,72563,91.1
+Victoria,2016-17,5 years,79435,74724,94.1
+Western Australia,2012-13,1 year,32735,29487,90.1
+Western Australia,2012-13,2 years,32659,29607,90.7
+Western Australia,2012-13,5 years,33464,29926,89.4
+Western Australia,2013-14,1 year,34090,30720,90.1
+Western Australia,2013-14,2 years,33404,30385,91.0
+Western Australia,2013-14,5 years,33601,30158,89.8
+Western Australia,2014-15,1 year,34034,31104,91.4
+Western Australia,2014-15,2 years,34281,30054,87.7
+Western Australia,2014-15,5 years,34222,30999,90.6
+Western Australia,2015-16,1 year,34550,31988,92.6
+Western Australia,2015-16,2 years,33960,30415,89.6
+Western Australia,2015-16,5 years,34456,31468,91.3
+Western Australia,2016-17,1 year,34667,32275,93.1
+Western Australia,2016-17,2 years,34754,31244,89.9
+Western Australia,2016-17,5 years,34627,31734,91.6
