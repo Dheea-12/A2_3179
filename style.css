@@ -303,3 +303,49 @@ h1 {
 .hero .stat-label { color: #c9d3de; }
 .hero .explainer { background: rgba(255, 255, 255, 0.07); color: #e7ecf2; }
 .hero .explainer h2 { color: #b9c4d0; }
+/* Consistent page width and side margins */
+.wrap {
+  width: min(100% - 48px, 1100px);
+  margin-inline: auto;
+}
+
+/* Consistent chart containers */
+.card {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 24px 0;
+  padding: 32px;
+  background: #ffffff;
+  border-radius: 12px;
+}
+
+/* Centre visualisations */
+.vis {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-x: auto;
+}
+
+/* Consistent spacing below charts */
+.takeaway {
+  margin-top: 24px;
+}
+
+/* Consistent spacing for chart instructions */
+.howto {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+  .wrap {
+    width: calc(100% - 32px);
+  }
+
+  .card {
+    padding: 16px;
+  }
+}

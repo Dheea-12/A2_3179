@@ -1,12 +1,15 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Most of vaccine is belows its target  ",
+    "text": "Most vaccines are below the target  ",
     "subtitle": [
-      "% of Australian children covered for each vaccine, 2015–2025 (WHO/UNICEF estimates)"
+      "Percentage of Australian children covered for each vaccine,(WHO/UNICEF estimates)"
       
     ],
-    "anchor": "start"
+    "anchor": "start",
+    "fontSize": 25,
+    "font":"san-serif",
+    "subtitlePadding": 15
   
   },
   "width": 600,
@@ -45,7 +48,7 @@
         "color": {
           "field": "Coverage",
           "type": "quantitative",
-          "title": "% of children covered",
+          "title": "Vaccinated children (%)",
           "scale": {"domain": [88, 97], "scheme": "blues", "clamp": true},
           "legend": {
             "orient": "bottom",
@@ -57,7 +60,7 @@
         "tooltip": [
           {"field": "Vaccine", "type": "nominal"},
           {"field": "Year", "type": "ordinal"},
-          {"field": "Coverage", "type": "quantitative", "title": "% covered"}
+          {"field": "Coverage", "type": "quantitative", "title": "Vaccinated children (%)"}
         ]
       }
     }

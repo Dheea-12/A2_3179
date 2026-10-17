@@ -3,10 +3,14 @@
   "title": {
     "text": "Australia sits at #4 rank across 7 developed countries",
     "subtitle": [
-      "DTP3 vaccine coverage ranking among 7 developed countries (1 = highest coverage), 2010–2025.",
-      "Countries with the same coverage are ordered by their WHO/UNICEF world rank."
+      "DTP3 (diphtheria, tetanus and pertussis) vaccination coverage ranking among", 
+      "7 developed countries"
     ],
-    "anchor": "start"
+    "anchor": "start",
+    "fontSize": 25,
+    "font" : "san-serif",
+    "subtitlePadding": 15
+
   },
   "width": 620,
   "height": 340,

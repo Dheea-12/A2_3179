@@ -2,19 +2,19 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Coverage peaked around 2020 and has since declined across all age groups",
-    "subtitle": [
-      "% of children fully immunised at ages 1, 2 and 5 years, Australia, 2017–2024 (calendar years).",
-      "Note: the vertical axis starts at 88%, not 0%, so small changes look larger."
-    ],
-    "anchor": "start"
-  },
-  "width": 720,
-  "height": 360,
-  "config": {
-    "view": {
-      "stroke": null
-    },
+    "text": ["Coverage peaked around 2020 and has declined",
+            "across all age groups"],
+    "subtitle": 
+      "Percentage of children fully immunised at ages 1, 2 and 5 years in Australia",
+    "anchor": "start",
+    "fontSize": 25,
+    "font":  "san-serif",
+    "subtitlePadding": 15},
+    "width": 720,
+    "height": 360,
+    
+    "config": {
+    "view": {"stroke": null},
     "axis": {
       "grid": true,
       "gridColor": "#eeeeee"
@@ -40,7 +40,7 @@
           "field": "start",
           "type": "quantitative",
           "scale": {
-            "domain": [2017, 2024.6],
+            "domain": [2017, 2024],
             "nice": false
           }
         },
@@ -102,7 +102,7 @@
         }
       }
     },
-    {
+   {
       "data": {
         "values": [
           {
@@ -122,26 +122,20 @@
       "encoding": {
         "x": {
           "field": "x",
-          "type": "quantitative",
-          "scale": {
-            "domain": [2017, 2024.6],
-            "nice": false
-          }
+          "type": "quantitative"
         },
         "y": {
           "field": "y",
-          "type": "quantitative",
-          "scale": {
-            "domain": [88, 96],
-            "nice": false
-          }
-        },
+          "type": "quantitative"
+          },
+       
         "text": {
           "field": "label"
         }
       }
     },
-    {
+   
+     {
       "data": {
         "url": "../../data/fully_immunised_national.csv",
         "format": {
@@ -162,23 +156,15 @@
         "x": {
           "field": "Year",
           "type": "quantitative",
-          "title": null,
+          "title": "Year",
           "scale": {
-            "domain": [2017, 2024.6],
+            "domain": [2017, 2024],
             "nice": false
           },
           "axis": {
             "format": "d",
-            "values": [
-              2017,
-              2018,
-              2019,
-              2020,
-              2021,
-              2022,
-              2023,
-              2024
-            ]
+            "tickMinStep": 1,
+            "tickCount": 8
           }
         },
         "y": {
@@ -190,9 +176,9 @@
             "nice": false
           },
           "axis": {
-            "values": [
-             80, 81, 82, 83, 84, 85, 86, 87, 88, 89,90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100
-            ]
+            "tickCount": 5,
+            "tickMinStep": 1
+          
           }
         },
         "color": {
@@ -200,11 +186,7 @@
           "type": "nominal",
           "legend": null,
           "scale": {
-            "domain": [
-              "1 year",
-              "2 years",
-              "5 years"
-            ],
+            "domain": ["1 year","2 years","5 years"],
             "range": ["#0072B2", "#009E73", "#CC79A7"]
           }
         },
@@ -271,7 +253,7 @@
           "mark": {
             "type": "text",
             "align": "left",
-            "dx": 8,
+            "dx": 10,
             "fontSize": 12,
             "fontWeight": "bold"
           },

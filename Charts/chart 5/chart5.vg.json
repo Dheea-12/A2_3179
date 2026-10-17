@@ -138,10 +138,11 @@
         ],
         "mark": {
           "type": "rule",
+          "align": "center",
           "color": "#12304f",
           "strokeWidth": 3,
-          "x": 18,
-          "x2": 87
+          "x": 8,
+          "x2": 75
         },
         "encoding": {
           "y": {
@@ -186,7 +187,7 @@
           "type": "text",
           "align": "center",
           "dy": -9,
-          "x": 52,
+          "x": 45,
           "fontSize": 11,
           "fontWeight": "bold",
           "color": "#12304f"

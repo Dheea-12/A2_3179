@@ -2,11 +2,11 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Vaccines Pushed Measles to the Edge",
-    "subtitle": "Measles cases reported in Australia each year, by age group, 1991–2023",
+    "subtitle": "Measles cases reported in Australia each year, by age group",
     "anchor": "start",
-    "fontSize": 20,
-    "subtitleFontSize": 12,
-    "subtitleColor": "#555555"
+    "fontSize": 25,
+    "font": "san-serif",
+    "subtitlePadding": 15
   },
   "width": 900,
   "height": 320,
@@ -74,11 +74,7 @@
               "5 to 14",
               "15 and over"
             ],
-            "range": [
-              "#e34948",
-              "#f2a541",
-              "#9aa5b1"
-            ]
+            "range": ["#247C91","#7957A6","#D65A50"]
           },
           "sort": [
             "Under 5",

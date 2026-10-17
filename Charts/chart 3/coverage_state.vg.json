@@ -4,7 +4,7 @@
   "title": {
     "text": "Childhood immunisation coverage varies across Australia",
     "subtitle": [
-      "% of children fully immunised in each state and territory.",
+      "Fully immunised children (%) in each state and territory.",
       "Click a state to compare Aboriginal and Torres Strait Islander and non-Indigenous children. Grey bars = all of Australia."
     ],
     "anchor": "start"
@@ -45,14 +45,8 @@
       "height": 380,
       "projection": {
         "type": "conicEqualArea",
-        "parallels": [
-          -18,
-          -36
-        ],
-        "rotate": [
-          -132,
-          0
-        ]
+        "parallels": [-18,-36],
+        "rotate": [-132,0]
       },
       "layer": [
         {
@@ -83,10 +77,6 @@
                 "key": "properties.STATE_NAME"
               },
               "as": "geo"
-            },
-            {
-              "calculate": "'Click to compare Indigenous and non-Indigenous children'",
-              "as": "hint"
             }
           ],
           "params": [
@@ -122,19 +112,8 @@
               "title": "% fully immunised",
               "scale": {
                 "type": "threshold",
-                "domain": [
-                  90,
-                  92,
-                  94,
-                  95
-                ],
-                "range": [
-                  "#deebf7",
-                  "#9ecae1",
-                  "#4292c6",
-                  "#2171b5",
-                  "#08306b"
-                ]
+                "domain": [85, 90, 92, 95],
+                "range": ["#E5F2F2", "#B9DBDB","#7DB9BA","#43999D","#155365"]
               },
               "legend": {
                 "orient": "none",
@@ -177,11 +156,6 @@
                 "type": "quantitative",
                 "title": "Children registered",
                 "format": ","
-              },
-              {
-                "field": "hint",
-                "type": "nominal",
-                "title": "Tip"
               }
             ]
           }
@@ -233,65 +207,6 @@
         {
           "transform": [
             {
-              "filter": "datum.State == 'Australia'"
-            }
-          ],
-          "mark": {
-            "type": "bar",
-            "color": "#e2e2e2",
-            "cornerRadiusEnd": 3
-          },
-          "encoding": {
-            "x": {
-              "field": "Age_group",
-              "type": "nominal",
-              "title": null,
-              "axis": {
-                "labelAngle": 0
-              }
-            },
-            "xOffset": {
-              "field": "Group"
-            },
-            "y": {
-              "field": "Percent",
-              "type": "quantitative",
-              "title": "% fully immunised",
-              "scale": {
-                "domain": [
-                  0,
-                  100
-                ]
-              }
-            },
-            "tooltip": [
-              {
-                "field": "State",
-                "type": "nominal",
-                "title": "Area"
-              },
-              {
-                "field": "Group",
-                "type": "nominal",
-                "title": "Group"
-              },
-              {
-                "field": "Age_group",
-                "type": "nominal",
-                "title": "Age"
-              },
-              {
-                "field": "Percent",
-                "type": "quantitative",
-                "title": "% fully immunised",
-                "format": ".1f"
-              }
-            ]
-          }
-        },
-        {
-          "transform": [
-            {
               "filter": {
                 "param": "State_selection",
                 "empty": false
@@ -327,10 +242,7 @@
                   "Aboriginal and Torres Strait Islander",
                   "Non-Indigenous"
                 ],
-                "range": [
-                  "#d9822b",
-                  "#2a78d6"
-                ]
+                "range": ["#A66B83","#65758B"]
               },
               "legend": {
                 "orient": "bottom",
