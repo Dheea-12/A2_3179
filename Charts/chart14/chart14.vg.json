@@ -1,18 +1,17 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "New South Wales and Queensland had the most whooping cough cases in 2024",
+    "text": "Number whooping cough cases varies by states in 2024",
     "subtitle": [
-      "Whooping cough cases by state, 1 January to 19 September 2024.",
       "Circle size = number of cases. Circle colour = cases per 100,000 people."
     ],
     "anchor": "start",
-    "subtitleColor": "#555555"
+    "font":"sans-serif",
+    "fontSize":25
   },
   "width": 560,
   "height": 460,
   "view": {
-    "fill": "#d4e6f1",
     "stroke": null,
     "cornerRadius": 6
   },

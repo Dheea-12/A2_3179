@@ -7,7 +7,8 @@
       "School-age children (5–14) made up the largest group in 2024."
     ],
     "anchor": "start",
-    "subtitleColor": "#555555"
+    "fontSize":25,
+    "font":"sans-serif"
   },
   "width": 560,
   "height": 340,
@@ -34,25 +35,22 @@
         }
       ],
       "mark": {
-        "type": "bar",
-        "cornerRadiusTopLeft": 2,
-        "cornerRadiusTopRight": 2
+        "type": "bar"
       },
       "encoding": {
         "x": {
           "field": "Year",
           "type": "ordinal",
-          "title": null,
+          "title": "Year",
           "axis": {
-            "labelAngle": 0,
-            "labelExpr": "datum.value % 2 == 0 ? datum.value : ''"
+            "labelAngle": 0
           }
         },
         "y": {
           "aggregate": "sum",
           "field": "Cases",
           "type": "quantitative",
-          "title": "Cases reported",
+          "title": "Number of cases reported",
           "axis": {"format": ",.0f"}
         },
         "color": {
@@ -61,12 +59,14 @@
           "title": "Age group (click to highlight)",
           "scale": {
             "domain": ["0–4 years", "5–14 years", "15 years and over"],
-            "range": ["#a50f15", "#fb6a4a", "#d9d9d9"]
+            "range": ["#8F4054", "#D7838C", "#D7D2CE"]
           },
           "legend": {
-            "orient": "top",
+            "orient": "none",
             "direction": "horizontal",
-            "titleOrient": "left"
+            "titleAlign": "left",
+            "legendX":350,
+            "legendY":-40
           }
         },
         "order": {
@@ -92,9 +92,9 @@
       },
       "mark": {
         "type": "text",
-        "align": "right",
-        "dx": -12,
-        "dy": 4,
+        "align": "center",
+        "dx": -15,
+        "dy": -10,
         "fontSize": 11,
         "fontWeight": "bold",
         "color": "#12304f"
@@ -108,8 +108,8 @@
     {
       "data": {
         "values": [
-          {"Year": 2011, "y": 38743, "t": "2011: 38,743"},
-          {"Year": 2021, "y": 3457, "t": "COVID-19 lull"}
+          {"Year": 2011, "y": 38743, "t": "38,743 (record)"},
+          {"Year": 2021, "y": 3457, "t": "COVID-19"}
         ]
       },
       "mark": {

@@ -1,42 +1,32 @@
 id,parent,name,kind,value,label
 root,,Vaccine-preventable diseases,root,,Vaccine-preventable diseases
-pneumococcal_disease,root,Pneumococcal disease,disease,28631732,Pneumococcal disease
-pneumococcal_disease_cases,pneumococcal_disease,Cases reported (2024),cases,2386,"Cases reported (2024): 2,386"
-pneumococcal_disease_hosp,pneumococcal_disease,Hospital stays (2022),hospital,2005,"Hospital stays (2022): 2,005"
-pneumococcal_disease_cost,pneumococcal_disease,Health spending (2018–19),cost,28631732,Health spending (2018–19): $28.6M
-whooping_cough,root,Whooping cough,disease,19232650,Whooping cough
-whooping_cough_cases,whooping_cough,Cases reported (2024),cases,57102,"Cases reported (2024): 57,102"
-whooping_cough_hosp,whooping_cough,Hospital stays (2022),hospital,28,Hospital stays (2022): 28
-whooping_cough_cost,whooping_cough,Health spending (2018–19),cost,19232650,Health spending (2018–19): $19.2M
-hib,root,Hib,disease,15678764,Hib
-hib_cases,hib,Cases reported (2024),cases,6,Cases reported (2024): 6
-hib_hosp,hib,Hospital stays (2022),hospital,36,Hospital stays (2022): 36
-hib_cost,hib,Health spending (2018–19),cost,15678764,Health spending (2018–19): $15.7M
-chickenpox,root,Chickenpox,disease,11462668,Chickenpox
-chickenpox_cases,chickenpox,Cases reported (2024),cases,2359,"Cases reported (2024): 2,359"
-chickenpox_hosp,chickenpox,Hospital stays (2022),hospital,328,Hospital stays (2022): 328
-chickenpox_cost,chickenpox,Health spending (2018–19),cost,11462668,Health spending (2018–19): $11.5M
-meningococcal_disease,root,Meningococcal disease,disease,3760176,Meningococcal disease
-meningococcal_disease_cases,meningococcal_disease,Cases reported (2024),cases,136,Cases reported (2024): 136
-meningococcal_disease_hosp,meningococcal_disease,Hospital stays (2022),hospital,118,Hospital stays (2022): 118
-meningococcal_disease_cost,meningococcal_disease,Health spending (2018–19),cost,3760176,Health spending (2018–19): $3.8M
-rotavirus,root,Rotavirus,disease,2504699,Rotavirus
-rotavirus_cases,rotavirus,Cases reported (2024),cases,10084,"Cases reported (2024): 10,084"
-rotavirus_hosp,rotavirus,Hospital stays (2022),hospital,893,Hospital stays (2022): 893
-rotavirus_cost,rotavirus,Health spending (2018–19),cost,2504699,Health spending (2018–19): $2.5M
-measles,root,Measles,disease,680219,Measles
-measles_cases,measles,Cases reported (2024),cases,57,Cases reported (2024): 57
-measles_hosp,measles,Hospital stays (2022),hospital,<6,Hospital stays (2022): <6
-measles_cost,measles,Health spending (2018–19),cost,680219,Health spending (2018–19): $680K
-tetanus,root,Tetanus,disease,583199,Tetanus
-tetanus_cases,tetanus,Cases reported (2024),cases,5,Cases reported (2024): 5
-tetanus_hosp,tetanus,Hospital stays (2022),hospital,7,Hospital stays (2022): 7
-tetanus_cost,tetanus,Health spending (2018–19),cost,583199,Health spending (2018–19): $583K
-rubella,root,Rubella,disease,341605,Rubella
-rubella_cases,rubella,Cases reported (2024),cases,2,Cases reported (2024): 2
-rubella_hosp,rubella,Hospital stays (2022),hospital,<6,Hospital stays (2022): <6
-rubella_cost,rubella,Health spending (2018–19),cost,341605,Health spending (2018–19): $342K
-diphtheria,root,Diphtheria,disease,174371,Diphtheria
-diphtheria_cases,diphtheria,Cases reported (2024),cases,9,Cases reported (2024): 9
-diphtheria_hosp,diphtheria,Hospital stays (2022),hospital,<6,Hospital stays (2022): <6
-diphtheria_cost,diphtheria,Health spending (2018–19),cost,174371,Health spending (2018–19): $174K
+pneumococcal_disease,root,Pneumococcal disease,disease,2386,Pneumococcal disease
+pneumococcal_disease_cases,pneumococcal_disease,Cases reported (2024),cases,2386,"2,386 cases"
+pneumococcal_disease_cost,pneumococcal_disease,Health spending (2023–24),cost,68173653,Health spending (2023–24): $68.2M
+hib,root,Hib,disease,6,Hib
+hib_cases,hib,Cases reported (2024),cases,6,6 cases
+hib_cost,hib,Health spending (2023–24),cost,30549862,Health spending (2023–24): $30.5M
+whooping_cough,root,Whooping cough,disease,57102,Whooping cough
+whooping_cough_cases,whooping_cough,Cases reported (2024),cases,57102,"57,102 cases"
+whooping_cough_cost,whooping_cough,Health spending (2023–24),cost,28381008,Health spending (2023–24): $28.4M
+chickenpox,root,Chickenpox,disease,2359,Chickenpox
+chickenpox_cases,chickenpox,Cases reported (2024),cases,2359,"2,359 cases"
+chickenpox_cost,chickenpox,Health spending (2023–24),cost,18376316,Health spending (2023–24): $18.4M
+rotavirus,root,Rotavirus,disease,10084,Rotavirus
+rotavirus_cases,rotavirus,Cases reported (2024),cases,10084,"10,084 cases"
+rotavirus_cost,rotavirus,Health spending (2023–24),cost,11099501,Health spending (2023–24): $11.1M
+meningococcal_disease,root,Meningococcal disease,disease,136,Meningococcal disease
+meningococcal_disease_cases,meningococcal_disease,Cases reported (2024),cases,136,136 cases
+meningococcal_disease_cost,meningococcal_disease,Health spending (2023–24),cost,6329430,Health spending (2023–24): $6.3M
+tetanus,root,Tetanus,disease,5,Tetanus
+tetanus_cases,tetanus,Cases reported (2024),cases,5,5 cases
+tetanus_cost,tetanus,Health spending (2023–24),cost,1866973,Health spending (2023–24): $1.9M
+rubella,root,Rubella,disease,2,Rubella
+rubella_cases,rubella,Cases reported (2024),cases,2,2 cases
+rubella_cost,rubella,Health spending (2023–24),cost,606406,Health spending (2023–24): $606K
+measles,root,Measles,disease,57,Measles
+measles_cases,measles,Cases reported (2024),cases,57,57 cases
+measles_cost,measles,Health spending (2023–24),cost,578645,Health spending (2023–24): $579K
+diphtheria,root,Diphtheria,disease,9,Diphtheria
+diphtheria_cases,diphtheria,Cases reported (2024),cases,9,9 cases
+diphtheria_cost,diphtheria,Health spending (2023–24),cost,252023,Health spending (2023–24): $252K

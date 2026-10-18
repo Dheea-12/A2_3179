@@ -3,11 +3,12 @@
   "title": {
     "text": "Most children who missed out live in and around the big cities",
     "subtitle": [
-      "Children not fully immunised. Each dot = 100 children, placed at random inside their local area (SA3), not at real addresses.",
+      "Children not fully immunised. Each dot = 20 children, placed at random inside their local area (SA3), not at real addresses.",
       "Choose a map centre, then drag the Zoom slider to look closer. Hover a dot for details."
     ],
     "anchor": "start",
-    "subtitleColor": "#555555"
+    "fontSize": 25,
+    "font" : "sans-serif"
   },
   "width": 760,
   "height": 560,
@@ -191,7 +192,7 @@
           "title": null,
           "scale": {
             "range": [
-              "#e34948"
+              "#B87949"
             ]
           },
           "legend": {

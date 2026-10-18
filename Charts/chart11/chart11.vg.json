@@ -10,15 +10,14 @@
     "bottom": 10
   },
   "title": {
-    "text": "Whooping cough has the most cases, but pneumococcal disease costs the most",
+    "text": "Health spending depends on diseases ",
     "subtitle": [
       "Circle size = cases reported in 2024. Each disease branches to its health spending in 2018–19. Australia, all ages.",
       "Diseases are ordered from highest to lowest health spending."
     ],
     "anchor": "start",
-    "fontSize": 18,
-    "subtitleFontSize": 12,
-    "subtitleColor": "#555555",
+    "fontSize": 25,
+    "font":"sans-serif",
     "offset": 12
   },
   "signals": [
@@ -323,9 +322,6 @@
           },
           "cornerRadiusBottomRight": {
             "value": 2
-          },
-          "tooltip": {
-            "signal": "{'Disease': datum.parent, 'Health spending (2018–19)': datum.label}"
           }
         }
       }
@@ -375,7 +371,7 @@
             "field": "y"
           },
           "text": {
-            "signal": "datum.kind == 'root' ? ['Vaccine-preventable', 'diseases'] : datum.kind == 'disease' ? [datum.name, format(datum.cases, ',') + ' cases'] : datum.label"
+            "signal": "datum.kind == 'root' ? ['Vaccine-preventable', 'diseases'] : datum.kind == 'disease' ? [datum.name] : datum.label"
           },
           "dx": {
             "signal": "datum.kind == 'root' ? -6 : datum.kind == 'disease' ? 8 + sqrt(max(scale('cases', datum.cases), 30)) / 2 : barMax + 16"

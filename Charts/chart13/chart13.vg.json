@@ -7,7 +7,8 @@
       "Each panel has its own scale. The dashed line marks when a free vaccine started for all children."
     ],
     "anchor": "start",
-    "subtitleColor": "#555555"
+    "fontSize": 25,
+    "font" : "sans-serif"
   },
   "data": {
     "url": "../../data/hospitalisations_children.csv",
@@ -114,10 +115,10 @@
         ],
         "mark": {
           "type": "area",
-          "color": "#e34948",
+          "color": "#B39A45",
           "opacity": 0.15,
           "line": {
-            "color": "#e34948",
+            "color": "#B39A45",
             "strokeWidth": 2
           }
         },
@@ -125,7 +126,7 @@
           "x": {
             "field": "Year",
             "type": "quantitative",
-            "title": null,
+            "title": "Year",
             "scale": {
               "domain": [
                 1999,
@@ -181,6 +182,7 @@
   },
   "resolve": {
     "scale": {
+      "x": "independent",
       "y": "independent"
     }
   },
