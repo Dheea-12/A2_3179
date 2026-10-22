@@ -1,59 +1,122 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Most vaccines are below the target  ",
+    "text": "All seven vaccines are below the 95% target",
     "subtitle": [
       "Percentage of Australian children covered for each vaccine,(WHO/UNICEF estimates)"
     ],
-    "anchor": "start",
-    "fontSize": 25,
-    "font":"san-serif"
-  
+    "anchor": "start"
   },
-  "width": 600,
-  "height": 300,
+  "width": "container",
+  "height": 260,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
   "data": {
-    "url": "../data/wuenic_australia_antigens.csv",
-    "format": {"type": "csv", "parse": {"Year": "number", "Coverage": "number"}}
+    "url": "data/wuenic_australia_antigens.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "Year": "number",
+        "Coverage": "number"
+      }
+    }
   },
   "transform": [
-    {"filter": "datum.Year >= 2015"},
-    {"calculate": "datum.Year == 2025 ? datum.Coverage : null", "as": "coverage_2025"},
     {
-      "joinaggregate": [{"op": "max", "field": "coverage_2025", "as": "Coverage_in_2025"}],
-      "groupby": ["Vaccine"]
+      "filter": "datum.Year >= 2015"
+    },
+    {
+      "calculate": "datum.Year == 2025 ? datum.Coverage : null",
+      "as": "coverage_2025"
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "max",
+          "field": "coverage_2025",
+          "as": "Coverage_in_2025"
+        }
+      ],
+      "groupby": [
+        "Vaccine"
+      ]
     }
   ],
-  "mark" : {"type": "rect", "stroke": "white", "strokeWidth": 2},
+  "mark": {
+    "type": "rect",
+    "stroke": "white",
+    "strokeWidth": 2
+  },
   "encoding": {
     "x": {
       "field": "Year",
       "type": "ordinal",
       "title": null,
-      "axis": {"orient": "top", "labelAngle": 0, "labelFontSize": 12, "domain": false, "ticks": false}
+      "axis": {
+        "orient": "top",
+        "labelAngle": 0,
+        "labelFontSize": 12,
+        "domain": false,
+        "ticks": false
+      }
     },
     "y": {
       "field": "Vaccine",
       "type": "nominal",
       "title": null,
-      "sort": {"field": "Coverage_in_2025", "op": "max", "order": "ascending"},
-      "axis": {"labelLimit": 300, "labelFontSize": 12, "domain": false, "ticks": false}
+      "sort": {
+        "field": "Coverage_in_2025",
+        "op": "max",
+        "order": "ascending"
+      },
+      "axis": {
+        "labelLimit": 300,
+        "labelFontSize": 12,
+        "domain": false,
+        "ticks": false
+      }
     },
-    "color":{
+    "color": {
       "field": "Coverage",
       "type": "quantitative",
-      "title": "Percentage of vaccinated children",
-      "scale": {"domain": [88, 97], "scheme": "blues", "clamp": true},
+      "title": "Fully immunised (%)",
+      "scale": {
+        "domain": [
+          88,
+          97
+        ],
+        "scheme": "blues",
+        "clamp": true
+      },
       "legend": {
-            "orient": "bottom",
-            "direction": "horizontal",
-            "gradientLength": 220,
-            "values": [88, 90, 92, 94, 96]
-          }
-    },"tooltip": [
-          {"field": "Vaccine", "type": "nominal"},
-          {"field": "Year", "type": "ordinal"},
-          {"field": "Coverage", "type": "quantitative", "title": "Percentage of vaccinated children (%)"}
-        ] 
+        "orient": "bottom",
+        "direction": "horizontal",
+        "gradientLength": 220,
+        "values": [
+          88,
+          90,
+          92,
+          94,
+          96
+        ]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "Vaccine",
+        "type": "nominal"
+      },
+      {
+        "field": "Year",
+        "type": "ordinal"
+      },
+      {
+        "field": "Coverage",
+        "type": "quantitative",
+        "title": "Percentage of vaccinated children (%)"
+      }
+    ]
   }
 }

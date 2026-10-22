@@ -1,0 +1,240 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Grouped adjacency matrix: which serious outcomes each vaccine-preventable disease can lead to.",
+  "title": {
+    "text": "Every one of these diseases can kill, and most can cause pneumonia or brain damage",
+    "subtitle": [
+      "A tick means the disease can lead to that outcome. Outcomes are grouped by part of the body.",
+      "Diseases are in the same order as the spending chart, from highest to lowest spending. Hover over a tick for details."
+    ],
+    "anchor": "start",
+    "offset": 14
+  },
+  "data": {
+    "url": "data/disease_outcome_matrix.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "facet": {
+    "row": {
+      "field": "group",
+      "type": "nominal",
+      "sort": [
+        "Lungs and breathing",
+        "Brain and nerves",
+        "Rest of the body",
+        "Death"
+      ],
+      "title": null,
+      "header": {
+        "labelAngle": 0,
+        "labelOrient": "top",
+        "labelAnchor": "start",
+        "labelAlign": "left",
+        "labelFontSize": 13,
+        "labelFontWeight": "bold",
+        "labelColor": "#12304f",
+        "labelPadding": 4
+      }
+    }
+  },
+  "spacing": 14,
+  "resolve": {
+    "scale": {
+      "y": "independent"
+    }
+  },
+  "spec": {
+    "width": {
+      "step": 96
+    },
+    "height": {
+      "step": 34
+    },
+    "layer": [
+      {
+        "mark": {
+          "type": "rect",
+          "stroke": "#ffffff",
+          "strokeWidth": 3,
+          "cornerRadius": 4
+        },
+        "encoding": {
+          "x": {
+            "field": "disease_short",
+            "type": "nominal",
+            "sort": [
+              "Pneumococcal",
+              "Hib",
+              "Whooping cough",
+              "Chickenpox",
+              "Rotavirus",
+              "Meningococcal",
+              "Measles",
+              "Diphtheria"
+            ],
+            "title": null,
+            "axis": {
+              "orient": "top",
+              "labelAngle": 0,
+              "labelFontSize": 12,
+              "labelFontWeight": "bold",
+              "labelColor": "#1a1a19",
+              "domain": false,
+              "ticks": false,
+              "labelPadding": 6
+            }
+          },
+          "y": {
+            "field": "outcome",
+            "type": "nominal",
+            "sort": [
+              "Pneumonia (lung infection)",
+              "Blocked airway or stopped breathing",
+              "Meningitis",
+              "Brain damage",
+              "Seizures",
+              "Blood infection (sepsis)",
+              "Ear infection or deafness",
+              "Skin, joint or limb damage",
+              "Severe diarrhoea or dehydration",
+              "Heart or nerve damage",
+              "Death"
+            ],
+            "title": null,
+            "axis": {
+              "labelFontSize": 12,
+              "labelLimit": 260,
+              "domain": false,
+              "ticks": false,
+              "labelPadding": 8
+            }
+          },
+          "color": {
+            "field": "kind",
+            "type": "nominal",
+            "legend": null,
+            "scale": {
+              "domain": [
+                "Complication",
+                "Death",
+                "None"
+              ],
+              "range": [
+                "#fbe1df",
+                "#dfe4ea",
+                "#f6f5f1"
+              ]
+            }
+          },
+          "tooltip": [
+            {
+              "field": "disease",
+              "type": "nominal",
+              "title": "Disease"
+            },
+            {
+              "field": "outcome",
+              "type": "nominal",
+              "title": "Outcome"
+            },
+            {
+              "field": "detail",
+              "type": "nominal",
+              "title": "Detail"
+            },
+            {
+              "field": "source",
+              "type": "nominal",
+              "title": "Source"
+            }
+          ]
+        }
+      },
+      {
+        "transform": [
+          {
+            "filter": "datum.linked == 'Yes'"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "text": "✓",
+          "fontSize": 18,
+          "fontWeight": "bold"
+        },
+        "encoding": {
+          "x": {
+            "field": "disease_short",
+            "type": "nominal",
+            "sort": [
+              "Pneumococcal",
+              "Hib",
+              "Whooping cough",
+              "Chickenpox",
+              "Rotavirus",
+              "Meningococcal",
+              "Measles",
+              "Diphtheria"
+            ]
+          },
+          "y": {
+            "field": "outcome",
+            "type": "nominal",
+            "sort": [
+              "Pneumonia (lung infection)",
+              "Blocked airway or stopped breathing",
+              "Meningitis",
+              "Brain damage",
+              "Seizures",
+              "Blood infection (sepsis)",
+              "Ear infection or deafness",
+              "Skin, joint or limb damage",
+              "Severe diarrhoea or dehydration",
+              "Heart or nerve damage",
+              "Death"
+            ]
+          },
+          "color": {
+            "condition": {
+              "test": "datum.outcome == 'Death'",
+              "value": "#12304f"
+            },
+            "value": "#c4161c"
+          },
+          "tooltip": [
+            {
+              "field": "disease",
+              "type": "nominal",
+              "title": "Disease"
+            },
+            {
+              "field": "outcome",
+              "type": "nominal",
+              "title": "Outcome"
+            },
+            {
+              "field": "detail",
+              "type": "nominal",
+              "title": "Detail"
+            },
+            {
+              "field": "source",
+              "type": "nominal",
+              "title": "Source"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#333333"
+    }
+  }
+}

@@ -1,19 +1,16 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Vaccines Pushed Measles to the Edge",
+    "text": "Measles cases fell sharply as vaccination expanded",
     "subtitle": "Measles cases reported in Australia each year, by age group",
-    "anchor": "start",
-    "fontSize": 25,
-    "font": "san-serif",
-    "subtitlePadding": 15
+    "anchor": "start"
   },
-  "width": 900,
-  "height": 320,
+  "width": 650,
+  "height": 300,
   "layer": [
     {
       "data": {
-        "url": "../data/section12_measles_notifications.csv",
+        "url": "data/section12_measles_notifications.csv",
         "format": {
           "type": "csv",
           "parse": {
@@ -74,7 +71,11 @@
               "5 to 14",
               "15 and over"
             ],
-            "range": ["#247C91","#7957A6","#D65A50"]
+            "range": [
+              "#247C91",
+              "#7957A6",
+              "#D65A50"
+            ]
           },
           "sort": [
             "Under 5",
@@ -130,17 +131,20 @@
           {
             "x": 2014,
             "y": 350,
-            "y2": 1500,
+            "y2": 2300,
             "label": [
               "2014: WHO confirms",
-              "measles eliminated in Australia"
+              "measles eliminated"
             ]
           },
           {
             "x": 2019,
             "y": 290,
-            "y2": 900,
-            "label": "2019: 284 cases"
+            "y2": 1100,
+            "label": [
+              "2019:",
+              "284 cases"
+            ]
           }
         ]
       },

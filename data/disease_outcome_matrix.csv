@@ -1,89 +1,89 @@
-disease,outcome,linked,kind,detail,source
-Meningococcal disease,Pneumonia (lung infection),Yes,Complication,Less common presentation,Immunisation Handbook
-Meningococcal disease,Brain damage,Yes,Complication,Neurological deficits in some survivors,Immunisation Handbook
-Meningococcal disease,Meningitis,Yes,Complication,Usually appears as meningitis and/or septicaemia,Immunisation Handbook
-Meningococcal disease,Blocked airway or stopped breathing,No,None,Not listed as a serious outcome in the source,–
-Meningococcal disease,Ear infection or deafness,Yes,Complication,Deafness in some survivors,Immunisation Handbook
-Meningococcal disease,"Skin, joint or limb damage",Yes,Complication,Limb deformity and skin scarring; 30–40% of survivors have lasting effects,Immunisation Handbook
-Meningococcal disease,Blood infection (sepsis),Yes,Complication,Septicaemia can be especially severe,Immunisation Handbook
-Meningococcal disease,Severe diarrhoea or dehydration,No,None,Not listed as a serious outcome in the source,–
-Meningococcal disease,Seizures,No,None,Not listed as a serious outcome in the source,–
-Meningococcal disease,Heart or nerve damage,No,None,Not listed as a serious outcome in the source,–
-Meningococcal disease,Death,Yes,Death,5–10% of cases die even with antibiotics,Immunisation Handbook
-Hib,Pneumonia (lung infection),Yes,Complication,Hib can cause pneumonia,Immunisation Handbook
-Hib,Brain damage,Yes,Complication,Up to 30% of survivors have permanent nerve or brain damage,Immunisation Handbook
-Hib,Meningitis,Yes,Complication,Hib can cause meningitis,Immunisation Handbook
-Hib,Blocked airway or stopped breathing,Yes,Complication,Epiglottitis (swelling that blocks the airway),Immunisation Handbook
-Hib,Ear infection or deafness,No,None,Not listed as a serious outcome in the source,–
-Hib,"Skin, joint or limb damage",Yes,Complication,Septic arthritis (joint infection) and cellulitis (skin infection),Immunisation Handbook
-Hib,Blood infection (sepsis),No,None,Not listed as a serious outcome in the source,–
-Hib,Severe diarrhoea or dehydration,No,None,Not listed as a serious outcome in the source,–
-Hib,Seizures,No,None,Not listed as a serious outcome in the source,–
-Hib,Heart or nerve damage,No,None,Not listed as a serious outcome in the source,–
-Hib,Death,Yes,Death,3–6% of Hib meningitis cases die,Immunisation Handbook
-Pneumococcal disease,Pneumonia (lung infection),Yes,Complication,Pneumonia is one of the main forms of serious pneumococcal disease,AIHW
-Pneumococcal disease,Brain damage,No,None,Not listed as a serious outcome in the source,–
-Pneumococcal disease,Meningitis,Yes,Complication,Can infect the lining of the brain (meningitis),AIHW
-Pneumococcal disease,Blocked airway or stopped breathing,No,None,Not listed as a serious outcome in the source,–
-Pneumococcal disease,Ear infection or deafness,Yes,Complication,Can cause infections of the inner ear,AIHW
-Pneumococcal disease,"Skin, joint or limb damage",No,None,Not listed as a serious outcome in the source,–
-Pneumococcal disease,Blood infection (sepsis),Yes,Complication,Can cause bloodstream infection,AIHW
-Pneumococcal disease,Severe diarrhoea or dehydration,No,None,Not listed as a serious outcome in the source,–
-Pneumococcal disease,Seizures,No,None,Not listed as a serious outcome in the source,–
-Pneumococcal disease,Heart or nerve damage,No,None,Not listed as a serious outcome in the source,–
-Pneumococcal disease,Death,Yes,Death,23 deaths in Australia in 2022,AIHW
-Whooping cough,Pneumonia (lung infection),Yes,Complication,A complication in infants,Immunisation Handbook
-Whooping cough,Brain damage,Yes,Complication,Brain damage from lack of oxygen (hypoxic encephalopathy) in infants,Immunisation Handbook
-Whooping cough,Meningitis,No,None,Not listed as a serious outcome in the source,–
-Whooping cough,Blocked airway or stopped breathing,Yes,Complication,Very young babies may stop breathing (apnoea),Immunisation Handbook
-Whooping cough,Ear infection or deafness,No,None,Not listed as a serious outcome in the source,–
-Whooping cough,"Skin, joint or limb damage",No,None,Not listed as a serious outcome in the source,–
-Whooping cough,Blood infection (sepsis),No,None,Not listed as a serious outcome in the source,–
-Whooping cough,Severe diarrhoea or dehydration,No,None,Not listed as a serious outcome in the source,–
-Whooping cough,Seizures,Yes,Complication,A complication in infants,Immunisation Handbook
-Whooping cough,Heart or nerve damage,No,None,Not listed as a serious outcome in the source,–
-Whooping cough,Death,Yes,Death,0.8% of unvaccinated babies under 6 months die,Immunisation Handbook
-Measles,Pneumonia (lung infection),Yes,Complication,Pneumonia in about 6% of cases,Immunisation Handbook
-Measles,Brain damage,Yes,Complication,Brain inflammation (encephalitis) in 1 in 1000 cases; a rare fatal brain disease (SSPE) can appear years later,Immunisation Handbook
-Measles,Meningitis,No,None,Not listed as a serious outcome in the source,–
-Measles,Blocked airway or stopped breathing,No,None,Not listed as a serious outcome in the source,–
-Measles,Ear infection or deafness,Yes,Complication,Ear infection in about 9% of cases,Immunisation Handbook
-Measles,"Skin, joint or limb damage",No,None,Not listed as a serious outcome in the source,–
-Measles,Blood infection (sepsis),No,None,Not listed as a serious outcome in the source,–
-Measles,Severe diarrhoea or dehydration,Yes,Complication,Diarrhoea in about 8% of cases,Immunisation Handbook
-Measles,Seizures,No,None,Not listed as a serious outcome in the source,–
-Measles,Heart or nerve damage,No,None,Not listed as a serious outcome in the source,–
-Measles,Death,Yes,Death,10–15% of people with measles encephalitis die,Immunisation Handbook
-Chickenpox,Pneumonia (lung infection),Yes,Complication,Chickenpox can cause pneumonia,Immunisation Handbook
-Chickenpox,Brain damage,Yes,Complication,Brain inflammation (encephalitis) in about 1 in 100000 cases,Immunisation Handbook
-Chickenpox,Meningitis,Yes,Complication,Aseptic meningitis,Immunisation Handbook
-Chickenpox,Blocked airway or stopped breathing,No,None,Not listed as a serious outcome in the source,–
-Chickenpox,Ear infection or deafness,No,None,Not listed as a serious outcome in the source,–
-Chickenpox,"Skin, joint or limb damage",Yes,Complication,Bacterial skin infection,Immunisation Handbook
-Chickenpox,Blood infection (sepsis),No,None,Not listed as a serious outcome in the source,–
-Chickenpox,Severe diarrhoea or dehydration,No,None,Not listed as a serious outcome in the source,–
-Chickenpox,Seizures,No,None,Not listed as a serious outcome in the source,–
-Chickenpox,Heart or nerve damage,No,None,Not listed as a serious outcome in the source,–
-Chickenpox,Death,Yes,Death,7 deaths in Australia in 2022,AIHW
-Diphtheria,Pneumonia (lung infection),No,None,Not listed as a serious outcome in the source,–
-Diphtheria,Brain damage,No,None,Not listed as a serious outcome in the source,–
-Diphtheria,Meningitis,No,None,Not listed as a serious outcome in the source,–
-Diphtheria,Blocked airway or stopped breathing,Yes,Complication,A membrane in the throat can block the airway,Immunisation Handbook
-Diphtheria,Ear infection or deafness,No,None,Not listed as a serious outcome in the source,–
-Diphtheria,"Skin, joint or limb damage",No,None,Not listed as a serious outcome in the source,–
-Diphtheria,Blood infection (sepsis),No,None,Not listed as a serious outcome in the source,–
-Diphtheria,Severe diarrhoea or dehydration,No,None,Not listed as a serious outcome in the source,–
-Diphtheria,Seizures,No,None,Not listed as a serious outcome in the source,–
-Diphtheria,Heart or nerve damage,Yes,Complication,Heart inflammation (myocarditis) and nerve damage (neuritis),Immunisation Handbook
-Diphtheria,Death,Yes,Death,Up to 16% of cases have died in the past 30 years,Immunisation Handbook
-Rotavirus,Pneumonia (lung infection),No,None,Not listed as a serious outcome in the source,–
-Rotavirus,Brain damage,No,None,Not listed as a serious outcome in the source,–
-Rotavirus,Meningitis,No,None,Not listed as a serious outcome in the source,–
-Rotavirus,Blocked airway or stopped breathing,No,None,Not listed as a serious outcome in the source,–
-Rotavirus,Ear infection or deafness,No,None,Not listed as a serious outcome in the source,–
-Rotavirus,"Skin, joint or limb damage",No,None,Not listed as a serious outcome in the source,–
-Rotavirus,Blood infection (sepsis),No,None,Not listed as a serious outcome in the source,–
-Rotavirus,Severe diarrhoea or dehydration,Yes,Complication,"Severe dehydrating diarrhoea with vomiting, which can lead to shock",Immunisation Handbook
-Rotavirus,Seizures,No,None,Not listed as a serious outcome in the source,–
-Rotavirus,Heart or nerve damage,No,None,Not listed as a serious outcome in the source,–
-Rotavirus,Death,Yes,Death,About 2 deaths a year in Australia before the vaccine,Immunisation Handbook
+disease,outcome,linked,kind,detail,source,group,disease_short
+Meningococcal disease,Pneumonia (lung infection),Yes,Complication,Less common presentation,Immunisation Handbook,Lungs and breathing,Meningococcal
+Meningococcal disease,Brain damage,Yes,Complication,Neurological deficits in some survivors,Immunisation Handbook,Brain and nerves,Meningococcal
+Meningococcal disease,Meningitis,Yes,Complication,Usually appears as meningitis and/or septicaemia,Immunisation Handbook,Brain and nerves,Meningococcal
+Meningococcal disease,Blocked airway or stopped breathing,No,None,Not listed as a serious outcome in the source,–,Lungs and breathing,Meningococcal
+Meningococcal disease,Ear infection or deafness,Yes,Complication,Deafness in some survivors,Immunisation Handbook,Rest of the body,Meningococcal
+Meningococcal disease,"Skin, joint or limb damage",Yes,Complication,Limb deformity and skin scarring; 30–40% of survivors have lasting effects,Immunisation Handbook,Rest of the body,Meningococcal
+Meningococcal disease,Blood infection (sepsis),Yes,Complication,Septicaemia can be especially severe,Immunisation Handbook,Rest of the body,Meningococcal
+Meningococcal disease,Severe diarrhoea or dehydration,No,None,Not listed as a serious outcome in the source,–,Rest of the body,Meningococcal
+Meningococcal disease,Seizures,No,None,Not listed as a serious outcome in the source,–,Brain and nerves,Meningococcal
+Meningococcal disease,Heart or nerve damage,No,None,Not listed as a serious outcome in the source,–,Rest of the body,Meningococcal
+Meningococcal disease,Death,Yes,Death,5–10% of cases die even with antibiotics,Immunisation Handbook,Death,Meningococcal
+Hib,Pneumonia (lung infection),Yes,Complication,Hib can cause pneumonia,Immunisation Handbook,Lungs and breathing,Hib
+Hib,Brain damage,Yes,Complication,Up to 30% of survivors have permanent nerve or brain damage,Immunisation Handbook,Brain and nerves,Hib
+Hib,Meningitis,Yes,Complication,Hib can cause meningitis,Immunisation Handbook,Brain and nerves,Hib
+Hib,Blocked airway or stopped breathing,Yes,Complication,Epiglottitis (swelling that blocks the airway),Immunisation Handbook,Lungs and breathing,Hib
+Hib,Ear infection or deafness,No,None,Not listed as a serious outcome in the source,–,Rest of the body,Hib
+Hib,"Skin, joint or limb damage",Yes,Complication,Septic arthritis (joint infection) and cellulitis (skin infection),Immunisation Handbook,Rest of the body,Hib
+Hib,Blood infection (sepsis),No,None,Not listed as a serious outcome in the source,–,Rest of the body,Hib
+Hib,Severe diarrhoea or dehydration,No,None,Not listed as a serious outcome in the source,–,Rest of the body,Hib
+Hib,Seizures,No,None,Not listed as a serious outcome in the source,–,Brain and nerves,Hib
+Hib,Heart or nerve damage,No,None,Not listed as a serious outcome in the source,–,Rest of the body,Hib
+Hib,Death,Yes,Death,3–6% of Hib meningitis cases die,Immunisation Handbook,Death,Hib
+Pneumococcal disease,Pneumonia (lung infection),Yes,Complication,Pneumonia is one of the main forms of serious pneumococcal disease,AIHW,Lungs and breathing,Pneumococcal
+Pneumococcal disease,Brain damage,No,None,Not listed as a serious outcome in the source,–,Brain and nerves,Pneumococcal
+Pneumococcal disease,Meningitis,Yes,Complication,Can infect the lining of the brain (meningitis),AIHW,Brain and nerves,Pneumococcal
+Pneumococcal disease,Blocked airway or stopped breathing,No,None,Not listed as a serious outcome in the source,–,Lungs and breathing,Pneumococcal
+Pneumococcal disease,Ear infection or deafness,Yes,Complication,Can cause infections of the inner ear,AIHW,Rest of the body,Pneumococcal
+Pneumococcal disease,"Skin, joint or limb damage",No,None,Not listed as a serious outcome in the source,–,Rest of the body,Pneumococcal
+Pneumococcal disease,Blood infection (sepsis),Yes,Complication,Can cause bloodstream infection,AIHW,Rest of the body,Pneumococcal
+Pneumococcal disease,Severe diarrhoea or dehydration,No,None,Not listed as a serious outcome in the source,–,Rest of the body,Pneumococcal
+Pneumococcal disease,Seizures,No,None,Not listed as a serious outcome in the source,–,Brain and nerves,Pneumococcal
+Pneumococcal disease,Heart or nerve damage,No,None,Not listed as a serious outcome in the source,–,Rest of the body,Pneumococcal
+Pneumococcal disease,Death,Yes,Death,23 deaths in Australia in 2022,AIHW,Death,Pneumococcal
+Whooping cough,Pneumonia (lung infection),Yes,Complication,A complication in infants,Immunisation Handbook,Lungs and breathing,Whooping cough
+Whooping cough,Brain damage,Yes,Complication,Brain damage from lack of oxygen (hypoxic encephalopathy) in infants,Immunisation Handbook,Brain and nerves,Whooping cough
+Whooping cough,Meningitis,No,None,Not listed as a serious outcome in the source,–,Brain and nerves,Whooping cough
+Whooping cough,Blocked airway or stopped breathing,Yes,Complication,Very young babies may stop breathing (apnoea),Immunisation Handbook,Lungs and breathing,Whooping cough
+Whooping cough,Ear infection or deafness,No,None,Not listed as a serious outcome in the source,–,Rest of the body,Whooping cough
+Whooping cough,"Skin, joint or limb damage",No,None,Not listed as a serious outcome in the source,–,Rest of the body,Whooping cough
+Whooping cough,Blood infection (sepsis),No,None,Not listed as a serious outcome in the source,–,Rest of the body,Whooping cough
+Whooping cough,Severe diarrhoea or dehydration,No,None,Not listed as a serious outcome in the source,–,Rest of the body,Whooping cough
+Whooping cough,Seizures,Yes,Complication,A complication in infants,Immunisation Handbook,Brain and nerves,Whooping cough
+Whooping cough,Heart or nerve damage,No,None,Not listed as a serious outcome in the source,–,Rest of the body,Whooping cough
+Whooping cough,Death,Yes,Death,0.8% of unvaccinated babies under 6 months die,Immunisation Handbook,Death,Whooping cough
+Measles,Pneumonia (lung infection),Yes,Complication,Pneumonia in about 6% of cases,Immunisation Handbook,Lungs and breathing,Measles
+Measles,Brain damage,Yes,Complication,Brain inflammation (encephalitis) in 1 in 1000 cases; a rare fatal brain disease (SSPE) can appear years later,Immunisation Handbook,Brain and nerves,Measles
+Measles,Meningitis,No,None,Not listed as a serious outcome in the source,–,Brain and nerves,Measles
+Measles,Blocked airway or stopped breathing,No,None,Not listed as a serious outcome in the source,–,Lungs and breathing,Measles
+Measles,Ear infection or deafness,Yes,Complication,Ear infection in about 9% of cases,Immunisation Handbook,Rest of the body,Measles
+Measles,"Skin, joint or limb damage",No,None,Not listed as a serious outcome in the source,–,Rest of the body,Measles
+Measles,Blood infection (sepsis),No,None,Not listed as a serious outcome in the source,–,Rest of the body,Measles
+Measles,Severe diarrhoea or dehydration,Yes,Complication,Diarrhoea in about 8% of cases,Immunisation Handbook,Rest of the body,Measles
+Measles,Seizures,No,None,Not listed as a serious outcome in the source,–,Brain and nerves,Measles
+Measles,Heart or nerve damage,No,None,Not listed as a serious outcome in the source,–,Rest of the body,Measles
+Measles,Death,Yes,Death,10–15% of people with measles encephalitis die,Immunisation Handbook,Death,Measles
+Chickenpox,Pneumonia (lung infection),Yes,Complication,Chickenpox can cause pneumonia,Immunisation Handbook,Lungs and breathing,Chickenpox
+Chickenpox,Brain damage,Yes,Complication,Brain inflammation (encephalitis) in about 1 in 100000 cases,Immunisation Handbook,Brain and nerves,Chickenpox
+Chickenpox,Meningitis,Yes,Complication,Aseptic meningitis,Immunisation Handbook,Brain and nerves,Chickenpox
+Chickenpox,Blocked airway or stopped breathing,No,None,Not listed as a serious outcome in the source,–,Lungs and breathing,Chickenpox
+Chickenpox,Ear infection or deafness,No,None,Not listed as a serious outcome in the source,–,Rest of the body,Chickenpox
+Chickenpox,"Skin, joint or limb damage",Yes,Complication,Bacterial skin infection,Immunisation Handbook,Rest of the body,Chickenpox
+Chickenpox,Blood infection (sepsis),No,None,Not listed as a serious outcome in the source,–,Rest of the body,Chickenpox
+Chickenpox,Severe diarrhoea or dehydration,No,None,Not listed as a serious outcome in the source,–,Rest of the body,Chickenpox
+Chickenpox,Seizures,No,None,Not listed as a serious outcome in the source,–,Brain and nerves,Chickenpox
+Chickenpox,Heart or nerve damage,No,None,Not listed as a serious outcome in the source,–,Rest of the body,Chickenpox
+Chickenpox,Death,Yes,Death,7 deaths in Australia in 2022,AIHW,Death,Chickenpox
+Diphtheria,Pneumonia (lung infection),No,None,Not listed as a serious outcome in the source,–,Lungs and breathing,Diphtheria
+Diphtheria,Brain damage,No,None,Not listed as a serious outcome in the source,–,Brain and nerves,Diphtheria
+Diphtheria,Meningitis,No,None,Not listed as a serious outcome in the source,–,Brain and nerves,Diphtheria
+Diphtheria,Blocked airway or stopped breathing,Yes,Complication,A membrane in the throat can block the airway,Immunisation Handbook,Lungs and breathing,Diphtheria
+Diphtheria,Ear infection or deafness,No,None,Not listed as a serious outcome in the source,–,Rest of the body,Diphtheria
+Diphtheria,"Skin, joint or limb damage",No,None,Not listed as a serious outcome in the source,–,Rest of the body,Diphtheria
+Diphtheria,Blood infection (sepsis),No,None,Not listed as a serious outcome in the source,–,Rest of the body,Diphtheria
+Diphtheria,Severe diarrhoea or dehydration,No,None,Not listed as a serious outcome in the source,–,Rest of the body,Diphtheria
+Diphtheria,Seizures,No,None,Not listed as a serious outcome in the source,–,Brain and nerves,Diphtheria
+Diphtheria,Heart or nerve damage,Yes,Complication,Heart inflammation (myocarditis) and nerve damage (neuritis),Immunisation Handbook,Rest of the body,Diphtheria
+Diphtheria,Death,Yes,Death,Up to 16% of cases have died in the past 30 years,Immunisation Handbook,Death,Diphtheria
+Rotavirus,Pneumonia (lung infection),No,None,Not listed as a serious outcome in the source,–,Lungs and breathing,Rotavirus
+Rotavirus,Brain damage,No,None,Not listed as a serious outcome in the source,–,Brain and nerves,Rotavirus
+Rotavirus,Meningitis,No,None,Not listed as a serious outcome in the source,–,Brain and nerves,Rotavirus
+Rotavirus,Blocked airway or stopped breathing,No,None,Not listed as a serious outcome in the source,–,Lungs and breathing,Rotavirus
+Rotavirus,Ear infection or deafness,No,None,Not listed as a serious outcome in the source,–,Rest of the body,Rotavirus
+Rotavirus,"Skin, joint or limb damage",No,None,Not listed as a serious outcome in the source,–,Rest of the body,Rotavirus
+Rotavirus,Blood infection (sepsis),No,None,Not listed as a serious outcome in the source,–,Rest of the body,Rotavirus
+Rotavirus,Severe diarrhoea or dehydration,Yes,Complication,"Severe dehydrating diarrhoea with vomiting, which can lead to shock",Immunisation Handbook,Rest of the body,Rotavirus
+Rotavirus,Seizures,No,None,Not listed as a serious outcome in the source,–,Brain and nerves,Rotavirus
+Rotavirus,Heart or nerve damage,No,None,Not listed as a serious outcome in the source,–,Rest of the body,Rotavirus
+Rotavirus,Death,Yes,Death,About 2 deaths a year in Australia before the vaccine,Immunisation Handbook,Death,Rotavirus

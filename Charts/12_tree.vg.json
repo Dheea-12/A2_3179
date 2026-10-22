@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "Node-link tree: vaccine-preventable diseases, sized by cases reported, each branching to its health spending.",
-  "width": 960,
+  "width": 900,
   "height": 520,
   "padding": {
     "left": 10,
@@ -10,14 +10,12 @@
     "bottom": 10
   },
   "title": {
-    "text": "Health spending depends on diseases ",
+    "text": "Pneumococcal disease costs the most to treat, though whooping cough is far more common",
     "subtitle": [
-      "Circle size = cases reported in 2024. Each disease branches to its health spending in 2018–19. Australia, all ages.",
-      "Diseases are ordered from highest to lowest health spending."
+      "Circle size = cases reported in 2024. Bars = health spending in 2023–24 (July 2023 to June 2024). Australia, all ages.",
+      "Diseases are ordered from highest to lowest spending. Hib spending may include other Haemophilus influenzae infections."
     ],
     "anchor": "start",
-    "fontSize": 25,
-    "font":"sans-serif",
     "offset": 12
   },
   "signals": [
@@ -45,7 +43,7 @@
     },
     {
       "name": "tree",
-      "url": "../data/burden_tree.csv",
+      "url": "data/burden_tree.csv",
       "format": {
         "type": "csv",
         "parse": {

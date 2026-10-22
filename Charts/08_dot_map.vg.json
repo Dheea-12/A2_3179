@@ -6,19 +6,24 @@
       "Children not fully immunised. Each dot = 20 children, placed at random inside their local area (SA3), not at real addresses.",
       "Choose a map centre, then drag the Zoom slider to look closer. Hover a dot for details."
     ],
-    "anchor": "start",
-    "fontSize": 20,
-    "font": "Inter, sans-serif"
+    "anchor": "start"
   },
-  "width": 760,
-  "height": 560,
+  "width": 900,
+  "height": 540,
   "params": [
     {
       "name": "Year_selection",
       "value": "2016-17",
       "bind": {
         "input": "select",
-        "options": ["2011-12","2012-13","2013-14","2014-15","2015-16","2016-17"],
+        "options": [
+          "2011-12",
+          "2012-13",
+          "2013-14",
+          "2014-15",
+          "2015-16",
+          "2016-17"
+        ],
         "name": "Year: "
       }
     },
@@ -55,14 +60,38 @@
       "bind": {
         "input": "select",
         "options": [
-          [2,-27.5],
-          [19.0,-33.85],
-          [13.0,-37.85],
-          [21.0,-27.55],
-          [-16.1,-32.0],
-          [6.6,-34.9],
-          [-1.2,-12.5],
-          [15.0,-42.0]
+          [
+            2,
+            -27.5
+          ],
+          [
+            19.0,
+            -33.85
+          ],
+          [
+            13.0,
+            -37.85
+          ],
+          [
+            21.0,
+            -27.55
+          ],
+          [
+            -16.1,
+            -32.0
+          ],
+          [
+            6.6,
+            -34.9
+          ],
+          [
+            -1.2,
+            -12.5
+          ],
+          [
+            15.0,
+            -42.0
+          ]
         ],
         "labels": [
           "All of Australia",
@@ -80,8 +109,13 @@
   ],
   "projection": {
     "type": "conicEqualArea",
-    "parallels": [-18,-36],
-    "rotate": [-132,0
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -132,
+      0
     ],
     "center": {
       "expr": "center_to"
@@ -90,14 +124,14 @@
       "expr": "zoom_level"
     },
     "translate": [
-      380,
-      280
+      450,
+      270
     ]
   },
   "layer": [
     {
       "data": {
-        "url": "../data/sa3_boundaries.topojson",
+        "url": "data/sa3_boundaries.topojson",
         "format": {
           "type": "topojson",
           "feature": "sa3"

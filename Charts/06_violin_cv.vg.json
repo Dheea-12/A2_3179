@@ -5,10 +5,9 @@
     "text": "Most local areas fall short of the 95% target, and age 2 is furthest behind",
     "subtitle": [
       "Each shape shows how coverage is spread across Australia's 325 local areas (SA3). Taller = more areas at that level.",
-      "Black line = middle area (median). Dashed line = 95% target. "
+      "Black line = middle area (median). Dashed line = 95% target."
     ],
     "anchor": "start",
-    "fontSize": 20,
     "offset": 12
   },
   "params": [
@@ -30,7 +29,7 @@
     }
   ],
   "data": {
-    "url": "../data/sa3_dots.csv",
+    "url": "data/sa3_dots.csv",
     "format": {
       "type": "csv",
       "parse": {
@@ -47,8 +46,12 @@
     "row": {
       "field": "Age_group",
       "type": "nominal",
-      "sort": ["1 year","2 years","5 years"],
-      "title": "Age group",
+      "sort": [
+        "1 year",
+        "2 years",
+        "5 years"
+      ],
+      "title": null,
       "header": {
         "labelAngle": 0,
         "labelOrient": "left",
@@ -59,10 +62,10 @@
       }
     }
   },
-  "spacing":-5,
+  "spacing": 6,
   "spec": {
-    "width": 700,
-    "height": 90,
+    "width": 820,
+    "height": 95,
     "layer": [
       {
         "transform": [
@@ -74,7 +77,10 @@
             "extent": [75,100],
             "bandwidth": 0.7,
             "steps": 120,
-            "as": ["value","density"]
+            "as": [
+              "value",
+              "density"
+            ]
           }
         ],
         "mark": {
@@ -88,7 +94,9 @@
             "type": "quantitative",
             "title": "Fully immunised children in each local area (%)",
             "scale": {
-              "domain": [75,100
+              "domain": [
+                75,
+                100
               ],
               "nice": false
             },
@@ -123,32 +131,39 @@
           }
         }
       },
-    
       {
-         "transform": [
+        "transform": [
           {
-            "calculate": "datum.Percent >= 95 ? 1 : 0","as": "met"
+            "calculate": "datum.Percent >= 95 ? 1 : 0",
+            "as": "met"
           },
           {
             "aggregate": [
               {
-                "op": "sum","field": "met","as": "areas_met"
+                "op": "sum",
+                "field": "met",
+                "as": "areas_met"
               },
               {
-                "op": "count","as": "areas"
+                "op": "count",
+                "as": "areas"
               }
             ],
-            "groupby": ["Age_group"]
+            "groupby": [
+              "Age_group"
+            ]
           },
           {
             "calculate": " datum.areas_met + ' of ' + datum.areas ",
             "as": "label"
           }
         ],
-
         "mark": {
           "type": "rule",
-          "strokeDash": [3,4],
+          "strokeDash": [
+            3,
+            4
+          ],
           "color": "#555555",
           "strokeWidth": 3
         },
@@ -156,20 +171,19 @@
           "x": {
             "datum": 95
           },
-          "tooltip" : [
+          "tooltip": [
             {
-                "field":"Age_group",
-                "type":"nominal",
-                "title" :"Age"
+              "field": "Age_group",
+              "type": "nominal",
+              "title": "Age"
             },
             {
-                "field": "label",
-                "type": "nominal",
-                "title": "Local areas at or above target"
+              "field": "label",
+              "type": "nominal",
+              "title": "Local areas at or above target"
             }
           ]
         }
-        
       },
       {
         "transform": [
@@ -191,7 +205,6 @@
           "color": "#000000",
           "strokeWidth": 2
         },
-    
         "encoding": {
           "x": {
             "field": "median",
@@ -208,38 +221,47 @@
         }
       },
       {
-        "transform":[
-            {
-    "filter": "datum.Age_group == '1 year'"
-  }
+        "transform": [
+          {
+            "aggregate": [
+              {
+                "op": "count",
+                "as": "areas"
+              }
+            ],
+            "groupby": [
+              "Age_group"
+            ]
+          },
+          {
+            "filter": "datum.Age_group == '1 year'"
+          }
         ],
-        "mark":{
-            "type": "text",
-            "align": "center",
-            "baseline": "top",
-            "dx": 5,
-            "dy": -60
+        "mark": {
+          "type": "text",
+          "align": "center",
+          "baseline": "bottom",
+          "dy": -2,
+          "fontSize": 11,
+          "color": "#555555"
         },
-        "encoding":{
-            "x":{
-                "datum":95
-            },
-            "text":{
-            "value": "target coverage (%)"
-        } 
+        "encoding": {
+          "x": {
+            "datum": 95
+          },
+          "y": {
+            "value": 0
+          },
+          "text": {
+            "value": "95% target"
+          }
         }
       }
-
     ]
   },
   "config": {
     "view": {
       "stroke": null
-    },
-    "axis": {
-      "labelColor": "#333333",
-      "titleColor": "#333333",
-      "titleFontWeight": "normal"
     }
   }
 }

@@ -20,19 +20,18 @@
 
 <body>
 
-
 <!-- ===================== HERO ===================== -->
 <header class="hero" id="top">
   <div class="wrap">
     <p class="kicker">FIT3179 Data Visualisation 2 · Child immunisation in Australia</p>
-    <h1> The Truth About Childhood Immunisation in Australia </h1>
+    <h1>The Truth About Childhood Immunisation in Australia</h1>
     <p class="lede">
       For years, Australia was one of the best-vaccinated countries in the world.
       Lately, the numbers have started to slip. This page follows the data to answer
       four questions: <strong>how far coverage has fallen</strong>, <strong>which vaccines</strong>,
       <strong>where</strong>, and <strong>how many children</strong> are missing out.
     </p>
-
+  </div>
 </header>
 
 <main>
@@ -41,34 +40,25 @@
   <section class="chapter" id="ch1">
     <div class="wrap">
       <p class="chapter-num">Chapter 1</p>
-      <h2 class="chapter-title">Vaccine has improved Australia's health story  </h2>
+      <h2 class="chapter-title">Vaccines have already changed Australia's health story</h2>
       <p class="chapter-intro">
-        Measles is one of the highly contagious disease that 
-        affected thousands of Australians in the early 1990s. 
-        After vaccination program expansion, the number of 
-        reported cases decreased significantly 
-        </p>
+        Measles is one of the most contagious diseases, and it affected thousands of
+        Australians in the early 1990s. As the vaccination program expanded, reported
+        cases fell sharply.
+      </p>
 
-     <figure class="card">
-  <span class="data-year">Data: 1991–2023</span>
-
-  <div class="vis"
-       id="vis01">
-  </div>
-
-  <figcaption class="takeaway">
-    <span class="big-num">4,555 → 284</span>
-    <span class="big-label">measles cases, 1993 vs 2019</span>
-    <p> 
-      Measles cases decrease from 4,555 in 1993 to 284
-      in 2019. In 2014, Australia was confirmed
-      to have eliminated endemic measles.
-    </p>
-  </figcaption>
-</figure>
-
-
-   
+      <figure class="card split">
+        <span class="data-year">Data: 1991–2023</span>
+        <div class="vis" id="vis01"></div>
+        <figcaption class="takeaway">
+          <span class="big-num">4,555 → 284</span>
+          <span class="big-label">measles cases, 1993 vs 2019</span>
+          <p>Measles cases fell from 4,555 in 1993 to 284 in 2019. In 2014, Australia was
+          confirmed to have eliminated endemic measles.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
 
   <!-- ===================== CHAPTER 2 ===================== -->
   <section class="chapter alt" id="ch2">
@@ -76,99 +66,97 @@
       <p class="chapter-num">Chapter 2</p>
       <h2 class="chapter-title">National coverage has fallen below the 95% target</h2>
       <p class="chapter-intro">
-        The line graph shows the national coverage from 
-        2010 to 2025 while international ranking shows
-        how Australia performs compared to other developed
-        countries
-
+        The line chart shows national coverage from 2017 to 2024, and the ranking shows
+        how Australia compares with other developed countries.
       </p>
 
-      <figure class="card">
+      <figure class="card split">
         <span class="data-year">Data: 2017–2024</span>
-  <div class="vis" id="vis02"></div>
-  <p class="howto">
-    How to read: each line is one age check. 
-    The dashed line is the 95% national target. 
-    Hover a line to highlight it.</p>
-  <figcaption class="takeaway">
-    <span class="big-num">92.1% → 89.4%</span>
-    <span class="big-label">fully immunised at 24 months, 2020 vs 2024</span>
-    <p><strong>What this shows:</strong> Coverage rose to a peak in 2020 but <strong> never reached the 95% target</strong>.
-    Since then it has fallen every year at all three ages, and <strong> age 2-year </strong> check is now below 90%.</p>
-    <p class="why"><strong>Why?</strong> NCIRS linked the fall to COVID-19 disruption, late vaccinations, access barriers and hesitancy (NCIRS, 2023).</p>
-  </figcaption>
-</figure>
+        <div class="vis" id="vis02"></div>
+        <p class="howto">How to read: each line is one age check. The dashed line is the 95%
+        national target. Hover over a line to highlight it.</p>
+        <figcaption class="takeaway">
+          <span class="big-num">92.1% → 89.4%</span>
+          <span class="big-label">fully immunised at 24 months, 2020 vs 2024</span>
+          <p><strong>What this shows:</strong> Coverage rose to a peak in 2020 but
+          <strong>never reached the 95% target</strong>. Since then it has fallen every year at
+          all three ages, and the <strong>2-year</strong> check is now below 90%.</p>
+          <p class="why"><strong>Why?</strong> NCIRS linked the fall to COVID-19 disruption, late
+          vaccinations, access barriers and hesitancy (NCIRS, 2023).</p>
+        </figcaption>
+      </figure>
 
-      <figure class="card">
+      <figure class="card split">
         <span class="data-year">Data: 2010–2025</span>
         <div class="vis" id="vis03"></div>
+        <p class="howto">How to read: each line follows one country's rank over time.</p>
         <figcaption class="takeaway">
-          <p class="why"><strong>Why is Italy #1?</strong> 
-            Since 2017, Italy has made it 
-            <strong>compulsory</strong> for<strong> school entry</strong>to have <strong> 10 vaccines </strong>,
-            which <strong>increases</strong> its coverage back up to <strong>95% </strong> (Signorelli et al., 2018).</p>
+          <!-- CHECK: make sure #2 → #4 matches your ranking chart -->
+          <span class="big-num">#2 → #4</span>
+          <span class="big-label">Australia's rank among 7 developed countries</span>
+          <p class="why"><strong>Why is Italy #1?</strong> Since 2017, Italy has made
+          <strong>10 vaccines compulsory for school entry</strong>, which brought its coverage
+          back up to <strong>95%</strong> (Signorelli et al., 2018).</p>
         </figcaption>
       </figure>
     </div>
   </section>
 
-
- <!-- ===================== CHAPTER 3 ===================== -->
+  <!-- ===================== CHAPTER 3 ===================== -->
   <section class="chapter" id="ch3">
     <div class="wrap">
       <p class="chapter-num">Chapter 3</p>
-      <h2 class="chapter-title">The Decline Goes Beyond One Vaccine</h2>
+      <h2 class="chapter-title">The decline goes beyond one vaccine</h2>
       <p class="chapter-intro">
-        The decline is not caused by just one vaccine. Coverage has fallen across
-        several vaccines at the same time.
+        The decline is not caused by just one vaccine. Coverage has fallen across several
+        vaccines at the same time.
       </p>
- 
+
       <figure class="card">
         <span class="data-year">Data: 2015–2025</span>
         <div class="vis" id="vis04"></div>
-        <figcaption class="takeaway">
-          <span class="big-num">7 of 7</span>
-          <span class="big-label">vaccines are below their peak in 2025</span>
-          <p>Almost every vaccine is lower now than at its peak. The decline is broad,
-          not limited to one vaccine.</p>
-          <p class="why"><strong>Why does rotavirus have the lowest coverage?</strong>
-          It is the only vaccine with a <strong>strict age limit </strong> where the doses must be given by
-          about<strong> 15 and 25 weeks of age </strong>, with <strong>no catch up after 6 months </strong> . If a baby misses
-          it, they can <strong>never get it</strong>, while other vaccines can be caught up at any age
-          (Australian Immunisation Handbook).</p>
+        <figcaption class="takeaway two-col">
+          <div>
+            <span class="big-num">7 of 7</span>
+            <p class="big-label">vaccines are below their peak in 2025</p>
+            <p>Every vaccine is lower now than at its peak. The decline is broad, not limited to
+            one vaccine.</p>
+          </div>
+          <p><strong>Why does rotavirus have the lowest coverage?</strong> It is the only vaccine
+          with a <strong>strict age limit</strong>: doses must be given by about
+          <strong>15 and 25 weeks of age</strong>, with <strong>no catch-up after 6 months</strong>.
+          If a baby misses it, they can never get it, while other vaccines can be caught up at any
+          age (Australian Immunisation Handbook).</p>
         </figcaption>
       </figure>
- 
-      
     </div>
   </section>
 
   <!-- ===================== CHAPTER 4 ===================== -->
-  <section class="chapter" id="ch4">
+  <section class="chapter alt" id="ch4">
     <div class="wrap">
       <p class="chapter-num">Chapter 4</p>
-      <h2 class="chapter-title">Immunisation Coverage Varies Across Ages and Regions”</h2>
+      <h2 class="chapter-title">Coverage varies across states, and within them</h2>
       <p class="chapter-intro">
-        Immunisation coverage is not the same in Australia.
-        While some states meet the 95% target, others fall behind.
-        These differences can be seen more when comparing with 
-        children aged 1, 2 and 5 years.
-
+        Immunisation coverage is not the same across Australia. The differences become clearer
+        when comparing states, local areas, and children aged 1, 2 and 5 years.
       </p>
 
       <figure class="card">
-        <span class="data-year">Data: 2012–2017</span>
+        <span class="data-year">Data: 2012–13 to 2016–17</span>
         <div class="vis" id="vis05"></div>
-        <p class="howto">How to read: Click a state to compare Aboriginal and Torres Strait Islander and non-Indigenous children.</p>
-
-        <p><strong>What this shows (map):</strong> In 2016–17, Australian Capital Territory (ACT) is the only state That
-           <p>is the only state that reached the 95% target,</p>
-           <p> and only at age 1. Every state fell furthest behind at age 2.</p>
-           <p> behind at age 2.</p>The Northern Territory (88.1%) </p>
-           <p> and Western Australia (89.9%) were lowest, and even the best state, the ACT,</p>
-           <p> state, the ACT, reached only 92.0%.</p>
-        <p><strong>What this shows (bar chart):</strong> Aboriginal and Torres Strait Islander children trailed non-Indigenous children at age 1 (91.4% vs 93.5%) and age 2 (85.7% vs 89.5%).
-           By age 5 they were ahead (94.7% vs 92.1%). Most states follow this catch-up pattern, and the age-2 gap is widest in Western Australia (83.6% vs 90.3%).</p>
+        <p class="howto">How to read: darker states have higher coverage. Choose a year and an age,
+        then click a state to compare Aboriginal and Torres Strait Islander children with
+        non-Indigenous children. The grey bars show the Australian average.</p>
+        <figcaption class="takeaway two-col">
+          <p><strong>What this shows (map):</strong> In 2016–17, only the ACT reached the 95% target,
+          and only at age 1. Every state fell furthest behind at age 2. The Northern Territory (88.1%)
+          and Western Australia (89.9%) were lowest, and even the best state, the ACT, reached only
+          92.0%.</p>
+          <p><strong>What this shows (bar chart):</strong> In the Northern Territory, Aboriginal and
+          Torres Strait Islander children trailed non-Indigenous children at age 1 (91.4% vs 93.5%)
+          and age 2 (85.7% vs 89.5%). By age 5 they were ahead (94.7% vs 92.1%). Most states follow
+          this catch-up pattern, and the age-2 gap is widest in Western Australia (83.6% vs 90.3%).</p>
         </figcaption>
       </figure>
 
@@ -191,150 +179,175 @@
           Wales reached 95%, but the state as a whole reached only 93.6%.</p>
         </figcaption>
       </figure>
-
     </div>
   </section>
 
   <!-- ===================== CHAPTER 5 ===================== -->
-  <section class="chapter alt" id="ch5">
+  <section class="chapter" id="ch5">
     <div class="wrap">
       <p class="chapter-num">Chapter 5</p>
       <h2 class="chapter-title">Behind the percentages are tens of thousands of children</h2>
       <p class="chapter-intro">
-        A few percentage points sounds small. Here's what it means in children.
+        A few percentage points sounds small. Here is what it means in children.
       </p>
 
       <figure class="card">
+        <span class="data-year">Data: 2016–17</span>
         <div class="vis" id="vis07"></div>
         <p class="howto">How to read: the width of each band shows how many children follow that path.</p>
         <figcaption class="takeaway">
-          <span class="data-year">Data: 2016–17</span>
           <span class="big-num">68,159</span>
-          <span class="big-label">children not fully immunised across three aged group in one year</span>
-          <p><strong>What this shows:</strong> Out of 938,484 registerd children  in 2016–17, <strong>68,159</strong>
-          (7.3%) were not fully immunised. That's about two-thirds of a full MCG.
-          </p>
+          <span class="big-label">children not fully immunised across three age groups in one year</span>
+          <p><strong>What this shows:</strong> Of 938,484 registered children in 2016–17,
+          <strong>68,159</strong> (7.3%) were not fully immunised. That is about two-thirds of a
+          full MCG.</p>
         </figcaption>
       </figure>
 
+      <!-- CHECK: Charts/08_dot_map.vg.json should be your SA3 dot density chart -->
       <figure class="card">
+        <span class="data-year">Data: 2016–17</span>
         <div class="vis" id="vis08"></div>
-        <p class="howto">How to read: bigger circle = more children not fully immunised. The small maps zoom in on the capital cities.</p>
+        <p class="howto">How to read: each dot is 20 children who were not fully immunised, placed at
+        random inside their local area (SA3), not at real addresses. Choose a map centre and drag the
+        Zoom slider to look closer.</p>
         <figcaption class="takeaway">
-          <span class="data-year">Data: 2016–17</span>
-          <span class="big-num">2,354</span>
-          <span class="big-label">two-year-olds not fully immunised in North Western Melbourne alone</span>
-          <p><strong>What this shows:</strong> North Western Melbourne has 2,354 two-year-olds not fully
-          immunised, about 5 times the Northern Territory's 442, even though the NT's percentage is lower.
-          Percentages show who is falling behind; numbers show where the most children need help.
-          </p>
+          <span class="big-num">433</span>
+          <span class="big-label">two-year-olds not fully immunised in Wyndham, Melbourne, almost as many as the whole Northern Territory (442)</span>
+          <p><strong>What this shows:</strong> About 28,500 two-year-olds were not fully immunised in
+          2016–17. Most dots crowd into the capital cities, especially Western Sydney and Melbourne's
+          west and north. Outside the cities, dots thin out along the coast and are scattered across
+          the outback. A sparse area is not necessarily well protected: it may simply have fewer
+          children.</p>
         </figcaption>
       </figure>
-
-      
     </div>
   </section>
 
   <!-- ===================== CHAPTER 6 ===================== -->
-  <section class="chapter" id="ch6">
+  <section class="chapter alt" id="ch6">
     <div class="wrap">
       <p class="chapter-num">Chapter 6</p>
       <h2 class="chapter-title">Vaccine-preventable diseases still carry a heavy burden</h2>
       <p class="chapter-intro">
-        Coverage numbers only matter because of what they prevent. Here are the diseases behind them:
-        how often they put children in hospital, how many cases there are, and what they cost.
+        Coverage numbers matter because of what they prevent. Here are the diseases behind them:
+        how often they put children in hospital, how many cases there are, what they cost and
+        what they can do.
       </p>
 
-     <figure class="card">
+      <figure class="card">
+        <span class="data-year">Data: 2000–2020</span>
         <div class="vis" id="vis09"></div>
-        <span class="data-year">Data: 2000-2020</span>
-        <p class="howto">How to read: each panel is one disease, with its own scale. The line shows how many children per million were admitted to hospital each year. The blue dashed line marks when a free vaccine started for all children.</p>
+        <p class="howto">How to read: each panel is one disease, with its own scale. The line shows how
+        many children per million were admitted to hospital each year. The blue dashed line marks when
+        a free vaccine started for all children.</p>
         <figcaption class="takeaway">
           <span class="big-num">−87%</span>
           <span class="big-label">rotavirus hospital admissions after the 2007 vaccine</span>
-          <p><strong>What this shows:</strong> the trends are not the same. Where a free vaccine was introduced,
-          hospital admissions fell sharply and stayed low: rotavirus by nearly 90% after 2007, chickenpox by nearly 80%
-          after 2005, and pneumococcal disease by about 75% after 2005. Whooping cough is different: it rises and
-          falls in waves, with infant admissions peaking in 2009–2011.
-          </p>
-          <p class="why"><strong>Why?</strong> Rotavirus, chickenpox and pneumococcal vaccines were added to the free National Immunisation Program in 2005–2007. Admissions fell right after each one started.</p>
+          <p><strong>What this shows:</strong> Where a free vaccine was introduced, hospital admissions
+          fell sharply and stayed low: rotavirus by nearly 90% after 2007, chickenpox by nearly 80%
+          after 2005, and pneumococcal disease by about 75% after 2005. Whooping cough is different:
+          it rises and falls in waves, with infant admissions peaking in 2009–2011.</p>
+          <p class="why"><strong>Why?</strong> Rotavirus, chickenpox and pneumococcal vaccines were added
+          to the free National Immunisation Program in 2005–2007. Admissions fell right after each one
+          started.</p>
         </figcaption>
       </figure>
-    <div class="chart-row">
+
+      <div class="chart-row">
+
+        <figure class="card">
+          <span class="data-year">Data: 2010–2024</span>
+          <div class="vis" id="vis10"></div>
+          <p class="howto">How to read: each bar is one year, split by age group. Click an age
+          group in the legend to highlight it.</p>
+          <figcaption class="takeaway">
+            <span class="big-num">57,133</span>
+            <span class="big-label">cases in 2024, a record</span>
+            <p><strong>When:</strong> Cases surged in 2024, well above the previous peak of
+            38,743 in 2011, after staying unusually low in 2020–2022.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card">
+          <span class="data-year">Data: 2024</span>
+          <div class="vis" id="vis11"></div>
+          <p class="howto">How to read: larger circles mean more cases; darker colours mean more
+          cases per 100,000 people.</p>
+          <figcaption class="takeaway">
+            <span class="big-num">13,766</span>
+            <span class="big-label">cases in New South Wales, the most of any state</span>
+            <p><strong>Where:</strong> New South Wales and Queensland (8,969) had the most cases
+            and the highest rates, about 160 per 100,000 people.</p>
+          </figcaption>
+        </figure>
+
+      </div>
+
+      <p class="chapter-intro">
+        <strong>Why the surge?</strong> It may be linked to falling immunisation coverage after
+        COVID-19, reduced exposure during COVID-19 restrictions, and the natural outbreak cycle
+        of whooping cough.
+      </p>
+
       <figure class="card">
-        <div class="vis" id="vis10"></div>
-        <span class="data-year">Data: 2010–2024</span>
-        <p class="howto">How to read: each panel is one disease, with its own scale. The line shows how many children per million were admitted to hospital each year. The blue dashed line marks when a free vaccine started for all children.</p>
-        <figcaption class="takeaway">
-          <span class="big-num">57,133</span>
-          <span class="big-label">whooping cough cases reported in Australia in 2024</span>
-          <p><strong>What this shows:</strong> Whooping cough cases surged to 57,133 in 2024,
-           exceeding the previous peak of 38,743 in 2011.
-           After remaining unusually low during 2020–2022,
-          cases rose sharply, highlighting a major resurgence
-          across Australia.
-          </p>
-          <p class="why"><strong>Why?</strong> The resurgence may be linked to decline in immunisation coverage after COVID-19,
-          reduced exposure during COVID-19 restrictions,and the natural outbreak cycles of whooping cough.
-          </p>
-        </figcaption>
-      </figure>
-    
-      <figure class="card">
-        <div class="vis" id="vis11"></div>
-        <span class="data-year">Data:2024</span>
-        <p class="howto">How to read: Each circle represents number of whooping cough cases in a state.
-          Larger circles represent more cases while darker colours indicate higher case rates per 100,00 people
-        </p>
-        <figcaption class="takeaway">
-          <span class="big-num"> 13,766 cases</span>
-          <span class="big-label"> The highest whooping cough cases is reported in NSW</span>
-          <p><strong>What this shows:</strong> New South Wales recorded the most whooping cough cases and more common relative to the population
-               , followed by Queensland (8,969).However, more reported cases do not necessarily mean a higher rate of infection, as states have different population sizes.
-          </p>
-          <p class="why"><strong>Why?</strong> The whooping cough resurgence
-          may be linked by declining vaccination coverage immunity, reduced exposure during
-          COVID-19 restrictions, and the disease's natural outbreak
-          cycles.</p>
-        </figcaption>
-      </figure>
-    </div>
-      <figure class="card">
+        <span class="data-year">Data: 2024 cases · 2023–24 spending</span>
         <div class="vis" id="vis12"></div>
-        <p class="howto">How to read: each branch is one disease. The size of the red circle shows how many cases were reported in 2024, and the blue bar on the same row shows how much was spent on that disease in 2018–19. Hover a circle or bar for details.</p>
+        <p class="howto">How to read: each branch is one disease. The size of the red circle shows how
+        many cases were reported in 2024, and the blue bar on the same row shows how much was spent on
+        that disease in 2023–24. Hover over a circle or bar for details.</p>
         <figcaption class="takeaway">
-          <span class="data-year">Data: 2024 cases | 2023–24 spending</span>
-          <span class="big-num">$68.2M<</span>
+          <span class="big-num">$68.2M</span>
           <span class="big-label">health spending on pneumococcal disease in 2023–24</span>
           <p><strong>What this shows:</strong> Pneumococcal disease had the highest health spending
-          ($68.2 million), despite recording only 2,386 cases
-          in 2024. In contrast, whooping cough recorded
-          57,102 cases but had lower spending ($28.4 million).
-          This highlights that more reported cases do not
-          necessarily correspond to higher healthcare spending.
-          </p>
-          <p class="why"><strong>Why?</strong> Healthcare spending depends on factors beyond case
-          numbers, including disease severity, hospitalisation
-          and treatment needs. Pneumococcal disease can cause
-          serious complications requiring costly medical care.
-          However, differences in reporting and the time
-          periods covered also affect comparisons</p>
+          ($68.2 million) despite only 2,386 cases in 2024. Whooping cough had 57,102 cases but lower
+          spending ($28.4 million). More cases do not necessarily mean more spending.</p>
+          <p class="why"><strong>Why?</strong> Spending depends on how severe a disease is, not just how
+          common it is. Pneumococcal disease often needs hospital care. Spending covers July 2023 to
+          June 2024, so it does not include most of the 2024 whooping cough outbreak.</p>
+        </figcaption>
+      </figure>
+
+      <!-- CHECK: needs Charts/13_disease_outcomes.vg.json and data/disease_outcome_matrix.csv -->
+      <figure class="card">
+        <span class="data-year">Source: Australian Immunisation Handbook · AIHW</span>
+        <div class="vis" id="vis13"></div>
+        <p class="howto">How to read: a tick means the disease can lead to that outcome. Hover over a
+        tick for details and the source.</p>
+        <figcaption class="takeaway">
+          <span class="big-num">8 of 8</span>
+          <span class="big-label">diseases on this page can cause death</span>
+          <p><strong>What this shows:</strong> Six of these diseases can cause pneumonia and five can
+          cause brain damage. Pneumococcal disease can lead to pneumonia, meningitis, blood infection
+          and ear infection, which is why it puts so many people in hospital and costs the most to
+          treat.</p>
         </figcaption>
       </figure>
     </div>
   </section>
+
   <!-- ===================== CONCLUSION ===================== -->
   <section class="chapter conclusion">
-    <div class="wrap narrow">
+    <div class="wrap">
       <h2 class="chapter-title">So, are we still protecting them?</h2>
-      <ul class="summary">
-        <li><strong>Mostly, but less than before.</strong> Coverage has dropped below the 95% target and Australia has slipped down the world rankings.</li>
-        <li><strong>It's broad, not one vaccine.</strong> Several vaccines show the same decline.</li>
-        <li><strong>The 2-year check is the weak point.</strong> Every region fell at age 2.</li>
-        <li><strong>Big cities hold the most unprotected children,</strong> even where percentages look fine.</li>
-      </ul>
-    
-        
+      <div class="summary-grid">
+        <div class="summary-card">
+          <h3>Mostly, but less than before</h3>
+          <p>Coverage has dropped below the 95% target and Australia has slipped down the world rankings.</p>
+        </div>
+        <div class="summary-card">
+          <h3>Age 2 is the weak point</h3>
+          <p>Every state fell furthest behind at age 2, and only 6 of 325 local areas reached the target.</p>
+        </div>
+        <div class="summary-card">
+          <h3>Cities hold the most unprotected children</h3>
+          <p>Western Sydney and Melbourne's west have the densest clusters, even where percentages look fine.</p>
+        </div>
+        <div class="summary-card">
+          <h3>The diseases are still here</h3>
+          <p>Whooping cough hit a record in 2024, and pneumococcal disease cost $68.2 million to treat in one year.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -344,25 +357,29 @@
       <div class="about-grid">
         <div>
           <h3>Data sources</h3>
+          <!-- EDIT: put the exact page you downloaded each file from -->
           <ul>
-            <!-- EDIT: put the exact page you downloaded each file from -->
-            <li><strong>AIHW</strong>, Healthy Communities: Immunisation rates for children (national, PHN and SA3 tables, 2012–13 to 2016–17). <a href="https://www.aihw.gov.au/" target="_blank" rel="noopener">aihw.gov.au</a></li>
+            <li><strong>AIHW</strong>, Healthy Communities: Immunisation rates for children, 2011–12 to 2016–17 (national, state and SA3 tables). <a href="https://www.aihw.gov.au/" target="_blank" rel="noopener">aihw.gov.au</a></li>
+            <li><strong>NCIRS</strong>, Annual Immunisation Coverage Reports, 2017–2024. <a href="https://ncirs.org.au/" target="_blank" rel="noopener">ncirs.org.au</a></li>
             <li><strong>WHO/UNICEF</strong> Estimates of National Immunization Coverage (WUENIC), 2010–2025. <a href="https://immunizationdata.who.int/" target="_blank" rel="noopener">immunizationdata.who.int</a></li>
-            <li><strong>Department of Health</strong>, Primary Health Network boundaries. <a href="https://www.health.gov.au/" target="_blank" rel="noopener">health.gov.au</a></li>
-            <li><strong>ABS</strong>, Australian Statistical Geography Standard: state boundaries. <a href="https://www.abs.gov.au/" target="_blank" rel="noopener">abs.gov.au</a></li>
+            <li><strong>AIHW</strong>, Vaccine preventable diseases in Australia (2025) data tables (NNDSS notifications, hospitalisations, deaths). <a href="https://www.aihw.gov.au/" target="_blank" rel="noopener">aihw.gov.au</a></li>
+            <li><strong>AIHW</strong>, Health system spending on disease and injury in Australia 2023–24. <a href="https://www.aihw.gov.au/" target="_blank" rel="noopener">aihw.gov.au</a></li>
+            <li><strong>Australian Immunisation Handbook</strong>, disease chapters. <a href="https://immunisationhandbook.health.gov.au/" target="_blank" rel="noopener">immunisationhandbook.health.gov.au</a></li>
+            <li><strong>ABS</strong>, Australian Statistical Geography Standard (state and SA3 boundaries). <a href="https://www.abs.gov.au/" target="_blank" rel="noopener">abs.gov.au</a></li>
+            <li>Signorelli C. et al. (2018). Childhood vaccine coverage in Italy after the new law on mandatory immunization. <em>Annali di Igiene</em>.</li>
           </ul>
         </div>
         <div>
           <h3>Notes</h3>
           <ul>
-            <li>The most recent regional (PHN and SA3) data in these tables is 2016–17. National and international figures go up to 2025.</li>
-            <li>WUENIC figures are reviewed estimates by WHO and UNICEF, based on Australia's official register data and rounded to whole numbers.</li>
+            <li>The most recent state and SA3 data in these tables is 2016–17. National and international figures go up to 2025.</li>
+            <li>WUENIC figures are reviewed estimates by WHO and UNICEF, rounded to whole numbers.</li>
+            <li>Notifications count only cases that were tested and reported. Totals can differ slightly between AIHW tables because of data revisions.</li>
             <li>Maps use an equal-area projection so that regions are drawn at their true relative size.</li>
           </ul>
         </div>
         <div>
           
-        </div>
       </div>
     </div>
   </section>
@@ -371,19 +388,74 @@
 
 <!-- ===================== LOAD THE CHARTS ===================== -->
 <script type="text/javascript">
-var spec01 = "Charts/01_measles_stacked.vg.json";
-var spec02 = "Charts/02_national_coverage.vg.json";
-var spec03 = "Charts/03_ranking.vg.json";
-var spec04 = "Charts/04_vaccine_ht.vg.json";
-var spec05 = "Charts/05_coverage_state.vg.json";
-var spec06 = "Charts/06_violin_cv.vg.json";
-var spec07 = "Charts/07_sankey.vg.json";
-var spec08 = "Charts/08_dot_map.vg.json";
-var spec09 = "Charts/09_mul_lin.vg.json";
-var spec10 = "Charts/10_stacked_wc.vg.json";
-var spec11 = "Charts/11_prop_map.vg.json";
-var spec12 = "Charts/12_tree.vg.json";
-var spec13 = "Charts/13_disease_outcomes.vg.json";
+  // One chart file per chart, all in the Charts folder (same as the Week 8 and 9 studios).
+  // Data paths inside each file are relative to THIS page, e.g. "data/state_coverage.csv".
+  var spec01 = "Charts/01_measles_stacked.vg.json";
+  var spec02 = "Charts/02_national_coverage.vg.json";
+  var spec03 = "Charts/03_ranking.vg.json";
+  var spec04 = "Charts/04_vaccine_ht.vg.json";
+  var spec05 = "Charts/05_coverage_state.vg.json";
+  var spec06 = "Charts/06_violin_cv.vg.json";
+  var spec07 = "Charts/07_sankey.vg.json";
+  var spec08 = "Charts/08_dot_map.vg.json";
+  var spec09 = "Charts/09_mul_lin.vg.json";
+  var spec10 = "Charts/10_stacked_wc.vg.json";
+  var spec11 = "Charts/11_prop_map.vg.json";
+  var spec12 = "Charts/12_tree.vg.json";
+  var spec13 = "Charts/13_disease_outcomes.vg.json";
+
+  // The "..." menu on each chart: View Source shows the Vega-Lite code,
+  // Open in Vega Editor opens it online, and Save as SVG/PNG downloads the chart.
+  // One shared style for every chart, so titles, axes and legends all match
+  var opts = {
+    "actions": {
+      "export": true,
+      "source": true,
+      "compiled": false,
+      "editor": true
+    },
+    "config": {
+      "font": "Inter, sans-serif",
+      "title": {
+        "font": "Inter, sans-serif",
+        "fontSize": 18,
+        "fontWeight": 600,
+        "color": "#12304f",
+        "subtitleFont": "Inter, sans-serif",
+        "subtitleFontSize": 12,
+        "subtitleColor": "#5c5b57",
+        "subtitlePadding": 6,
+        "anchor": "start",
+        "offset": 12
+      },
+      "axis": {
+        "labelFont": "Inter, sans-serif",
+        "labelFontSize": 11,
+        "labelColor": "#5c5b57",
+        "titleFont": "Inter, sans-serif",
+        "titleFontSize": 12,
+        "titleFontWeight": 500,
+        "titleColor": "#33322f",
+        "gridColor": "#eeeeee",
+        "domainColor": "#cccccc",
+        "tickColor": "#cccccc"
+      },
+      "legend": {
+        "labelFont": "Inter, sans-serif",
+        "labelFontSize": 11,
+        "titleFont": "Inter, sans-serif",
+        "titleFontSize": 12,
+        "titleFontWeight": 500
+      },
+      "header": {
+        "labelFont": "Inter, sans-serif",
+        "titleFont": "Inter, sans-serif"
+      },
+      "view": {
+        "stroke": null
+      }
+    }
+  };
 
   vegaEmbed('#vis01', spec01, opts);
   vegaEmbed('#vis02', spec02, opts);
@@ -398,7 +470,6 @@ var spec13 = "Charts/13_disease_outcomes.vg.json";
   vegaEmbed('#vis11', spec11, opts);
   vegaEmbed('#vis12', spec12, opts);
   vegaEmbed('#vis13', spec13, opts);
-
 </script>
 
 </body>

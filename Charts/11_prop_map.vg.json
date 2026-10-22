@@ -1,16 +1,22 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Number whooping cough cases varies by states in 2024",
-    "subtitle": [
-      "Circle size = number of cases. Circle colour = cases per 100,000 people."
+    "text": [
+      "NSW and Queensland had the",
+      "most whooping cough cases"
     ],
-    "anchor": "start",
-    "font":"sans-serif",
-    "fontSize":25
+    "subtitle": [
+      "Circle size = number of cases.",
+      "Circle colour = cases per 100,000 people."
+    ],
+    "anchor": "start"
   },
-  "width": 560,
-  "height": 460,
+  "width": "container",
+  "height": 440,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
   "view": {
     "stroke": null,
     "cornerRadius": 6
@@ -51,7 +57,7 @@
     },
     {
       "data": {
-        "url": "../data/pertussis_state_2024.csv",
+        "url": "data/pertussis_state_2024.csv",
         "format": {
           "type": "csv",
           "parse": {
@@ -100,20 +106,23 @@
                 ],
                 "range": [
                   0,
-                  6000
+                  2200
                 ]
               },
               "legend": {
-                "orient": "right",
+                "orient": "bottom",
                 "values": [
-                  500,
+                  1000,
                   5000,
-                  13000
+                  10000
                 ],
                 "format": ",.0f",
                 "symbolFillColor": "#cccccc",
                 "symbolStrokeColor": "white",
-                "titleLimit": 220
+                "titleLimit": 220,
+                "direction": "horizontal",
+                "title": "Cases",
+                "labelPadding": 2
               }
             },
             "color": {
@@ -135,10 +144,12 @@
                 ]
               },
               "legend": {
-                "orient": "right",
+                "orient": "top",
                 "symbolType": "circle",
                 "symbolSize": 150,
-                "titleLimit": 220
+                "titleLimit": 220,
+                "direction": "horizontal",
+                "title": "Per 100,000 people"
               }
             },
             "order": {
