@@ -15,7 +15,7 @@
   "layer": [
     {
       "data": {
-        "url": "../../data/fully_immunised_national.csv",
+        "url": "../data/fully_immunised_national.csv",
         "format": {
           "type": "csv",
           "parse": {

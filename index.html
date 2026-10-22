@@ -53,7 +53,7 @@
   <span class="data-year">Data: 1991–2023</span>
 
   <div class="vis"
-       data-spec="Charts/chart 10/chart10.vg.json">
+       id="vis01">
   </div>
 
   <figcaption class="takeaway">
@@ -85,7 +85,7 @@
 
       <figure class="card">
         <span class="data-year">Data: 2017–2024</span>
-  <div class="vis" data-spec="Charts/chart1/national_coverage.vg.json"></div>
+  <div class="vis" id="vis02"></div>
   <p class="howto">
     How to read: each line is one age check. 
     The dashed line is the 95% national target. 
@@ -101,7 +101,7 @@
 
       <figure class="card">
         <span class="data-year">Data: 2010–2025</span>
-        <div class="vis" data-spec="Charts/chart 2/ranking.vg.json"></div>
+        <div class="vis" id="vis03"></div>
         <figcaption class="takeaway">
           <p class="why"><strong>Why is Italy #1?</strong> 
             Since 2017, Italy has made it 
@@ -125,7 +125,7 @@
  
       <figure class="card">
         <span class="data-year">Data: 2015–2025</span>
-        <div class="vis" data-spec="Charts/chart 4/chart4.vg.json"></div>
+        <div class="vis" id="vis04"></div>
         <figcaption class="takeaway">
           <span class="big-num">7 of 7</span>
           <span class="big-label">vaccines are below their peak in 2025</span>
@@ -158,7 +158,7 @@
 
       <figure class="card">
         <span class="data-year">Data: 2012–2017</span>
-        <div class="vis" data-spec="Charts/chart 3/coverage_state.vg.json"></div>
+        <div class="vis" id="vis05"></div>
         <p class="howto">How to read: Click a state to compare Aboriginal and Torres Strait Islander and non-Indigenous children.</p>
 
         <p><strong>What this shows (map):</strong> In 2016–17, Australian Capital Territory (ACT) is the only state That
@@ -169,6 +169,26 @@
            <p> state, the ACT, reached only 92.0%.</p>
         <p><strong>What this shows (bar chart):</strong> Aboriginal and Torres Strait Islander children trailed non-Indigenous children at age 1 (91.4% vs 93.5%) and age 2 (85.7% vs 89.5%).
            By age 5 they were ahead (94.7% vs 92.1%). Most states follow this catch-up pattern, and the age-2 gap is widest in Western Australia (83.6% vs 90.3%).</p>
+        </figcaption>
+      </figure>
+
+      <figure class="card">
+        <span class="data-year">Data: 2011–12 to 2016–17</span>
+        <div class="vis" id="vis06"></div>
+        <p class="howto">How to read: each shape shows how coverage is spread across Australia's
+        325 local areas (SA3). Where the shape is taller, more areas have that level of coverage.
+        The black line is the middle area (median) and the dashed line is the 95% target.
+        Use the Year menu to compare years.</p>
+        <figcaption class="takeaway">
+          <span class="big-num">6 of 325</span>
+          <span class="big-label">local areas reached the 95% target at age 2 in 2016–17</span>
+          <p><strong>What this shows:</strong> At every age, most local areas fell short of the
+          95% target. About a third reached it at age 1 (102 areas) and age 5 (93 areas), but at
+          age 2 only 6 did. Most of the age-2 shape sits to the left of the target line, and the
+          middle area reached only 91.5%.</p>
+          <p class="why"><strong>Why does the state map show no state at 95%?</strong> The map shows
+          state averages, which hide this spread. At age 1, for example, 31 local areas in New South
+          Wales reached 95%, but the state as a whole reached only 93.6%.</p>
         </figcaption>
       </figure>
 
@@ -185,7 +205,7 @@
       </p>
 
       <figure class="card">
-        <div class="vis" data-spec="Charts/chart 6/chart6.vg.json"></div>
+        <div class="vis" id="vis07"></div>
         <p class="howto">How to read: the width of each band shows how many children follow that path.</p>
         <figcaption class="takeaway">
           <span class="data-year">Data: 2016–17</span>
@@ -198,7 +218,7 @@
       </figure>
 
       <figure class="card">
-        <div class="vis" data-spec="Charts/chart12/chart12.vg.json"></div>
+        <div class="vis" id="vis08"></div>
         <p class="howto">How to read: bigger circle = more children not fully immunised. The small maps zoom in on the capital cities.</p>
         <figcaption class="takeaway">
           <span class="data-year">Data: 2016–17</span>
@@ -226,7 +246,7 @@
       </p>
 
      <figure class="card">
-        <div class="vis" data-spec="Charts/chart13/chart13.vg.json"></div>
+        <div class="vis" id="vis09"></div>
         <span class="data-year">Data: 2000-2020</span>
         <p class="howto">How to read: each panel is one disease, with its own scale. The line shows how many children per million were admitted to hospital each year. The blue dashed line marks when a free vaccine started for all children.</p>
         <figcaption class="takeaway">
@@ -240,9 +260,9 @@
           <p class="why"><strong>Why?</strong> Rotavirus, chickenpox and pneumococcal vaccines were added to the free National Immunisation Program in 2005–2007. Admissions fell right after each one started.</p>
         </figcaption>
       </figure>
-    
+    <div class="chart-row">
       <figure class="card">
-        <div class="vis" data-spec="Charts/chart15/chart15.vg.json"></div>
+        <div class="vis" id="vis10"></div>
         <span class="data-year">Data: 2010–2024</span>
         <p class="howto">How to read: each panel is one disease, with its own scale. The line shows how many children per million were admitted to hospital each year. The blue dashed line marks when a free vaccine started for all children.</p>
         <figcaption class="takeaway">
@@ -261,7 +281,7 @@
       </figure>
     
       <figure class="card">
-        <div class="vis" data-spec="Charts/chart14/chart14.vg.json"></div>
+        <div class="vis" id="vis11"></div>
         <span class="data-year">Data:2024</span>
         <p class="howto">How to read: Each circle represents number of whooping cough cases in a state.
           Larger circles represent more cases while darker colours indicate higher case rates per 100,00 people
@@ -278,9 +298,9 @@
           cycles.</p>
         </figcaption>
       </figure>
-
+    </div>
       <figure class="card">
-        <div class="vis" data-spec="Charts/chart11/chart11.vg.json"></div>
+        <div class="vis" id="vis12"></div>
         <p class="howto">How to read: each branch is one disease. The size of the red circle shows how many cases were reported in 2024, and the blue bar on the same row shows how much was spent on that disease in 2018–19. Hover a circle or bar for details.</p>
         <figcaption class="takeaway">
           <span class="data-year">Data: 2024 cases | 2023–24 spending</span>
@@ -350,28 +370,35 @@
 </main>
 
 <!-- ===================== LOAD THE CHARTS ===================== -->
-<script>
-  // Every <div class="vis" data-spec="..."> on the page gets a chart.
-  // The spec's data paths ("../../data/...") are read relative to its own folder.
-  document.querySelectorAll(".vis").forEach(el => {
-    const spec = el.dataset.spec;
-    const folder = spec.substring(0, spec.lastIndexOf("/") + 1);
+<script type="text/javascript">
+var spec01 = "Charts/01_measles_stacked.vg.json";
+var spec02 = "Charts/02_national_coverage.vg.json";
+var spec03 = "Charts/03_ranking.vg.json";
+var spec04 = "Charts/04_vaccine_ht.vg.json";
+var spec05 = "Charts/05_coverage_state.vg.json";
+var spec06 = "Charts/06_violin_cv.vg.json";
+var spec07 = "Charts/07_sankey.vg.json";
+var spec08 = "Charts/08_dot_map.vg.json";
+var spec09 = "Charts/09_mul_lin.vg.json";
+var spec10 = "Charts/10_stacked_wc.vg.json";
+var spec11 = "Charts/11_prop_map.vg.json";
+var spec12 = "Charts/12_tree.vg.json";
+var spec13 = "Charts/13_disease_outcomes.vg.json";
 
-    fetch(spec)
-      .then(res => {
-        if (!res.ok) throw new Error("File not found");
-        return res.json();
-      })
-      .then(json => vegaEmbed(el, json, {
-        actions: false,
-        loader: vega.loader({ baseURL: folder })
-      }))
-      .catch(err => {
-        console.error(spec, err);
-        el.classList.add("missing");
-        el.innerHTML = "<p>Chart not loaded: <code>" + spec + "</code></p>";
-      });
-  });
+  vegaEmbed('#vis01', spec01, opts);
+  vegaEmbed('#vis02', spec02, opts);
+  vegaEmbed('#vis03', spec03, opts);
+  vegaEmbed('#vis04', spec04, opts);
+  vegaEmbed('#vis05', spec05, opts);
+  vegaEmbed('#vis06', spec06, opts);
+  vegaEmbed('#vis07', spec07, opts);
+  vegaEmbed('#vis08', spec08, opts);
+  vegaEmbed('#vis09', spec09, opts);
+  vegaEmbed('#vis10', spec10, opts);
+  vegaEmbed('#vis11', spec11, opts);
+  vegaEmbed('#vis12', spec12, opts);
+  vegaEmbed('#vis13', spec13, opts);
+
 </script>
 
 </body>

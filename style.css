@@ -349,3 +349,27 @@ h1 {
     padding: 16px;
   }
 }
+
+/* Two charts side by side */
+.chart-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s4);
+  align-items: stretch;   /* both cards the same height */
+  margin-bottom: var(--s5);
+}
+.chart-row .card {
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+.chart-row .takeaway {
+  margin-top: auto;       /* pushes both takeaways to the bottom, so they line up */
+}
+.chart-row .vis {
+  margin-bottom: var(--s3);
+}
+
+@media (max-width: 900px) {
+  .chart-row { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,182 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Number whooping cough cases varies by states in 2024",
+    "subtitle": [
+      "Circle size = number of cases. Circle colour = cases per 100,000 people."
+    ],
+    "anchor": "start",
+    "font":"sans-serif",
+    "fontSize":25
+  },
+  "width": 560,
+  "height": 460,
+  "view": {
+    "stroke": null,
+    "cornerRadius": 6
+  },
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -132,
+      0
+    ]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/aus_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "states"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#f4efe1",
+        "stroke": "#b9b2a0",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "tooltip": {
+          "field": "properties.STATE_NAME",
+          "type": "nominal",
+          "title": "State"
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "../data/pertussis_state_2024.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "Cases": "number",
+            "Rate_per_100k": "number",
+            "lon": "number",
+            "lat": "number",
+            "Population": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "calculate": "datum.Rate_per_100k < 25 ? 'Under 25' : datum.Rate_per_100k < 50 ? '25 to 50' : datum.Rate_per_100k < 100 ? '50 to 100' : '100 or more'",
+          "as": "rate_class"
+        }
+      ],
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        }
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "circle",
+            "opacity": 0.85,
+            "stroke": "white",
+            "strokeWidth": 1.2
+          },
+          "encoding": {
+            "size": {
+              "field": "Cases",
+              "type": "quantitative",
+              "title": "Cases (1 Jan to 19 Sep 2024)",
+              "scale": {
+                "type": "sqrt",
+                "domain": [
+                  0,
+                  14000
+                ],
+                "range": [
+                  0,
+                  6000
+                ]
+              },
+              "legend": {
+                "orient": "right",
+                "values": [
+                  500,
+                  5000,
+                  13000
+                ],
+                "format": ",.0f",
+                "symbolFillColor": "#cccccc",
+                "symbolStrokeColor": "white",
+                "titleLimit": 220
+              }
+            },
+            "color": {
+              "field": "rate_class",
+              "type": "ordinal",
+              "title": "Cases per 100,000 people",
+              "scale": {
+                "domain": [
+                  "Under 25",
+                  "25 to 50",
+                  "50 to 100",
+                  "100 or more"
+                ],
+                "range": [
+                  "#fcbba1",
+                  "#fb6a4a",
+                  "#de2d26",
+                  "#a50f15"
+                ]
+              },
+              "legend": {
+                "orient": "right",
+                "symbolType": "circle",
+                "symbolSize": 150,
+                "titleLimit": 220
+              }
+            },
+            "order": {
+              "field": "Cases",
+              "sort": "descending"
+            },
+            "tooltip": [
+              {
+                "field": "State_name",
+                "type": "nominal",
+                "title": "State"
+              },
+              {
+                "field": "Cases",
+                "type": "quantitative",
+                "title": "Cases",
+                "format": ","
+              },
+              {
+                "field": "Rate_per_100k",
+                "type": "quantitative",
+                "title": "Cases per 100,000",
+                "format": ".1f"
+              },
+              {
+                "field": "Period",
+                "type": "nominal",
+                "title": "Period"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

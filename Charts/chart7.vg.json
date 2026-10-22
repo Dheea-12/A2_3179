@@ -16,14 +16,14 @@
   ],
 
   "data": {
-    "url": "../../data/TAB2_state_phn_clean.csv",
+    "url": "../data/TAB2_state_phn_clean.csv",
     "format": {"type": "csv", "parse": {"Not_fully_immunised": "number", "Registered_children": "number", "Percent_fully_immunised": "number"}}
   },
   "transform": [
     {"calculate": "(Year_selection - 1) + '-' + substring(toString(Year_selection), 2)", "as": "year_label"},
     {"filter": "datum.Age_group == Age_selection && datum.Reporting_Year == datum.year_label"},
     {"lookup": "PHN_code",
-     "from": {"data": {"url": "../../data/phn_boundaries.topojson", "format": {"type": "topojson", "feature": "phn"}}, "key": "properties.PHN_code"},
+     "from": {"data": {"url": "../data/phn_boundaries.topojson", "format": {"type": "topojson", "feature": "phn"}}, "key": "properties.PHN_code"},
      "as": "geo"},
     {"calculate": "geoCentroid(null, datum.geo)[0]", "as": "lon"},
     {"calculate": "geoCentroid(null, datum.geo)[1]", "as": "lat"}
@@ -34,9 +34,9 @@
       "width": 520, "height": 440,
       "projection": {"type": "conicEqualArea", "parallels": [-18, -36], "rotate": [-132, 0]},
       "layer": [
-        {"data": {"url": "../../data/phn_boundaries.topojson", "format": {"type": "topojson", "feature": "phn"}},
+        {"data": {"url": "../data/phn_boundaries.topojson", "format": {"type": "topojson", "feature": "phn"}},
          "mark": {"type": "geoshape", "fill": "#eeeeee", "stroke": "white", "strokeWidth": 0.8}},
-        {"data": {"url": "../../data/aus_states.topojson", "format": {"type": "topojson", "feature": "states"}},
+        {"data": {"url": "../data/aus_states.topojson", "format": {"type": "topojson", "feature": "states"}},
          "mark": {"type": "geoshape", "filled": false, "stroke": "#b5b3ac", "strokeWidth": 1}},
         {"mark": {"type": "circle", "color": "#e34948", "opacity": 0.7, "stroke": "white", "strokeWidth": 1},
          "encoding": {

@@ -8,7 +8,7 @@
   "width": 400,
   "height": 340,
   "data": {
-    "url": "../../data/TAB1_national_clean.csv",
+    "url": "../data/TAB1_national_clean.csv",
     "format": {"type": "csv", "parse": {"All_percent": "number"}}
   },
   "transform": [

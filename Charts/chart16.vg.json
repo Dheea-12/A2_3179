@@ -14,7 +14,7 @@
     "offset": 14
   },
   "data": {
-    "url": "../../data/disease_outcome_matrix.csv",
+    "url": "../data/disease_outcome_matrix.csv",
     "format": {
       "type": "csv"
     }

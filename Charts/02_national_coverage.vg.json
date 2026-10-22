@@ -1,0 +1,252 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": ["Coverage peaked around 2020 and has declined",
+            "across all age groups"],
+    "subtitle": 
+      "Percentage of children fully immunised at ages 1, 2 and 5 years in Australia",
+    "anchor": "start",
+    "fontSize": 25,
+    "font":  "san-serif",
+    "subtitlePadding": 15},
+    "width": 500,
+    "layer": [
+    {
+      "data": {
+        "values": [
+          {
+            "start": 2020,
+            "end": 2021
+          }
+        ]
+      },
+      "mark": {
+        "type": "rect",
+        "color": "#e34948",
+        "opacity": 0.07
+      },
+      "encoding": {
+        "x": {
+          "field": "start",
+          "type": "quantitative",
+          "scale": {
+            "domain": [2017, 2024],
+            "nice": false
+          }
+        },
+        "x2": {
+          "field": "end"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 2020.5,
+            "label": "COVID-19 (2020–21)"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "y": 10,
+        "fontSize": 11,
+        "color": "#b03a39"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [2017, 2024],
+            "nice": false
+          }
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "y": 95
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "strokeDash": [6, 4],
+        "color": "#888888"
+      },
+      "encoding": {
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [80, 100],
+            "nice": false
+          }
+        }
+      }
+    },
+   {
+      "data": {
+        "values": [
+          {
+            "x": 2017.05,
+            "y": 95,
+            "label": "95% national target (never reached)"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dy": -7,
+        "fontSize": 11,
+        "color": "#666666"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+          },
+       
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+   
+     {
+      "data": {
+        "url": "../data/fully_immunised_national.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "Year": "number",
+            "Coverage": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "calculate": "datum.Age_group == '12 months' ? '1 year' : datum.Age_group == '24 months' ? '2 years' : datum.Age_group == '60 months' ? '5 years' : datum.Age_group",
+          "as": "Age_label"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "title": "Year",
+          "axis": {
+            "format": "d",
+            "tickMinStep": 1,
+            "tickCount": 8
+          }
+        },
+        "y": {
+          "field": "Coverage",
+          "type": "quantitative",
+          "title": "% fully immunised (axis starts at 88%)",
+          "axis": {
+            "tickCount": 5,
+            "tickMinStep": 1
+          
+          }
+        },
+        "color": {
+          "field": "Age_label",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "domain": ["1 year","2 years","5 years"],
+            "range": ["#0072B2", "#009E73", "#CC79A7"]
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "hover",
+            "empty": true,
+            "value": 1
+          },
+          "value": 0.25
+        },
+        "tooltip": [
+          {
+            "field": "Age_label",
+            "title": "Age"
+          },
+          {
+            "field": "Year",
+            "title": "Year",
+            "format": "d"
+          },
+          {
+            "field": "Coverage",
+            "title": "% fully immunised",
+            "format": ".1f"
+          }
+        ]
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "line",
+            "strokeWidth": 2.5
+          }
+        },
+        {
+          "mark": {
+            "type": "circle",
+            "filled": true,
+            "size": 70
+          },
+          "params": [
+            {
+              "name": "hover",
+              "select": {
+                "type": "point",
+                "fields": ["Age_label"],
+                "on": "mouseover",
+                "clear": "mouseout"
+              }
+            }
+          ]
+        },
+        {
+          "transform": [
+            {
+              "filter": "datum.Year == 2024"
+            },
+            {
+              "calculate": "datum.Age_label + ': ' + format(datum.Coverage, '.1f') + '%'",
+              "as": "end_label"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 10,
+            "fontSize": 12,
+            "fontWeight": "bold"
+          },
+          "encoding": {
+            "text": {
+              "field": "end_label"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

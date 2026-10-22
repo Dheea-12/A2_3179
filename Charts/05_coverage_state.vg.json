@@ -1,0 +1,356 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Childhood immunisation coverage varies across Australia",
+    "subtitle": [
+      "Fully immunised children (%) in each state and territory.",
+      "Click a state to compare Aboriginal and Torres Strait Islander and non-Indigenous children. Grey bars = all of Australia."
+    ],
+    "anchor": "start"
+  },
+  "params": [
+    {
+      "name": "Year_selection",
+      "value": "2016-17",
+      "bind": {
+        "input": "select",
+        "options": [
+          "2012-13",
+          "2013-14",
+          "2014-15",
+          "2015-16",
+          "2016-17"
+        ],
+        "name": "Year: "
+      }
+    },
+    {
+      "name": "Age_selection",
+      "value": "2 years",
+      "bind": {
+        "input": "radio",
+        "options": [
+          "1 year",
+          "2 years",
+          "5 years"
+        ],
+        "name": "Age (map): "
+      }
+    }
+  ],
+  "hconcat": [
+    {
+      "width": 420,
+      "height": 380,
+      "projection": {
+        "type": "conicEqualArea",
+        "parallels": [-18,-36],
+        "rotate": [-132,0]
+      },
+      "layer": [
+        {
+          "data": {
+            "url": "../data/state_coverage.csv",
+            "format": {
+              "type": "csv",
+              "parse": {
+                "Percent": "number",
+                "Registered_children": "number"
+              }
+            }
+          },
+          "transform": [
+            {
+              "filter": "datum.Reporting_Year == Year_selection && datum.Age_group == Age_selection"
+            },
+            {
+              "lookup": "State",
+              "from": {
+                "data": {
+                  "url": "../data/aus_states.topojson",
+                  "format": {
+                    "type": "topojson",
+                    "feature": "states"
+                  }
+                },
+                "key": "properties.STATE_NAME"
+              },
+              "as": "geo"
+            }
+          ],
+          "params": [
+            {
+              "name": "State_selection",
+              "select": {
+                "type": "point",
+                "fields": [
+                  "State"
+                ]
+              }
+            }
+          ],
+          "mark": {
+            "type": "geoshape",
+            "stroke": "#ffffff",
+            "strokeWidth": 1.2,
+            "cursor": "pointer"
+          },
+          "encoding": {
+            "shape": {
+              "field": "geo",
+              "type": "geojson"
+            },
+            "color": {
+              "field": "Percent",
+              "type": "quantitative",
+              "title": "% fully immunised",
+              "scale": {
+                "type": "threshold",
+                "domain": [85, 90, 92, 95],
+                "range": ["#E5F2F2", "#B9DBDB","#7DB9BA","#43999D","#155365"]
+              },
+              "legend": {
+                "orient": "none",
+                "legendX": 0,
+                "legendY": 330,
+                "direction": "horizontal",
+                "titleLimit": 200
+              }
+            },
+            "stroke": {
+              "condition": {
+                "param": "State_selection",
+                "empty": false,
+                "value": "#e34948"
+              },
+              "value": "#ffffff"
+            },
+            "strokeWidth": {
+              "condition": {
+                "param": "State_selection",
+                "empty": false,
+                "value": 3
+              },
+              "value": 1
+            },
+            "tooltip": [
+              {
+                "field": "State",
+                "type": "nominal",
+                "title": "State"
+              },
+              {
+                "field": "Percent",
+                "type": "quantitative",
+                "title": "% fully immunised",
+                "format": ".1f"
+              },
+              {
+                "field": "Registered_children",
+                "type": "quantitative",
+                "title": "Children registered",
+                "format": ","
+              }
+            ]
+          }
+        },
+        {
+          "data": {
+            "url": "../data/state_labels.csv"
+          },
+          "mark": {
+            "type": "text",
+            "fontSize": 11,
+            "fontWeight": "bold",
+            "color": "#12304f"
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "label"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "width": 380,
+      "height": 330,
+      "data": {
+        "url": "../data/state_indigenous_compare.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "Percent": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.Reporting_Year == Year_selection"
+        }
+      ],
+      "layer": [
+        {
+          "transform": [
+            {
+              "filter": {
+                "param": "State_selection",
+                "empty": false
+              }
+            }
+          ],
+          "mark": {
+            "type": "bar",
+            "cornerRadiusEnd": 3,
+            "width": {
+              "band": 0.6
+            }
+          },
+          "encoding": {
+            "x": {
+              "field": "Age_group",
+              "type": "nominal",
+              "title": null
+            },
+            "xOffset": {
+              "field": "Group"
+            },
+            "y": {
+              "field": "Percent",
+              "type": "quantitative"
+            },
+            "color": {
+              "field": "Group",
+              "type": "nominal",
+              "title": null,
+              "scale": {
+                "domain": [
+                  "Aboriginal and Torres Strait Islander",
+                  "Non-Indigenous"
+                ],
+                "range": ["#A66B83","#65758B"]
+              },
+              "legend": {
+                "orient": "bottom",
+                "direction": "vertical",
+                "labelLimit": 260
+              }
+            },
+            "tooltip": [
+              {
+                "field": "State",
+                "type": "nominal",
+                "title": "State"
+              },
+              {
+                "field": "Group",
+                "type": "nominal",
+                "title": "Group"
+              },
+              {
+                "field": "Age_group",
+                "type": "nominal",
+                "title": "Age"
+              },
+              {
+                "field": "Percent",
+                "type": "quantitative",
+                "title": "% fully immunised",
+                "format": ".1f"
+              }
+            ]
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": {
+                "param": "State_selection",
+                "empty": false
+              }
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "dy": -7,
+            "fontSize": 10,
+            "fontWeight": "bold",
+            "color": "#12304f"
+          },
+          "encoding": {
+            "x": {
+              "field": "Age_group",
+              "type": "nominal"
+            },
+            "xOffset": {
+              "field": "Group"
+            },
+            "y": {
+              "field": "Percent",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "Percent",
+              "type": "quantitative",
+              "format": ".1f"
+            }
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": {
+                "param": "State_selection",
+                "empty": false
+              }
+            },
+            {
+              "aggregate": [
+                {
+                  "op": "min",
+                  "field": "State",
+                  "as": "name"
+                }
+              ]
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "fontSize": 14,
+            "fontWeight": "bold",
+            "x": 0,
+            "y": -16
+          },
+          "encoding": {
+            "text": {
+              "field": "name"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#555555",
+      "titleColor": "#555555",
+      "gridColor": "#eeeeee",
+      "domainColor": "#cccccc",
+      "tickColor": "#cccccc"
+    }
+  }
+}
+
