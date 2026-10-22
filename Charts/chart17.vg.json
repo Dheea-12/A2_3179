@@ -1,0 +1,245 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Violin plot: spread of local-area (SA3) immunisation coverage at ages 1, 2 and 5.",
+  "title": {
+    "text": "Most local areas fall short of the 95% target, and age 2 is furthest behind",
+    "subtitle": [
+      "Each shape shows how coverage is spread across Australia's 325 local areas (SA3). Taller = more areas at that level.",
+      "Black line = middle area (median). Dashed line = 95% target. "
+    ],
+    "anchor": "start",
+    "fontSize": 20,
+    "offset": 12
+  },
+  "params": [
+    {
+      "name": "Year_pick",
+      "value": "2016-17",
+      "bind": {
+        "input": "select",
+        "options": [
+          "2011-12",
+          "2012-13",
+          "2013-14",
+          "2014-15",
+          "2015-16",
+          "2016-17"
+        ],
+        "name": "Year: "
+      }
+    }
+  ],
+  "data": {
+    "url": "../../data/sa3_dots.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "Percent": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.Reporting_Year == Year_pick && isValid(datum.Percent)"
+    }
+  ],
+  "facet": {
+    "row": {
+      "field": "Age_group",
+      "type": "nominal",
+      "sort": ["1 year","2 years","5 years"],
+      "title": "Age group",
+      "header": {
+        "labelAngle": 0,
+        "labelOrient": "left",
+        "labelAlign": "right",
+        "labelFontSize": 14,
+        "labelColor": "#12304f",
+        "labelExpr": "'Age ' + replace(datum.value, / years?/, '')"
+      }
+    }
+  },
+  "spacing":-5,
+  "spec": {
+    "width": 700,
+    "height": 90,
+    "layer": [
+      {
+        "transform": [
+          {
+            "density": "Percent",
+            "groupby": [
+              "Age_group"
+            ],
+            "extent": [75,100],
+            "bandwidth": 0.7,
+            "steps": 120,
+            "as": ["value","density"]
+          }
+        ],
+        "mark": {
+          "type": "area",
+          "orient": "vertical",
+          "opacity": 0.7
+        },
+        "encoding": {
+          "x": {
+            "field": "value",
+            "type": "quantitative",
+            "title": "Fully immunised children in each local area (%)",
+            "scale": {
+              "domain": [75,100
+              ],
+              "nice": false
+            },
+            "axis": {
+              "values": [75,80,85,90,95,100]
+            }
+          },
+          "y": {
+            "field": "density",
+            "type": "quantitative",
+            "stack": "center",
+            "impute": null,
+            "title": "Age",
+            "axis": null
+          },
+          "color": {
+            "field": "Age_group",
+            "type": "nominal",
+            "legend": null,
+            "scale": {
+              "domain": [
+                "1 year",
+                "2 years",
+                "5 years"
+              ],
+              "range": [
+                "#0072B2",
+                "#009E73",
+                "#CC79A7"
+              ]
+            }
+          }
+        }
+      },
+    
+      {
+         "transform": [
+          {
+            "calculate": "datum.Percent >= 95 ? 1 : 0","as": "met"
+          },
+          {
+            "aggregate": [
+              {
+                "op": "sum","field": "met","as": "areas_met"
+              },
+              {
+                "op": "count","as": "areas"
+              }
+            ],
+            "groupby": ["Age_group"]
+          },
+          {
+            "calculate": " datum.areas_met + ' of ' + datum.areas ",
+            "as": "label"
+          }
+        ],
+
+        "mark": {
+          "type": "rule",
+          "strokeDash": [3,4],
+          "color": "#555555",
+          "strokeWidth": 3
+        },
+        "encoding": {
+          "x": {
+            "datum": 95
+          },
+          "tooltip" : [
+            {
+                "field":"Age_group",
+                "type":"nominal",
+                "title" :"Age"
+            },
+            {
+                "field": "label",
+                "type": "nominal",
+                "title": "Local areas at or above target"
+            }
+          ]
+        }
+        
+      },
+      {
+        "transform": [
+          {
+            "aggregate": [
+              {
+                "op": "median",
+                "field": "Percent",
+                "as": "median"
+              }
+            ],
+            "groupby": [
+              "Age_group"
+            ]
+          }
+        ],
+        "mark": {
+          "type": "rule",
+          "color": "#000000",
+          "strokeWidth": 2
+        },
+    
+        "encoding": {
+          "x": {
+            "field": "median",
+            "type": "quantitative"
+          },
+          "tooltip": [
+            {
+              "field": "median",
+              "type": "quantitative",
+              "title": "Median of fully immunised children (%)",
+              "format": ".1f"
+            }
+          ]
+        }
+      },
+      {
+        "transform":[
+            {
+    "filter": "datum.Age_group == '1 year'"
+  }
+        ],
+        "mark":{
+            "type": "text",
+            "align": "center",
+            "baseline": "top",
+            "dx": 5,
+            "dy": -60
+        },
+        "encoding":{
+            "x":{
+                "datum":95
+            },
+            "text":{
+            "value": "target coverage (%)"
+        } 
+        }
+      }
+
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#333333",
+      "titleColor": "#333333",
+      "titleFontWeight": "normal"
+    }
+  }
+}

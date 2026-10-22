@@ -1,0 +1,226 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Vaccines Pushed Measles to the Edge",
+    "subtitle": "Measles cases reported in Australia each year, by age group",
+    "anchor": "start",
+    "fontSize": 25,
+    "font": "san-serif",
+    "subtitlePadding": 15
+  },
+  "width": 900,
+  "height": 320,
+  "layer": [
+    {
+      "data": {
+        "url": "../../data/section12_measles_notifications.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "Year": "number",
+            "Notifications": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "calculate": "test(/^0/, datum.Age_group) ? 'Under 5' : test(/^5/, datum.Age_group) ? '5 to 14' : '15 and over'",
+          "as": "Ages"
+        },
+        {
+          "calculate": "indexof(['Under 5','5 to 14','15 and over'], datum.Ages)",
+          "as": "order"
+        }
+      ],
+      "mark": {
+        "type": "area",
+        "opacity": 0.9
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "title": null,
+          "scale": {
+            "domain": [
+              1991,
+              2023
+            ]
+          },
+          "axis": {
+            "format": "d",
+            "grid": false
+          }
+        },
+        "y": {
+          "field": "Notifications",
+          "type": "quantitative",
+          "stack": "zero",
+          "title": "Cases reported",
+          "scale": {
+            "domain": [
+              0,
+              5000
+            ]
+          }
+        },
+        "color": {
+          "field": "Ages",
+          "type": "nominal",
+          "title": "Age group",
+          "scale": {
+            "domain": [
+              "Under 5",
+              "5 to 14",
+              "15 and over"
+            ],
+            "range": ["#247C91","#7957A6","#D65A50"]
+          },
+          "sort": [
+            "Under 5",
+            "5 to 14",
+            "15 and over"
+          ],
+          "legend": {
+            "orient": "top",
+            "direction": "horizontal",
+            "title": "Age group"
+          }
+        },
+        "order": {
+          "field": "order"
+        },
+        "tooltip": [
+          {
+            "field": "Year",
+            "type": "quantitative",
+            "format": "d"
+          },
+          {
+            "field": "Ages",
+            "title": "Age group"
+          },
+          {
+            "field": "Notifications",
+            "type": "quantitative",
+            "title": "Cases",
+            "format": ",.0f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 1993,
+            "y": 4555,
+            "y2": 4800,
+            "label": "1993: 4,555 cases"
+          },
+          {
+            "x": 1998,
+            "y": 300,
+            "y2": 2600,
+            "label": [
+              "1998: national measles",
+              "vaccination campaign"
+            ]
+          },
+          {
+            "x": 2014,
+            "y": 350,
+            "y2": 1500,
+            "label": [
+              "2014: WHO confirms",
+              "measles eliminated in Australia"
+            ]
+          },
+          {
+            "x": 2019,
+            "y": 290,
+            "y2": 900,
+            "label": "2019: 284 cases"
+          }
+        ]
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "rule",
+            "color": "#555",
+            "strokeDash": [
+              2,
+              2
+            ]
+          },
+          "encoding": {
+            "x": {
+              "field": "x",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  1991,
+                  2023
+                ]
+              }
+            },
+            "y": {
+              "field": "y",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  0,
+                  5000
+                ]
+              }
+            },
+            "y2": {
+              "field": "y2"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 4,
+            "fontSize": 11,
+            "color": "#333",
+            "lineHeight": 14
+          },
+          "encoding": {
+            "x": {
+              "field": "x",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  1991,
+                  2023
+                ]
+              }
+            },
+            "y": {
+              "field": "y2",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  0,
+                  5000
+                ]
+              }
+            },
+            "text": {
+              "field": "label"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "config": {
+    "axisY": {
+      "format": ",.0f"
+    }
+  }
+}
