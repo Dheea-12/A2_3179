@@ -308,22 +308,7 @@
         </figcaption>
       </figure>
 
-      <!-- CHECK: needs Charts/13_disease_outcomes.vg.json and data/disease_outcome_matrix.csv -->
-      <figure class="card">
-        <span class="data-year">Source: Australian Immunisation Handbook · AIHW</span>
-        <div class="vis" id="vis13"></div>
-        <p class="howto">How to read: a tick means the disease can lead to that outcome. Hover over a
-        tick for details and the source.</p>
-        <figcaption class="takeaway">
-          <span class="big-num">8 of 8</span>
-          <span class="big-label">diseases on this page can cause death</span>
-          <p><strong>What this shows:</strong> Six of these diseases can cause pneumonia and five can
-          cause brain damage. Pneumococcal disease can lead to pneumonia, meningitis, blood infection
-          and ear infection, which is why it puts so many people in hospital and costs the most to
-          treat.</p>
-        </figcaption>
-      </figure>
-    </div>
+
   </section>
 
   <!-- ===================== CONCLUSION ===================== -->
@@ -357,7 +342,6 @@
       <div class="about-grid">
         <div>
           <h3>Data sources</h3>
-          <!-- EDIT: put the exact page you downloaded each file from -->
           <ul>
             <li><strong>AIHW</strong>, Healthy Communities: Immunisation rates for children, 2011–12 to 2016–17 (national, state and SA3 tables). <a href="https://www.aihw.gov.au/" target="_blank" rel="noopener">aihw.gov.au</a></li>
             <li><strong>NCIRS</strong>, Annual Immunisation Coverage Reports, 2017–2024. <a href="https://ncirs.org.au/" target="_blank" rel="noopener">ncirs.org.au</a></li>
@@ -388,8 +372,6 @@
 
 <!-- ===================== LOAD THE CHARTS ===================== -->
 <script type="text/javascript">
-  // One chart file per chart, all in the Charts folder (same as the Week 8 and 9 studios).
-  // Data paths inside each file are relative to THIS page, e.g. "data/state_coverage.csv".
   var spec01 = "Charts/01_measles_stacked.vg.json";
   var spec02 = "Charts/02_national_coverage.vg.json";
   var spec03 = "Charts/03_ranking.vg.json";
@@ -404,9 +386,6 @@
   var spec12 = "Charts/12_tree.vg.json";
   var spec13 = "Charts/13_disease_outcomes.vg.json";
 
-  // The "..." menu on each chart: View Source shows the Vega-Lite code,
-  // Open in Vega Editor opens it online, and Save as SVG/PNG downloads the chart.
-  // One shared style for every chart, so titles, axes and legends all match
   var opts = {
     "actions": {
       "export": true,
@@ -414,47 +393,6 @@
       "compiled": false,
       "editor": true
     },
-    "config": {
-      "font": "Inter, sans-serif",
-      "title": {
-        "font": "Inter, sans-serif",
-        "fontSize": 18,
-        "fontWeight": 600,
-        "color": "#12304f",
-        "subtitleFont": "Inter, sans-serif",
-        "subtitleFontSize": 12,
-        "subtitleColor": "#5c5b57",
-        "subtitlePadding": 6,
-        "anchor": "start",
-        "offset": 12
-      },
-      "axis": {
-        "labelFont": "Inter, sans-serif",
-        "labelFontSize": 11,
-        "labelColor": "#5c5b57",
-        "titleFont": "Inter, sans-serif",
-        "titleFontSize": 12,
-        "titleFontWeight": 500,
-        "titleColor": "#33322f",
-        "gridColor": "#eeeeee",
-        "domainColor": "#cccccc",
-        "tickColor": "#cccccc"
-      },
-      "legend": {
-        "labelFont": "Inter, sans-serif",
-        "labelFontSize": 11,
-        "titleFont": "Inter, sans-serif",
-        "titleFontSize": 12,
-        "titleFontWeight": 500
-      },
-      "header": {
-        "labelFont": "Inter, sans-serif",
-        "titleFont": "Inter, sans-serif"
-      },
-      "view": {
-        "stroke": null
-      }
-    }
   };
 
   vegaEmbed('#vis01', spec01, opts);
