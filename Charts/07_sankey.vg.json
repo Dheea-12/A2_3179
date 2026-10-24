@@ -5,7 +5,7 @@
     "subtitle": "Every registered child aged 1, 2 and 5 in Australia, 2016–17. Band width = number of children.",
     "anchor": "start"
   },
-  "width": 940,
+  "width": "container",
   "height": 420,
   "data": {
     "url": "data/sankey_children_nodes.csv",
@@ -283,5 +283,9 @@
     "view": {
       "stroke": null
     }
+  },
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
   }
 }

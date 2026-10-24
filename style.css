@@ -119,10 +119,25 @@ h1 {
   color: var(--navy);
 }
 .chapter-intro {
-  max-width: var(--text);
+  max-width: 35ch;
   margin-bottom: var(--s5);
   font-size: 18px;
   color: var(--body);
+}
+
+.chapter-description {
+  display: grid;
+  margin-bottom: var(--s5);
+  grid-template-columns: 1fr 1fr;
+  color: var(--body);
+  gap: var(--s4);
+  align-items: start;
+}
+
+.chapter-description p {
+  margin: 0;
+  max-width: none;
+  line-height: 1.6;
 }
 
 /* =====================================================================
@@ -224,7 +239,7 @@ h1 {
   border-left: 4px solid var(--navy);
   border-radius: 0 6px 6px 0;
 }
-.takeaway p { max-width: var(--text); }   /* panel spans the card; text keeps a readable line length */
+.takeaway p { max-width: 35ch; }   /* panel spans the card; text keeps a readable line length */
 .big-num {
   font-family: var(--serif);
   font-size: 30px;
@@ -340,7 +355,7 @@ h1 {
 /* Split card: chart left, text right */
 .card.split {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 320px;
+  grid-template-columns: minmax(0, 1fr) 250px;
   grid-template-rows: auto auto 1fr;
   column-gap: var(--s5);
   align-items: start;
@@ -408,4 +423,43 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: var(--s2);
+}
+
+/* Right-hand "Why?" column in a two-column takeaway: no divider line above it */
+.takeaway.two-col > .why,
+.takeaway.two-col > div > .why:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+/* White box for a short note between charts (e.g. "Why the surge?") */
+.note-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s5);
+  font-size: 16px;
+  color: var(--body);
+  border-left: 4px solid var(--navy);
+}
+.note-card strong { color: var(--navy); }
+@media (max-width: 900px) {
+  .note-card { grid-template-columns: 1fr; gap: var(--s3); }
+}
+
+/* Two-column takeaways: let the text fill each column (the 35ch limit left big gaps) */
+.takeaway.two-col p { max-width: none; }
+
+/* Two-column takeaways: big number + label run across the top,
+   then "What this shows" and "Why" sit side by side underneath,
+   so both columns start at the same height (less empty space). */
+.takeaway.two-col { column-gap: var(--s5); row-gap: var(--s2); }
+.takeaway.two-col > div:first-child:has(> p) { display: contents; }
+.takeaway.two-col > div:first-child > .big-num,
+.takeaway.two-col > div:first-child > .big-label { grid-column: 1 / -1; }
+.takeaway.two-col > div:first-child > p { grid-column: 1; margin-top: var(--s1); }
+.takeaway.two-col > :last-child { grid-column: 2; margin-top: var(--s1); }
+@media (max-width: 900px) {
+  .takeaway.two-col > div:first-child > p,
+  .takeaway.two-col > :last-child { grid-column: 1; }
 }

@@ -4,11 +4,12 @@
     "text": "Australia has slipped to #4 among 7 developed countries",
     "subtitle": [
       "DTP3 (diphtheria, tetanus and pertussis) vaccination coverage ranking among",
-      "7 developed countries"
+      "7 developed countries",
+      "Each line follows one country's rank over time (1 = best)."
     ],
     "anchor": "start"
   },
-  "width": 650,
+  "width": 690,
   "height": 300,
   "data": {
     "url": "data/dtp3_peer_rank_7.csv",

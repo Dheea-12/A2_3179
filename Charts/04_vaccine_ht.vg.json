@@ -3,16 +3,12 @@
   "title": {
     "text": "All seven vaccines are below the 95% target",
     "subtitle": [
-      "Percentage of Australian children covered for each vaccine,(WHO/UNICEF estimates)"
+      "Percentage of Australian children covered for each vaccine (WHO/UNICEF estimates)."
     ],
     "anchor": "start"
   },
-  "width": "container",
+  "width": 720,
   "height": 260,
-  "autosize": {
-    "type": "fit",
-    "contains": "padding"
-  },
   "data": {
     "url": "data/wuenic_australia_antigens.csv",
     "format": {

@@ -2,7 +2,10 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Grouped adjacency matrix: which serious outcomes each vaccine-preventable disease can lead to.",
   "title": {
-    "text": "Every one of these diseases can kill, and most can cause pneumonia or brain damage",
+    "text": [
+      "Every one of these diseases can kill, and most",
+      "can cause pneumonia or brain damage"
+    ],
     "subtitle": [
       "A tick means the disease can lead to that outcome. Outcomes are grouped by part of the body.",
       "Diseases are in the same order as the spending chart, from highest to lowest spending. Hover over a tick for details."
@@ -35,7 +38,8 @@
         "labelFontSize": 13,
         "labelFontWeight": "bold",
         "labelColor": "#12304f",
-        "labelPadding": 4
+        "labelPadding": 4,
+        "labelExpr": "datum.value == 'Death' ? 'Most serious outcome' : datum.value"
       }
     }
   },
@@ -47,7 +51,7 @@
   },
   "spec": {
     "width": {
-      "step": 96
+      "step": 92
     },
     "height": {
       "step": 34

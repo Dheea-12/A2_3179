@@ -5,7 +5,8 @@
     "text": "Most local areas fall short of the 95% target, and age 2 is furthest behind",
     "subtitle": [
       "Each shape shows how coverage is spread across Australia's 325 local areas (SA3). Taller = more areas at that level.",
-      "Black line = middle area (median). Dashed line = 95% target."
+      "Black line = middle area (median). Dashed line = 95% target.",
+      "Use the Year menu to compare years."
     ],
     "anchor": "start",
     "offset": 12
@@ -74,7 +75,10 @@
             "groupby": [
               "Age_group"
             ],
-            "extent": [75,100],
+            "extent": [
+              75,
+              100
+            ],
             "bandwidth": 0.7,
             "steps": 120,
             "as": [
@@ -101,7 +105,14 @@
               "nice": false
             },
             "axis": {
-              "values": [75,80,85,90,95,100]
+              "values": [
+                75,
+                80,
+                85,
+                90,
+                95,
+                100
+              ]
             }
           },
           "y": {

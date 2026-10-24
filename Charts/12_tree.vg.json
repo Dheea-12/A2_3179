@@ -10,10 +10,14 @@
     "bottom": 10
   },
   "title": {
-    "text": "Pneumococcal disease costs the most to treat, though whooping cough is far more common",
+    "text": [
+      "Pneumococcal disease costs the most to treat,",
+      "though whooping cough is far more common"
+    ],
     "subtitle": [
       "Circle size = cases reported in 2024. Bars = health spending in 2023–24 (July 2023 to June 2024). Australia, all ages.",
-      "Diseases are ordered from highest to lowest spending. Hib spending may include other Haemophilus influenzae infections."
+      "Diseases are ordered from highest to lowest spending. Hib spending may include other Haemophilus influenzae infections.",
+      "Hover over a circle or bar for details."
     ],
     "anchor": "start",
     "offset": 12
