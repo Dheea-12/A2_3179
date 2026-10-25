@@ -7,8 +7,8 @@
     ],
     "anchor": "start",
     "subtitle": [
-      "% of children fully immunised at ages 1, 2 and 5, Australia, 2017–2024.",
-      "Dashed line = 95% national target. Hover over a line to highlight it."
+      "Fully immunised children (%) at ages 1, 2 and 5, Australia, 2017–2024.",
+      "Hover over a line to highlight it."
     ]
   },
   "width": 800,
@@ -25,8 +25,8 @@
       },
       "mark": {
         "type": "rect",
-        "color": "#e34948",
-        "opacity": 0.07
+        "color": "#888888",
+        "opacity": 0.12
       },
       "encoding": {
         "x": {
@@ -58,7 +58,7 @@
         "type": "text",
         "y": 10,
         "fontSize": 11,
-        "color": "#b03a39"
+        "color": "#555555"
       },
       "encoding": {
         "x": {
@@ -269,5 +269,44 @@
         }
       ]
     }
-  ]
+  ],
+  "config": {
+    "font": "Inter, sans-serif",
+    "title": {
+      "font": "Inter, sans-serif",
+      "fontSize": 18,
+      "fontWeight": 600,
+      "color": "#12304f",
+      "subtitleFont": "Inter, sans-serif",
+      "subtitleFontSize": 12,
+      "subtitleColor": "#5c5b57",
+      "subtitlePadding": 6,
+      "anchor": "start",
+      "offset": 12
+    },
+    "axis": {
+      "labelFont": "Inter, sans-serif",
+      "titleFont": "Inter, sans-serif",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#5c5b57",
+      "titleColor": "#33322f",
+      "gridColor": "#eeeeee"
+    },
+    "legend": {
+      "labelFont": "Inter, sans-serif",
+      "titleFont": "Inter, sans-serif",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "titleFontWeight": 600
+    },
+    "header": {
+      "labelFont": "Inter, sans-serif",
+      "titleFont": "Inter, sans-serif"
+    },
+    "view": {
+      "stroke": null
+    }
+  }
 }

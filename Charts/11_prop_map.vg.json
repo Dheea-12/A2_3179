@@ -173,11 +173,6 @@
                 "type": "quantitative",
                 "title": "Cases per 100,000",
                 "format": ".1f"
-              },
-              {
-                "field": "Period",
-                "type": "nominal",
-                "title": "Period"
               }
             ]
           }
@@ -186,6 +181,40 @@
     }
   ],
   "config": {
+    "font": "Inter, sans-serif",
+    "title": {
+      "font": "Inter, sans-serif",
+      "fontSize": 18,
+      "fontWeight": 600,
+      "color": "#12304f",
+      "subtitleFont": "Inter, sans-serif",
+      "subtitleFontSize": 12,
+      "subtitleColor": "#5c5b57",
+      "subtitlePadding": 6,
+      "anchor": "start",
+      "offset": 12
+    },
+    "axis": {
+      "labelFont": "Inter, sans-serif",
+      "titleFont": "Inter, sans-serif",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#5c5b57",
+      "titleColor": "#33322f",
+      "gridColor": "#eeeeee"
+    },
+    "legend": {
+      "labelFont": "Inter, sans-serif",
+      "titleFont": "Inter, sans-serif",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "titleFontWeight": 600
+    },
+    "header": {
+      "labelFont": "Inter, sans-serif",
+      "titleFont": "Inter, sans-serif"
+    },
     "view": {
       "stroke": null
     }

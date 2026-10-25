@@ -4,7 +4,8 @@
     "text": "Childhood immunisation coverage varies across Australia",
     "subtitle": [
       "Fully immunised children (%) in each state and territory.",
-      "Click a state to compare Aboriginal and Torres Strait Islander and non-Indigenous children. Grey bars = all of Australia."
+      "Click a state to compare Aboriginal and Torres Strait Islander",
+      "and non-Indigenous children."
     ],
     "anchor": "start"
   },
@@ -143,7 +144,7 @@
               "condition": {
                 "param": "State_selection",
                 "empty": false,
-                "value": "#e34948"
+                "value": "#12304F"
               },
               "value": "#ffffff"
             },
@@ -365,15 +366,44 @@
     }
   ],
   "config": {
-    "view": {
-      "stroke": null
+    "font": "Inter, sans-serif",
+    "title": {
+      "font": "Inter, sans-serif",
+      "fontSize": 18,
+      "fontWeight": 600,
+      "color": "#12304f",
+      "subtitleFont": "Inter, sans-serif",
+      "subtitleFontSize": 12,
+      "subtitleColor": "#5c5b57",
+      "subtitlePadding": 6,
+      "anchor": "start",
+      "offset": 12
     },
     "axis": {
+      "labelFont": "Inter, sans-serif",
+      "titleFont": "Inter, sans-serif",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
       "labelColor": "#555555",
       "titleColor": "#555555",
       "gridColor": "#eeeeee",
       "domainColor": "#cccccc",
       "tickColor": "#cccccc"
+    },
+    "legend": {
+      "labelFont": "Inter, sans-serif",
+      "titleFont": "Inter, sans-serif",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "titleFontWeight": 600
+    },
+    "header": {
+      "labelFont": "Inter, sans-serif",
+      "titleFont": "Inter, sans-serif"
+    },
+    "view": {
+      "stroke": null
     }
   }
 }

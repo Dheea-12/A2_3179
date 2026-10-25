@@ -24,14 +24,19 @@
 <header class="hero" id="top">
   <div class="wrap">
     <p class="kicker">FIT3179 Data Visualisation 2 · Child immunisation in Australia</p>
-    <h1>The Truth About Childhood Immunisation in Australia</h1>
-    <p class="lede">
-      For years, Australia was one of the best-vaccinated countries in the world.
-      Lately, the numbers have started to slip. This page follows the data to answer
-      four questions: <strong>how far coverage has fallen</strong>, <strong>which vaccines</strong>,
-      <strong>where</strong>, and <strong>how many children</strong> are missing out.
-    </p>
-  </div>
+    <h1>Childhood Immunisation in Australia</h1>
+    <div class="lede-grid">
+  <p class="lede">
+    For years, Australia maintained  <strong>high childhood immunisation coverage</strong> in the world.
+    However, immunisation coverage has started to slip and has never reached the
+    <strong>national target of 95%</strong>.
+  </p>
+  <p class="lede">
+    This visualisation shows the <strong>declining trend in childhood immunisation coverage</strong>
+    across age groups, vaccines, states and local areas, how many children are not fully
+    immunised, and <strong>why this matters</strong> for public health.
+  </p>
+</div>
 </header>
 
 <main>
@@ -199,8 +204,7 @@
           <span class="big-num">6 of 325</span>
           <span class="big-label">local areas reached the 95% target at age 2 in 2016–17</span>
           <p><strong>What this shows:</strong> At every age, most local areas <strong>fell below the
-          95% target</strong>. At age 1 (102 areas) and age 5 (93 areas) reached the target, but <strong> at
-          age 2 only 6 did</strong>. Most of the aged 2 shape sits to the left side, and the
+          95% target</strong>. At age 1 (102 areas) and age 5 (93 areas) reached the target, but <strong> only 6  at age 2</strong>. Most of the aged 2 shape sits to the left side, and the
           <strong> median coverage reached only 91.5%</strong>.</p>
           </div>
           <div>
@@ -366,29 +370,24 @@
   </section>
 
   <!-- ===================== CONCLUSION ===================== -->
-  <section class="chapter conclusion">
-    <div class="wrap">
-      <h2 class="chapter-title">So, are we still protecting them?</h2>
-      <div class="summary-grid">
-        <div class="summary-card">
-          <h3>Mostly, but less than before</h3>
-          <p>Coverage has dropped below the 95% target and Australia has slipped down the world rankings.</p>
-        </div>
-        <div class="summary-card">
-          <h3>Age 2 is the weak point</h3>
-          <p>Every state fell furthest behind at age 2, and only 6 of 325 local areas reached the target.</p>
-        </div>
-        <div class="summary-card">
-          <h3>Cities hold the most unprotected children</h3>
-          <p>Western Sydney and Melbourne's west have the densest clusters, even where percentages look fine.</p>
-        </div>
-        <div class="summary-card">
-          <h3>The diseases are still here</h3>
-          <p>Whooping cough hit a record in 2024, and pneumococcal disease cost $68.2 million to treat in one year.</p>
-        </div>
+  
+<section class="chapter">
+  <div class="wrap">
+    <div class="card wrap-up">
+      <h2 class="wrap-up-title">Keytakeaway</h2>
+
+      <div class="wrap-up-grid">
+        <p><strong>How far.</strong> Coverage has been fallen since 2020 and never reached the 95% target.</p>
+
+        <p><strong>Where.</strong> At aged two , every state is weakest with Northen Territory and Western Australia being the lowest</p>
+
+        <p><strong>How many.</strong> 68,159 children  were not fully immunised in one year and mostly lived in big cities.</p>
+
+        <p><strong>Why it matters.</strong> Australia recorded 57,133 whooping cough cases in 2024, showing the burden of vaccine-preventable diseases</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- ===================== ABOUT / SOURCES ===================== -->
   <section class="about" id="about">
@@ -407,20 +406,11 @@
             <li>Signorelli C. et al. (2018). Childhood vaccine coverage in Italy after the new law on mandatory immunization. <em>Annali di Igiene</em>.</li>
           </ul>
         </div>
-        <div>
-          <h3>Notes</h3>
-          <ul>
-            <li>The most recent state and SA3 data in these tables is 2016–17. National and international figures go up to 2025.</li>
-            <li>WUENIC figures are reviewed estimates by WHO and UNICEF, rounded to whole numbers.</li>
-            <li>Notifications count only cases that were tested and reported. Totals can differ slightly between AIHW tables because of data revisions.</li>
-            <li>Maps use an equal-area projection so that regions are drawn at their true relative size.</li>
-          </ul>
-        </div>
+
         <div>
           <h3>About</h3>
-          <p>Created by Dania' for FIT3179 Data Visualisation 2, Monash University, October 2026.</p>
-          <p>Charts made with Vega and Vega-Lite.</p>
-          <p><strong>AI acknowledgement:</strong> Claude (Anthropic) was used to help clean data, write and debug chart code, and check grammar. All data choices and final content were reviewed by the author.</p>
+          <p>Created by Dheea Irdeena Khaireel Amri for FIT3179 Data Visualisation 2, Monash University,2026.</p>
+          <p><strong>AI acknowledgement:</strong> Claude AI was used to help to debug chart code, and check grammar.</p>
         </div>
       </div>
     </div>
@@ -450,43 +440,6 @@
       "source": true,
       "compiled": false,
       "editor": true
-    },
-    "config": {
-      "font": "Inter, sans-serif",
-      "title": {
-        "font": "Inter, sans-serif",
-        "fontSize": 18,
-        "fontWeight": 600,
-        "color": "#12304f",
-        "subtitleFont": "Inter, sans-serif",
-        "subtitleFontSize": 12,
-        "subtitleColor": "#5c5b57",
-        "subtitlePadding": 6,
-        "anchor": "start",
-        "offset": 12
-      },
-      "axis": {
-        "labelFont": "Inter, sans-serif",
-        "titleFont": "Inter, sans-serif",
-        "labelFontSize": 11,
-        "titleFontSize": 12,
-        "titleFontWeight": 500,
-        "labelColor": "#5c5b57",
-        "titleColor": "#33322f",
-        "gridColor": "#eeeeee"
-      },
-      "legend": {
-        "labelFont": "Inter, sans-serif",
-        "titleFont": "Inter, sans-serif",
-        "labelFontSize": 11,
-        "titleFontSize": 12,
-        "titleFontWeight": 600
-      },
-      "header": {
-        "labelFont": "Inter, sans-serif",
-        "titleFont": "Inter, sans-serif"
-      },
-      "view": {"stroke": null}
     }
   };
 

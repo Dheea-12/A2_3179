@@ -7,8 +7,8 @@
       "can cause pneumonia or brain damage"
     ],
     "subtitle": [
-      "A tick means the disease can lead to that outcome. Outcomes are grouped by part of the body.",
-      "Diseases are in the same order as the spending chart, from highest to lowest spending. Hover over a tick for details."
+      "Tick = the disease can cause that outcome.",
+      "Same disease order as the spending chart. Hover for details."
     ],
     "anchor": "start",
     "offset": 14
@@ -126,9 +126,9 @@
                 "None"
               ],
               "range": [
-                "#fbe1df",
-                "#dfe4ea",
-                "#f6f5f1"
+                "#E3E7EC",
+                "#12304F",
+                "#F6F5F1"
               ]
             }
           },
@@ -203,9 +203,9 @@
           "color": {
             "condition": {
               "test": "datum.outcome == 'Death'",
-              "value": "#12304f"
+              "value": "#FFFFFF"
             },
-            "value": "#c4161c"
+            "value": "#12304F"
           },
           "tooltip": [
             {
@@ -234,11 +234,42 @@
     ]
   },
   "config": {
-    "view": {
-      "stroke": null
+    "font": "Inter, sans-serif",
+    "title": {
+      "font": "Inter, sans-serif",
+      "fontSize": 18,
+      "fontWeight": 600,
+      "color": "#12304f",
+      "subtitleFont": "Inter, sans-serif",
+      "subtitleFontSize": 12,
+      "subtitleColor": "#5c5b57",
+      "subtitlePadding": 6,
+      "anchor": "start",
+      "offset": 12
     },
     "axis": {
-      "labelColor": "#333333"
+      "labelFont": "Inter, sans-serif",
+      "titleFont": "Inter, sans-serif",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#333333",
+      "titleColor": "#33322f",
+      "gridColor": "#eeeeee"
+    },
+    "legend": {
+      "labelFont": "Inter, sans-serif",
+      "titleFont": "Inter, sans-serif",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "titleFontWeight": 600
+    },
+    "header": {
+      "labelFont": "Inter, sans-serif",
+      "titleFont": "Inter, sans-serif"
+    },
+    "view": {
+      "stroke": null
     }
   }
 }

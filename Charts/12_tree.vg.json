@@ -15,9 +15,9 @@
       "though whooping cough is far more common"
     ],
     "subtitle": [
-      "Circle size = cases reported in 2024. Bars = health spending in 2023–24 (July 2023 to June 2024). Australia, all ages.",
-      "Diseases are ordered from highest to lowest spending. Hib spending may include other Haemophilus influenzae infections.",
-      "Hover over a circle or bar for details."
+      "Circle size = 2024 cases. Bars = 2023–24 spending.",
+      "Australia, all ages, sorted by spending. Hover for details.",
+      "Hib spending may include other Haemophilus influenzae infections."
     ],
     "anchor": "start",
     "offset": 12
@@ -42,6 +42,19 @@
         {
           "type": "filter",
           "expr": "datum.kind == 'cases'"
+        }
+      ]
+    },
+    {
+      "name": "disease_names",
+      "url": "data/burden_tree.csv",
+      "format": {
+        "type": "csv"
+      },
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.kind == 'disease'"
         }
       ]
     },
@@ -71,6 +84,34 @@
           ],
           "as": [
             "cases"
+          ]
+        },
+        {
+          "type": "lookup",
+          "from": "cases_only",
+          "key": "parent",
+          "fields": [
+            "parent"
+          ],
+          "values": [
+            "value"
+          ],
+          "as": [
+            "cost_cases"
+          ]
+        },
+        {
+          "type": "lookup",
+          "from": "disease_names",
+          "key": "id",
+          "fields": [
+            "parent"
+          ],
+          "values": [
+            "name"
+          ],
+          "as": [
+            "disease_name"
           ]
         },
         {
@@ -290,6 +331,9 @@
           },
           "fill": {
             "value": "#e9e6de"
+          },
+          "tooltip": {
+            "signal": "{'Disease': datum.disease_name, 'Health spending (2023–24)': replace(datum.label, 'Health spending (2023–24): ', ''), 'Cases reported (2024)': format(datum.cost_cases, ',')}"
           }
         }
       }
@@ -324,6 +368,9 @@
           },
           "cornerRadiusBottomRight": {
             "value": 2
+          },
+          "tooltip": {
+            "signal": "{'Disease': datum.disease_name, 'Health spending (2023–24)': replace(datum.label, 'Health spending (2023–24): ', ''), 'Cases reported (2024)': format(datum.cost_cases, ',')}"
           }
         }
       }
@@ -402,5 +449,39 @@
         }
       }
     }
-  ]
+  ],
+  "config": {
+    "title": {
+      "font": "Inter, sans-serif",
+      "fontSize": 18,
+      "fontWeight": 600,
+      "color": "#12304f",
+      "subtitleFont": "Inter, sans-serif",
+      "subtitleFontSize": 12,
+      "subtitleColor": "#5c5b57",
+      "subtitlePadding": 6,
+      "anchor": "start",
+      "offset": 12
+    },
+    "axis": {
+      "labelFont": "Inter, sans-serif",
+      "titleFont": "Inter, sans-serif",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#5c5b57",
+      "titleColor": "#33322f",
+      "gridColor": "#eeeeee"
+    },
+    "legend": {
+      "labelFont": "Inter, sans-serif",
+      "titleFont": "Inter, sans-serif",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "titleFontWeight": 600
+    },
+    "text": {
+      "font": "Inter, sans-serif"
+    }
+  }
 }

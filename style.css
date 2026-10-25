@@ -84,11 +84,15 @@ h1 {
   line-height: 1.1;
   color: #ffffff;
 }
-.lede {
-  max-width: var(--text);
-  font-size: 20px;
-  line-height: 1.55;
-  color: #dfe6ee;
+.lede-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s5);
+  max-width: 900px;
+}
+.lede-grid .lede { max-width: none; }
+@media (max-width: 900px) {
+  .lede-grid { grid-template-columns: 1fr; gap: var(--s3); }
 }
 .byline {
   margin-top: var(--s3);
@@ -142,8 +146,6 @@ h1 {
 
 /* =====================================================================
    CHART CARDS
-   Every card follows the same order:
-   data-year → chart → how to read → takeaway
    ===================================================================== */
 .card {
   margin: 0 0 var(--s4);
@@ -239,7 +241,7 @@ h1 {
   border-left: 4px solid var(--navy);
   border-radius: 0 6px 6px 0;
 }
-.takeaway p { max-width: 35ch; }   /* panel spans the card; text keeps a readable line length */
+.takeaway p { max-width: 35ch; }  
 .big-num {
   font-family: var(--serif);
   font-size: 30px;
@@ -292,7 +294,7 @@ h1 {
 }
 .about-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
+  grid-template-columns: 1.4fr 1fr;
   gap: var(--s5);
 }
 .about h3 {
@@ -459,7 +461,43 @@ h1 {
 .takeaway.two-col > div:first-child > .big-label { grid-column: 1 / -1; }
 .takeaway.two-col > div:first-child > p { grid-column: 1; margin-top: var(--s1); }
 .takeaway.two-col > :last-child { grid-column: 2; margin-top: var(--s1); }
+
 @media (max-width: 900px) {
   .takeaway.two-col > div:first-child > p,
   .takeaway.two-col > :last-child { grid-column: 1; }
+}
+/* Wrap-up card: "So, are we still protecting them?" */
+.wrap-up { padding: var(--s5); }
+.wrap-up-title {
+  margin: 0 0 var(--s2);
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.4vw, 38px);
+  line-height: 1.2;
+  color: var(--navy);
+}
+.wrap-up-intro {
+  max-width: var(--text);
+  margin-bottom: var(--s5);
+  font-size: 18px;
+  color: var(--body);
+}
+.wrap-up-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s4);
+}
+.wrap-up-grid p {
+  padding-left: var(--s3);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--body);
+  border-left: 4px solid var(--navy);
+}
+.wrap-up-grid strong { color: var(--navy); }
+
+@media (max-width: 1100px) {
+  .wrap-up-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 700px) {
+  .wrap-up-grid { grid-template-columns: 1fr; }
 }

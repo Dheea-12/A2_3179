@@ -6,7 +6,7 @@
       "a record in 2024"
     ],
     "subtitle": [
-      "Cases reported in Australia each year, by age group, 2010–2024.",
+      "Cases reported in Australia each year, by age group.",
       "Click an age group in the legend to highlight it."
     ],
     "anchor": "start"
@@ -76,7 +76,7 @@
             "range": [
               "#8F4054",
               "#D7838C",
-              "#D7D2CE"
+              "#B5ADA6"
             ]
           },
           "legend": {
@@ -186,6 +186,40 @@
     }
   ],
   "config": {
+    "font": "Inter, sans-serif",
+    "title": {
+      "font": "Inter, sans-serif",
+      "fontSize": 18,
+      "fontWeight": 600,
+      "color": "#12304f",
+      "subtitleFont": "Inter, sans-serif",
+      "subtitleFontSize": 12,
+      "subtitleColor": "#5c5b57",
+      "subtitlePadding": 6,
+      "anchor": "start",
+      "offset": 12
+    },
+    "axis": {
+      "labelFont": "Inter, sans-serif",
+      "titleFont": "Inter, sans-serif",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#5c5b57",
+      "titleColor": "#33322f",
+      "gridColor": "#eeeeee"
+    },
+    "legend": {
+      "labelFont": "Inter, sans-serif",
+      "titleFont": "Inter, sans-serif",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "titleFontWeight": 600
+    },
+    "header": {
+      "labelFont": "Inter, sans-serif",
+      "titleFont": "Inter, sans-serif"
+    },
     "view": {
       "stroke": null
     }

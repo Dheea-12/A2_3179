@@ -3,8 +3,8 @@
   "title": {
     "text": "Hospital admissions fell sharply after free vaccines were introduced",
     "subtitle": [
-      "Hospital admissions per million children in the youngest age group reported for each disease, Australia, 1999–2022.",
-      "Each panel has its own scale. The dashed line marks when a free vaccine started for all children."
+      "Hospital admissions per million children, Australia, 1999–2022.",
+      "Dashed line = free vaccine start. Scales differ by panel."
     ],
     "anchor": "start"
   },
@@ -58,7 +58,7 @@
           {
             "mark": {
               "type": "rule",
-              "color": "#2a78d6",
+              "color": "#555555",
               "strokeDash": [
                 4,
                 3
@@ -85,7 +85,7 @@
               "dx": 4,
               "y": 8,
               "fontSize": 10,
-              "color": "#2a78d6"
+              "color": "#555555"
             },
             "encoding": {
               "x": {
@@ -154,15 +154,6 @@
           },
           "tooltip": [
             {
-              "field": "Disease",
-              "type": "nominal"
-            },
-            {
-              "field": "Age_group",
-              "type": "nominal",
-              "title": "Age group"
-            },
-            {
               "field": "Year",
               "type": "quantitative",
               "format": "d"
@@ -187,5 +178,44 @@
   "spacing": {
     "row": 30,
     "column": 25
+  },
+  "config": {
+    "font": "Inter, sans-serif",
+    "title": {
+      "font": "Inter, sans-serif",
+      "fontSize": 18,
+      "fontWeight": 600,
+      "color": "#12304f",
+      "subtitleFont": "Inter, sans-serif",
+      "subtitleFontSize": 12,
+      "subtitleColor": "#5c5b57",
+      "subtitlePadding": 6,
+      "anchor": "start",
+      "offset": 12
+    },
+    "axis": {
+      "labelFont": "Inter, sans-serif",
+      "titleFont": "Inter, sans-serif",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#5c5b57",
+      "titleColor": "#33322f",
+      "gridColor": "#eeeeee"
+    },
+    "legend": {
+      "labelFont": "Inter, sans-serif",
+      "titleFont": "Inter, sans-serif",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "titleFontWeight": 600
+    },
+    "header": {
+      "labelFont": "Inter, sans-serif",
+      "titleFont": "Inter, sans-serif"
+    },
+    "view": {
+      "stroke": null
+    }
   }
 }
